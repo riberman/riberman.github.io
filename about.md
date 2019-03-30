@@ -5,16 +5,17 @@ permalink: /about/
 ---
 
 ## Goals  
+___
 IT technician, Computer and related industry, customer service, technical support, Programming, Internship,  
 better professional qualification, add knowledge.  
 
 ## Work Experience  
+___
  - **Mobile Development Intern/ Teorema Sistemas**  
 Fev 2019 - CURRENT  
-Position: **Intern Technical Support.**  
-Main activities: Accompany service, configuration of systems,  
-assist in the installation and configuration of hardware, assist in assembly, maintenance and  
-configuration of microcomputers.  
+Position: **Development Intern.**  
+Main activities: Development using Android Studio IDE, using Kotlin and Java,  
+data base realm.
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  
@@ -39,7 +40,7 @@ operational, backups, technical report management, order management,
 remote and physical support, maintenance services and POSITIVO authorized support.  
 
 ## Education  
-
+___
  - **Federal Technological University Of Paraná**  
  Systems For Internet  
  2015 - **Currently**  
