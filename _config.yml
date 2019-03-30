@@ -14,15 +14,9 @@ allowsearch: true
 disqus_shortname: aboutashu
 google_analytics: UA-113720530-2
 
-# Social
-# facebook: https://www.facebook.com/patrickferroribeiro
-# twitter: #Add your Twitter
-# google-plus: #Add your Google+
-# github: @riberman
-
 share:
   twitter_username: \riberman
-  fb_appid: patrickferroribeiro
+  fb_appid: 2087090814720473
 
 
 enableTags: true
