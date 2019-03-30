@@ -1,18 +1,18 @@
 [
   {
     "icon": "fa-facebook",
-    "link": ""
+    "link": "https://www.facebook.com/patrickferroribeiro"
   },
   {
-    "icon": "fa-twitter",
-    "link": ""
+    "icon": "fa-instagram",
+    "link": "https://www.instagram.com/patrickribeiro_oficial/"
   },
   {
     "icon": "fa-linkedin",
-    "link": ""
+    "link": "https://www.linkedin.com/in/patrickferroribeiro/"
   },
   {
-    "icon": "fa-stack-exchange",
-    "link": ""
+    "icon": "fa-github",
+    "link": "https://github.com/riberman"
   }
 ]
