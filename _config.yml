@@ -1,1 +1,34 @@
-theme: jekyll-theme-cayman
+title: Patrick Ferro Ribeiro
+description: Code, Sport, Blog
+author: Patrick Ferro Ribeiro
+logo: /hcz-jekyll-blog/static/img/avatar.png
+github: https://github.com/riberman
+about: Developer Cyclist Student
+
+baseurl: ""
+url: ""
+
+allowsearch: true
+
+disqus_shortname: aboutashu
+google_analytics: UA-72862926-1
+
+# Social
+# facebook: https://www.facebook.com/patrickferroribeiro
+# twitter: #Add your Twitter
+# google-plus: #Add your Google+
+# github: @riberman
+
+share:
+  twitter_username: \#
+  fb_appid: patrickferroribeiro
+
+
+enableTags: true
+tagarray: []
+
+paginate: 20
+per_page: 20
+paginate_path: "/page:num/"
+markdown: kramdown
+gems: [jekyll-paginate, jekyll-gist]
