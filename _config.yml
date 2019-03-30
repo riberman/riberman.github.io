@@ -7,6 +7,7 @@ about: Developer Cyclist Student
 
 baseurl: ""
 url: ""
+timezone: America/Sao_Paulo
 
 allowsearch: true
 
@@ -20,7 +21,7 @@ google_analytics: UA-72862926-1
 # github: @riberman
 
 share:
-  twitter_username: \#
+  twitter_username: \riberman
   fb_appid: patrickferroribeiro
 
 
@@ -31,4 +32,4 @@ paginate: 20
 per_page: 20
 paginate_path: "/page:num/"
 markdown: kramdown
-gems: [jekyll-paginate, jekyll-gist]
+plugins: [jekyll-paginate, jekyll-gist]
