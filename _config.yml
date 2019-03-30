@@ -13,6 +13,7 @@ allowsearch: true
 
 disqus_shortname: patrickferroribeiro
 google_analytics: UA-113720530-2
+comments: true
 
 share:
   twitter_username: \riberman
