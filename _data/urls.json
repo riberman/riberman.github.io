@@ -2,23 +2,23 @@
   {
     "text": "Home",
     "url": "/",
-    "icon": "fa-home",
+    "icon": "fa fa-home",
     "layout": "post"
   },
   {
     "text": "Projects",
     "url": "/projects",
-    "icon": "fa-desktop"
+    "icon": "fa fa-desktop"
   },
   {
     "text": "Resume",
     "url": "/#",
-    "icon": "fa-graduation-cap",
+    "icon": "fa fa-graduation-cap",
   },
   {
     "text": "Github",
     "url": "/#",
-    "icon": "fa-github"
+    "icon": "fa fa-github"
   },
   {
     "text": "About",
@@ -28,7 +28,7 @@
   {
     "text": "XML Feed",
     "url": "/feed.xml",
-    "icon": "fa-feed",
+    "icon": "fa fa-feed",
     "target": _blank
   }
 ]
