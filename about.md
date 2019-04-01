@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Sobre
+permalink: /sobre/
 ---
 
 ## Goals  
@@ -38,7 +38,7 @@ Main activities: Assist in the attendance and in the clarification of doubts of 
 Assembly and maintenance of computers and monitors, installation of platforms  
 operational, backups, technical report management, order management,  
 remote and physical support, maintenance services and POSITIVO authorized support.  
-  
+
 ## Education  
 ___
  - **Federal Technological University Of Paraná**  
