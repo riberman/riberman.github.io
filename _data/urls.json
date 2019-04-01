@@ -1,13 +1,13 @@
 [
   {
-    "text": "Home",
+    "text": "Principal",
     "url": "/",
     "icon": "fa fa-home",
     "layout": "post"
   },
   {
-    "text": "Projects",
-    "url": "/projects",
+    "text": "Projetos",
+    "url": "/projetos",
     "icon": "fa fa-desktop"
   },
   {
@@ -16,13 +16,14 @@
     "icon": "fa fa-graduation-cap",
   },
   {
-    "text": "Github",
-    "url": "/#",
-    "icon": "fa fa-github"
+    "text": "Ciclismo",
+    "url": "/ciclismo",
+    "icon": "fas fa-bicycle",
+    "layout": "post"
   },
   {
-    "text": "About",
-    "url": "/about/",
+    "text": "Sobre",
+    "url": "/sobre/",
     "icon": "far fa-address-card"
   },
   {
