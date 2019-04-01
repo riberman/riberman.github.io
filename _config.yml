@@ -1,9 +1,10 @@
 title: Patrick Ferro Ribeiro
-description: Code, Sport, Blog
+description: Web page about Code, Sport, Blog... and more.
 author: Patrick Ferro Ribeiro
 logo: /static/img/avatar.png
 github: https://github.com/riberman
 about: Developer Cyclist Student
+year: 2019
 
 baseurl: ""
 url: ""
