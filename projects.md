@@ -1,7 +1,7 @@
 ---
 layout: project
-title: Projects
-permalink: /projects/
+title: Projetos
+permalink: /projetos/
 ---
 
 Few of my projects.
