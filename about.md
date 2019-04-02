@@ -8,7 +8,7 @@ permalink: /sobre/
 ___
 **Patrick Ferro Ribeiro**  
 From: city Guarapuava in Paraná Brazil.  
-Age: 23  
+Age: 23.  
 Email: patrick.ferro.ribeiro@gmail.com  
 
 ## Goals  
