@@ -4,6 +4,8 @@ title: Sobre
 permalink: /sobre/
 ---
 
+[Sobre](https://riberman.github.io/sobre/){:rel='something'}[About](https://riberman.github.io/about/){:rel='something'}  
+
 ## Who I am  
 ___
 **Patrick Ferro Ribeiro**  
