@@ -16,7 +16,7 @@ Email: patrick.ferro.ribeiro@gmail.com
 ## Objetivos  
 ___
 Técnico de informática, informática e indústria relacionada, atendimento ao cliente, suporte técnico, programação,   estágio, desenvolvimento web e mobile.  
-melhor qualificação profissional, agregar conhecimento.  
+Melhor qualificação profissional, agregar conhecimento.  
 
 ## Experiência de Trabalho  
 ___
