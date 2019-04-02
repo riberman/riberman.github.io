@@ -6,25 +6,24 @@ permalink: /sobre/
 
 [PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  [EN](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  
 
-## Who I am  
+## Quem sou eu  
 ___
 **Patrick Ferro Ribeiro**  
-From: city Guarapuava in Paraná Brazil.  
-Age: 23.  
+De: Guarapuava, Paraná, Brasil.  
+Idade: 23.  
 Email: patrick.ferro.ribeiro@gmail.com  
 
-## Goals  
+## Objetivos  
 ___
-IT technician, Computer and related industry, customer service, technical support, Programming, Internship,  
-better professional qualification, add knowledge.  
+Técnico de informática, informática e indústria relacionada, atendimento ao cliente, suporte técnico, programação,   estágio, desenvolvimento.  
+melhor qualificação profissional, agregar conhecimento.  
 
-## Work Experience  
+## Experiência de Trabalho  
 ___
- - **Mobile Development Intern/ Teorema Sistemas**  
-Fev 2019 - CURRENT  
-Position: **Development Intern.**  
-Main activities: Development using Android Studio IDE, using Kotlin and Java,  
-data base realm.
+ - **Estagiário de Desenvolvimento Mobile/ Teorema Sistemas**  
+Fev 2019 - ATUAL  
+Position: **Estagiário de Desenvolvimento.**  
+Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, e base de Dados Realm.  
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  
@@ -48,13 +47,13 @@ Assembly and maintenance of computers and monitors, installation of platforms
 operational, backups, technical report management, order management,  
 remote and physical support, maintenance services and POSITIVO authorized support.  
 
-## Education  
+## Educação  
 ___
- - **Federal Technological University Of Paraná**  
- Systems For Internet  
- 2015 - **Currently**  
+ - **Universidade Tecnologica Federal do Paraná**  
+ Sistemas Para Internet
+ 2015 - **ATUAL**  
 
 
- - **Francisco Carneiro Martins State College**  
- Technical High School, Computer Technician  
+ - **Colégio Estadual Francisco Carneiro Martins**  
+ Ensino Médio Técnico, Técnico em Informática  
  2011 - 2014  

@@ -14,7 +14,7 @@ Email: patrick.ferro.ribeiro@gmail.com
 
 ## Goals  
 ___
-IT technician, Computer and related industry, customer service, technical support, Programming, Internship,  
+Computer technician, IT and related industry, customer service, technical support, programming, internship, development.  
 better professional qualification, add knowledge.  
 
 ## Work Experience  
@@ -22,8 +22,7 @@ ___
  - **Mobile Development Intern/ Teorema Sistemas**  
 Fev 2019 - CURRENT  
 Position: **Development Intern.**  
-Main activities: Development using Android Studio IDE, using Kotlin and Java,  
-data base realm.
+Main activities: Development using Android Studio IDE, Kotlin, Java, data base realm.  
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  
