@@ -4,7 +4,7 @@ title: Sobre
 permalink: /sobre/
 ---
 
-[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  [EN](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  
+[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  [EN-US](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  
 
 ## Quem sou eu  
 ___
