@@ -50,7 +50,7 @@ remote and physical support, maintenance services and POSITIVO authorized suppor
 ## Educação  
 ___
  - **Universidade Tecnologica Federal do Paraná**  
- Sistemas Para Internet
+ Sistemas Para Internet  
  2015 - **ATUAL**  
 
 
