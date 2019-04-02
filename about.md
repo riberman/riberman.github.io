@@ -14,7 +14,7 @@ Email: patrick.ferro.ribeiro@gmail.com
 
 ## Goals  
 ___
-Computer technician, IT and related industry, customer service, technical support, programming, internship, development.  
+Computer technician, IT and related industry, customer service, technical support, programming, internship, development web and mobile.  
 better professional qualification, add knowledge.  
 
 ## Work Experience  
