@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn btn-sm btn-default btn-raised}  [EN](https://riberman.github.io/about/){:rel='something'}{:.btn btn-sm btn-primary btn-raised}    
+[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  [EN](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}    
 ## Who I am  
 ___
 **Patrick Ferro Ribeiro**  
