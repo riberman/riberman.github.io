@@ -59,6 +59,6 @@ $ git checkout -b newbranchlocal upstream/branchremoto
 
 Para efetuar merge de um **branch** remoto com um seu já existente, basta usar a referência **upstream/branchremoto**  
 ```markdown
-$ git merge hotfix upstream/branchremoto
+$ git merge upstream/branchremoto
 ```  
 *Nesse caso não esqueça de estar no branch correto antes do merge.*
