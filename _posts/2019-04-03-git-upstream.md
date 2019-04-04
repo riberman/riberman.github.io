@@ -6,7 +6,6 @@ categories: dev
 icon: fab fa-github
 ---
 
-## Como Clonar Branch do Repositório Principal  
 
 Já lhe deve ter ocorrido o caso de que seu **fork** precisa de um **branch** que foi criado somente no repositório principal, mas no seu não é possível encontrar.  
 
