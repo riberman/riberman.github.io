@@ -19,7 +19,7 @@ Mas trabalhando em equipes é necessário além do meu repositório, ter o repos
 
 ### Abra seu terminal  
 
-Na raiz de eu projeto vá até seu **branch** master.
+Na raiz de seu projeto vá até seu **branch** master.
 ```markdown
 $ git checkout master
 ```  
