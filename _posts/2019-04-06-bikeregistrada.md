@@ -7,6 +7,7 @@ categories: ciclismo
 icon: fas fa-bicycle
 ---
 
+
 Hoje com a facilidade do uso da bike no ambiente urbano como meio de transporte ou como esporte e lazer, a bicicleta tem se tornado algo ainda mais comum no ambiante das grandes cidades, e com essa popularização é claro que não poderia deixar aumentar a insegurança, pois muitas dessas bicicletas são produtos muito visados pelo seu alto valor.  
 
 E como posso me manter em segurança?
