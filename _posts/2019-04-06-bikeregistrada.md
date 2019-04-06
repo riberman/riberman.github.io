@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Mantenha o Registro de Sua Bike Usando bikeregistrada.com.br
+title: Mantenha o Registro de Sua Bike Atualizado Online de Graça
 date: 2019-04-04 17:16:00
 categories: ciclismo
 icon: fas fa-bicycle
