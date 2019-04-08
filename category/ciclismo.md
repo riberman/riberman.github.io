@@ -2,5 +2,5 @@
 layout: posts_by_category
 categories: ciclismo
 title: Ciclismo
-permalink: /category/ciclismo
+permalink: /ciclismo
 ---
