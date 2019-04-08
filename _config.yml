@@ -29,3 +29,5 @@ per_page: 20
 paginate_path: "/page:num/"
 markdown: kramdown
 plugins: [jekyll-paginate, jekyll-gist]
+
+permalink: /:categories/:title/
