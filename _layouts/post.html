@@ -1,11 +1,12 @@
 ---
 layout: default
 ---
-{% for post in site.posts  %}
+
+
 <div class="post-content well">
   <div class="header">
     <div class="title">
-    <h1>{{ post.title }}</h1>
+    <h1>{{ title }}</h1>
   </div>
 </div>
 <hr>
@@ -16,6 +17,7 @@ layout: default
 </article>
 <hr />
 {% assign hasSimilar = '' %}
+{% for post in site.posts  %}
     {% assign postHasSimilar = false %}
     {% for tag in post.categories %}
         {% for thisTag in page.categories %}
