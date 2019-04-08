@@ -9,27 +9,12 @@
           <meta content="{{ site.url }}/static/img/posts/{{ page.image }}" property="og:image">
         {% else %}
           <meta content="{{ site.url }}/static/img/avatar.png" property="og:image">
+        {% endif %}
         <link rel="shortcut icon" href="/static/img/favicon.ico" />
-        {% endif %}
-        <meta name="author" content="{{ site.author }}" />
-        {% if page.description %}
-          <meta content="{{ page.description }}" name="description">
-        {% else %}
-          <meta content="{{ site.description }}" name="description">
-        {% endif %}
-        <meta name="keywords" content="{% if page.title %}{{ page.title }}, {{ site.title }}, {% for categ in page.categories %}{{ categ }}{% if forloop.last == false %}, {% endif %}{% endfor %}{% else %}{{ site.title }}, {% for category in site.categories %}{% capture categories_slug %}{{ category | first }}{% endcapture %}{% for categ in categories_slug %}{{ categ }}{% endfor %}{% if forloop.last == false %}, {% endif %}{% endfor %}{% endif %}" />
-
-        <meta content="{{ site.share.fb_appid }}" property="fb:app_id">
-        <meta content="{{ site.title }}" property="og:site_name">
         {% if page.title %}
           <meta content="{{ page.title }}" property="og:title">
         {% else %}
           <meta content="{{ site.title }}" property="og:title">
-        {% endif %}
-        {% if page.title %}
-          <meta content="article" property="og:type">
-        {% else %}
-          <meta content="website" property="og:type">
         {% endif %}
         {% if page.description %}
           <meta content="{{ page.description }}" property="og:description">
@@ -39,6 +24,21 @@
         {% if page.url %}
           <meta content="{{ site.url }}{{ page.url }}" property="og:url">
         {% endif %}
+        {% if page.title %}
+          <meta content="article" property="og:type">
+        {% else %}
+          <meta content="website" property="og:type">
+        {% endif %}
+        <meta name="twitter:card" content="summary_large_image">
+        {% if page.description %}
+          <meta content="{{ page.description }}" name="description">
+        {% else %}
+          <meta content="{{ site.description }}" name="description">
+        {% endif %}
+        <meta name="keywords" content="{% if page.title %}{{ page.title }}, {{ site.title }}, {% for categ in page.categories %}{{ categ }}{% if forloop.last == false %}, {% endif %}{% endfor %}{% else %}{{ site.title }}, {% for category in site.categories %}{% capture categories_slug %}{{ category | first }}{% endcapture %}{% for categ in categories_slug %}{{ categ }}{% endfor %}{% if forloop.last == false %}, {% endif %}{% endfor %}{% endif %}" />
+        <meta name="author" content="{{ site.author }}" />
+        <meta content="{{ site.share.fb_appid }}" property="fb:app_id">
+        <meta content="{{ site.title }}" property="og:site_name">
         {% if page.date %}
           <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
           <meta content="{{ site.url }}/about/" property="article:author">
@@ -53,7 +53,6 @@
           <meta content="{{ tag }}" property="article:tag">
           {% endfor %}
         {% endif %}
-        <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@{{ site.share.twitter_username }}">
         <meta name="twitter:creator" content="@{{ site.share.twitter_username }}">
         {% if page.title %}
@@ -73,5 +72,5 @@
           <meta name="twitter:image:src" content="{{ site.url }}/static/img/avatar.png">
         {% endif %}
         <!--  Non-Essential, But Recommended -->
-<meta property="og:site_name" content="Patrick Ferro Ribeiro">
-<meta name="twitter:image:alt" content="Avatar Patrick Ferro Ribeiro Blog.">
+        <meta property="og:site_name" content="Patrick Ferro Ribeiro">
+        <meta name="twitter:image:alt" content="Avatar Patrick Ferro Ribeiro Blog.">
