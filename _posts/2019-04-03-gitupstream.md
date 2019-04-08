@@ -5,7 +5,7 @@ title: Como Clonar Branch do Repositório Principal
 date: 2019-04-03 23:42:00
 categories: dev
 icon: fab fa-github
-description: Oiiiiiiiiiiiiiiiiii
+description: Já lhe deve ter ocorrido o caso de que seu fork precisa de um branch que foi criado somente no repositório principal, mas no seu não é possível encontrar...
 ---
 
 
