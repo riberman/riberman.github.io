@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Mantenha o Registro de Sua Bike Atualizado Online de Graça  
+title: Registre Sua Bicicleta Online Gratuitamente. 
 date: 2019-04-04 17:16:00
 categories: ciclismo
 icon: fas fa-bicycle
