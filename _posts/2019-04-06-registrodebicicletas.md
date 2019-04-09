@@ -6,7 +6,7 @@ date: 2019-04-04 17:16:00
 categories: ciclismo
 icon: fas fa-bicycle
 description: Hoje com a facilidade do uso da bike no ambiente urbano como meio de transporte ou como esporte e lazer, a bicicleta tem se tornado algo ainda mais comum nas grandes cidades...
-image: {{ site.baseurl }}/static/img/posts/thumbnail/registrodebicicletas.jpg
+image: https://img.youtube.com/vi/lSwczRklyig/0.jpg
 ---
 
 
