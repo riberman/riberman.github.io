@@ -7,7 +7,9 @@ title: Blog
       {% for post in paginator.posts %}
       <div class="list-group-item">
         <div class="row-action-primary">
+          <a href="{{ post.url | prepend: site.baseurl }}">
           <i class="{{ post.icon }}"></i>
+        </a>
         </div>
         <div class="row-content">
           <div class="least-content">{{ post.date | date_to_string }}</div>
