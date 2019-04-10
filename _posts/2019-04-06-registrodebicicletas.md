@@ -16,7 +16,9 @@ E como posso me manter em segurança?
 
 Bom no vídeo abaixo temos bons exemplos e dicas sobre o assunto feito pelo canal Pedaleria, que tem um conteúdo muito interessante sobre o assunto. Recomendo assistir para tirar algumas dúvidas e aprender um pouco mais.  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lSwczRklyig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>  
+<div class="mycontainer">
+<iframe src="https://www.youtube.com/embed/lSwczRklyig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" class="video"></iframe>
+</div>  
 
 Se você visualizar o vídeo acima, são citados sites de registro de bicicletas, o mais famoso é o [Bike Registrada](https://bikeregistrada.com.br/){:target="_blank"}, nele é necessário efetuar um cadastro de seus dados pessoais para obter seu usuário no sistema, após isso é possível cadastrar bicicletas, São necessárias as seguintes informações para o registro.
 
