@@ -1,6 +1,6 @@
 html, body {
     width: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .main.outer{padding-top: 50px;}
