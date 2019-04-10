@@ -3,7 +3,7 @@ layout: post
 comments: true
 title: Acessando Postgres via Terminal Ubuntu
 date: 2019-04-10 01:14:00
-categories: dev
+categories: dev db
 icon: fas fa-database
 description: Como acessar o postgres utilizando linha de comando no Linux Ubuntu, e executando alguns comandos básicos de listagem e pesquisa  ...
 image: https://sdtimes.com/wp-content/uploads/2016/05/0513.sdt-news.png

@@ -3,7 +3,7 @@ layout: post
 comments: true
 title: Removendo Arquivos Untracked do Git
 date: 2019-04-09 23:36:00
-categories: dev
+categories: dev git
 icon: fab fa-github
 description: Como remover arquivos ou pastas que foram criados no repositório do git, que não removidos usando checkout --  ...
 image: https://img.devrant.com/devrant/rant/r_208395_eyoBm.jpg
@@ -32,5 +32,5 @@ Nesse caso, se existir pastas criadas elas vão permanecer, para deletar é nece
 E pronto, para listar suas modificações podemos usar o comando.
 
     git status  
-    
+
 Agora todos os arquivos e pastas criadas nesse **branch** não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo **commit** vão permanecer caso você tenha efetuado alguma alteração.
