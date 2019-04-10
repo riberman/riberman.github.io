@@ -6,6 +6,16 @@
     "layout": "post"
   },
   {
+    "text": "Ciclismo",
+    "url": "/ciclismo/",
+    "icon": "fas fa-bicycle"
+  },
+  {
+    "text": "Dev",
+    "url": "/dev/",
+    "icon": "fas fa-code"
+  },
+  {
     "text": "Sobre",
     "url": "/sobre/",
     "icon": "far fa-address-card"
