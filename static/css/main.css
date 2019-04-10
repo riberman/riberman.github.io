@@ -1,6 +1,6 @@
 html, body {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
 }
 
 .main.outer{padding-top: 50px;}
