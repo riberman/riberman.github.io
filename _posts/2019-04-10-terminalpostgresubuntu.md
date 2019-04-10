@@ -48,6 +48,6 @@ Sabendo o name da table basta usar qualquer comando.
 
     select * from nomedatable;  
 
-**não esqueça do **;** ao final de qualquer comando.**  
+*não esqueça do **;** ao final de qualquer comando.*    
 
 Ao final de cada consulta para voltar ao terminal basta a tecla **q** e para sair do terminal do postgres e voltar ao linux basta usar **\q**  
