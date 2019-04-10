@@ -19,7 +19,7 @@ Para resolver isso é bem simples, basta seguir as instruções.
 Utilize o comando abaixo somente para visualizar os arquivos que estão nessa situação **antes de deletar**.
 
 
-     git clean -n
+     git clean -n  
 
 Após verificar, se for de seu interesse para deletar basta substituir o **-n** por **-f**  
 
@@ -30,5 +30,5 @@ Nesse caso, se existir pastas criadas elas vão permanecer, para deletar é nece
     git clean -fd  
 E pronto, para listar suas modificações podemos usar o comando.
 
-    git status
+    git status  
 Agora todos os arquivos e pastas criadas nesse **branch** não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo **commit** vão permanecer caso você tenha efetuado alguma alteração.
