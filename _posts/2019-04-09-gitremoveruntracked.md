@@ -28,7 +28,9 @@ Após verificar, se for de seu interesse para deletar basta substituir o **-n** 
 Nesse caso, se existir pastas criadas elas vão permanecer, para deletar é necessário outro comando.  
 
     git clean -fd  
+
 E pronto, para listar suas modificações podemos usar o comando.
 
     git status  
+    
 Agora todos os arquivos e pastas criadas nesse **branch** não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo **commit** vão permanecer caso você tenha efetuado alguma alteração.
