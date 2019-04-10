@@ -1,3 +1,8 @@
+html, body {
+    width: 100%;
+    overflow: hidden;
+}
+
 .main.outer{padding-top: 50px;}
 .header-panel.shadow-z-2 {
     background-color: #009587;
@@ -252,9 +257,4 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-html, body {
-    width: 100%;
-    overflow-x: hidden;
 }
