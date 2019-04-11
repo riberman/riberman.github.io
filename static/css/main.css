@@ -253,3 +253,8 @@ footer {
     width: 100%;
     height: 100%;
 }
+
+.list-group .list-group-item .row-content .least-content {
+  position: inherit;
+  float: right;
+}
