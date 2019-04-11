@@ -268,8 +268,9 @@ footer {
         padding: 8px 15px;
         border-radius: 5px;
         margin: 1.5 * $spacing-unit 0;
-        font-weight: 700;
         color: #fff;
+        font-size: smaller;
+        font-weight: bold;
         margin-left: 10px;
 
         &:hover {
@@ -284,4 +285,8 @@ footer {
 
 .facebook {
   background: #3260b1;
+}
+
+.whatsapp {
+  background: #01E675;
 }
