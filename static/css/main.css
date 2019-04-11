@@ -258,3 +258,29 @@ footer {
   position: inherit;
   float: right;
 }
+
+.share-page {
+    text-align: center;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * $spacing-unit 0;
+
+    a {
+        font-weight: 700;
+        color: #fff;
+        margin-left: 10px;
+
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+
+    .twitter {
+      background: #2196f3;
+    }
+
+    .facebook {
+      background: #3260b1;
+    }
+}
