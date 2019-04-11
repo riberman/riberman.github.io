@@ -260,13 +260,14 @@ footer {
 }
 
 .share-page {
-    text-align: center;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin: 1.5 * $spacing-unit 0;
+
 
     a {
+        text-align: center;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 5px;
+        margin: 1.5 * $spacing-unit 0;
         font-weight: 700;
         color: #fff;
         margin-left: 10px;
@@ -275,12 +276,12 @@ footer {
             border-bottom: 1px dashed #fff;
         }
     }
+}
 
-    .twitter {
-      background: #2196f3;
-    }
+.twitter {
+  background: #2196f3;
+}
 
-    .facebook {
-      background: #3260b1;
-    }
+.facebook {
+  background: #3260b1;
 }
