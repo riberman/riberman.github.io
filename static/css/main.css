@@ -261,13 +261,11 @@ footer {
 
 .share-page a {
         text-align: center;
-        padding: 8px 15px;
-        border-radius: 5px;
-        margin: 1.5 * $spacing-unit 0;
+        padding: 2px 5px;
+        border-radius: 3px;
         color: #fff;
         font-size: smaller;
         font-weight: bold;
-        margin-left: 10px;
 }
 
 .share-page a:hover {
