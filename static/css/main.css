@@ -259,12 +259,8 @@ footer {
   float: right;
 }
 
-.share-page {
-
-
-    a {
+.share-page a {
         text-align: center;
-        color: #fff;
         padding: 8px 15px;
         border-radius: 5px;
         margin: 1.5 * $spacing-unit 0;
@@ -272,11 +268,10 @@ footer {
         font-size: smaller;
         font-weight: bold;
         margin-left: 10px;
+}
 
-        &:hover {
-            border-bottom: 1px dashed #fff;
-        }
-    }
+.share-page a:hover {
+      border-bottom: 1px dashed #fff;
 }
 
 .twitter {
