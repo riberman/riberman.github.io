@@ -243,7 +243,7 @@ footer {
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
-#backTop.fas.fa-chevron-up {
+#backTop i {
   vertical-align: top;
 }
 
