@@ -267,7 +267,7 @@ footer {
 }
 
 .list-group .list-group-item .row-action-primary a {
-  border-radius: 100%;
+  text-decoration: none;
 }
 
 .list-group .list-group-item .row-action-primary i:hover {
