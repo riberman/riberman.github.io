@@ -266,6 +266,10 @@ footer {
   float: right;
 }
 
+.list-group .list-group-item .row-action-primary i:hover {
+  background: #009688;
+}
+
 .share-page a {
         text-align: center;
         padding: 2px 5px;
