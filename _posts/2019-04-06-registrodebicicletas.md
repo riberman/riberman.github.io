@@ -14,14 +14,14 @@ Hoje com a facilidade do uso da bike no ambiente urbano como meio de transporte 
 
 E como posso me manter em segurança?
 
-Bom no vídeo abaixo temos bons exemplos e dicas sobre o assunto feito pelo canal Pedaleria, que tem um conteúdo muito interessante sobre o assunto. Recomendo assistir para tirar algumas dúvidas e aprender um pouco mais.  
+Bom no vídeo abaixo temos bons exemplos e dicas sobre o assunto feito pelo canal Pedaleria, que tem um conteúdo muito interessante. Recomendo assistir para tirar algumas dúvidas e aprender um pouco mais.  
 
 <div class="mycontainer">
 <iframe src="https://www.youtube.com/embed/lSwczRklyig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" class="video"></iframe>
 </div>  
 
 
-Se você visualizar o vídeo acima, são citados sites de registro de bicicletas, o mais famoso é o [Bike Registrada](https://bikeregistrada.com.br/){:target="_blank"}, nele é necessário efetuar um cadastro de seus dados pessoais para obter seu usuário no sistema, após isso é possível cadastrar bicicletas, São necessárias as seguintes informações para o registro.
+Ao visualizar o vídeo acima, são citados sites de registro de bicicletas, o mais famoso é o [Bike Registrada](https://bikeregistrada.com.br/){:target="_blank"}, nele é necessário efetuar um cadastro de seus dados pessoais para obter seu usuário no sistema, após isso é possível cadastrar bicicletas, São necessárias as seguintes informações para o registro.
 
 - Numero de Série da bicicleta.
 - Marca e Modelo.
