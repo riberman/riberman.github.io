@@ -6,7 +6,7 @@ date: 2019-04-06 17:16:00
 categories: ciclismo
 icon: fas fa-bicycle
 description: Hoje com a facilidade do uso da bike no ambiente urbano como meio de transporte ou como esporte e lazer, a bicicleta tem se tornado algo ainda mais comum nas grandes cidades...
-image: https://img.youtube.com/vi/lSwczRklyig/0.jpg
+image: http://s2.glbimg.com/GH2XkWgR9SwZs3Zp8diQGz70H8A=/s.glbimg.com/jo/g1/f/original/2015/08/18/bike1.jpg
 ---
 
 
@@ -20,7 +20,7 @@ Bom no vídeo abaixo temos bons exemplos e dicas sobre o assunto feito pelo cana
 <iframe src="https://www.youtube.com/embed/lSwczRklyig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" class="video"></iframe>
 </div>  
 
-  
+
 Se você visualizar o vídeo acima, são citados sites de registro de bicicletas, o mais famoso é o [Bike Registrada](https://bikeregistrada.com.br/){:target="_blank"}, nele é necessário efetuar um cadastro de seus dados pessoais para obter seu usuário no sistema, após isso é possível cadastrar bicicletas, São necessárias as seguintes informações para o registro.
 
 - Numero de Série da bicicleta.
