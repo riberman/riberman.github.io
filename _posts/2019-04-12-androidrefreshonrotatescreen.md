@@ -25,10 +25,11 @@ E com isso por padrão essa chamada é invocada automaticamente e os dados da ap
  Então em todas as suas activitys que não podem perder dados caso ocorra essa atualização de tela, você deve adicionar a seguinte linha de código.  
 
 
-
-     <activity android:name=".MyActivity"
+```     <activity android:name=".MyActivity"
     android:configChanges="parametros necessários"
     android:label="@string/app_name">
+```  
+  
 
 Para  correção de atualização de tela utilize  
 
