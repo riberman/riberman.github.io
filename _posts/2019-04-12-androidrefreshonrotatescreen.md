@@ -12,7 +12,7 @@ image: https://lh5.ggpht.com/0QQ-mY4qbOYhB_a8PZki3_SzbgyHoUXpY3mgzliAlC6mOt18DxF
 
 Problemas ao **rotacionar** a tela do android ou conectar novo **dipositivo de entrada de dados**, o android automaticamente cria novamente a tela da aplicação, e assim a entrada de texto ou dados armazenados nela são perdidos, como solucionar?  
 
-Para resolver esse problema temos uma solução muito simples, mas primeiramente vamos enter o motivo de o android perder esses dados ao efetuar essas atualizações de tela ou dispositivos de entrada.  
+Para resolver esse problema temos uma solução muito simples, mas primeiramente vamos entender o motivo de o android perder esses dados ao efetuar essas atualizações de tela ou dispositivos de entrada.  
 
 Ao rotacionar a tela do aparelho, ou conectando um teclado, leitora de códigos ou outro dispositivo que gere um pequeno **toast** dizendo que o dispositivo foi conectado, essa ação é invocada pelo android avisando para que sua aplicação seja atualizada, pois existem coisas novas no dispositivo que a aplicação pode ou não utilizar...
 
