@@ -12,7 +12,7 @@ ___
 De: Guarapuava, Paraná, Brasil.  
 Idade: 23.  
 Email: patrick.ferro.ribeiro@gmail.com  
-
+[Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Objetivos  
 ___
 Técnico de informática, informática e indústria relacionada, atendimento ao cliente, suporte técnico, programação,   estágio, desenvolvimento web e mobile.  
@@ -25,31 +25,31 @@ Fev 2019 - ATUAL
 Position: **Estagiário de Desenvolvimento.**  
 Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, e base de Dados Realm.  
 
- - **Intern Technical Support / Federal Technological University Of Paraná**  
+ - **Estagiário de Suporte Técnico / Universidade Federal Tecnológica do Paraná**  
 Jul 2018 - Fev 2019  
-Position: **Intern Technical Support.**  
-Main activities: Accompany service, configuration of systems,  
-assist in the installation and configuration of hardware, assist in assembly, maintenance and  
-configuration of microcomputers.  
+Position: **Estagiário Auxiliar Técnico.**  
+Acompanhar serviço, configuração de sistemas,  
+auxiliar na instalação e configuração de hardware, auxiliar na montagem, manutenção e  
+configuração de microcomputadores.  
 
- - **Intern Assistant Technician / Court Of Justice Of The State Of Paraná**  
+ - **Técnico Assistente Estagiário / Tribunal de Justiça do Estado do Paraná**  
 26/07/2016 - 01/06/2018  
-Position: **Intern Technical Auxiliary.**  
-Main activities: Accompany service, configuration of systems,  
-assist in the installation and configuration of hardware, assist in assembly, maintenance and  
-configuration of microcomputers.  
+Position: **Estagiário Auxiliar Técnico.**  
+Acompanhar serviço, configuração de sistemas,  
+auxiliar na instalação e configuração de hardware, auxiliar na montagem, manutenção e  
+configuração de microcomputadores.  
 
- - **​Assistant Technician / Millenium Informática**  
+ - **​Técnico Assistente / Millenium Informática**  
  05/02/2015 - 20/05/2016  
- Position: **Technical assistant.**  
-Main activities: Assist in the attendance and in the clarification of doubts of clients;  
-Assembly and maintenance of computers and monitors, installation of platforms  
-operational, backups, technical report management, order management,  
-remote and physical support, maintenance services and POSITIVO authorized support.  
+ Position: **Assistente técnico.**  
+Auxiliar no atendimento e no esclarecimento de dúvidas dos clientes;  
+Montagem e manutenção de computadores e monitores, instalação de plataformas  
+operacional, backups, gerenciamento de relatórios técnicos, gerenciamento de pedidos,  
+suporte remoto e físico, serviços de manutenção e suporte autorizado POSITIVO.   
 
 ## Educação  
 ___
- - **Universidade Tecnologica Federal do Paraná**  
+ - **Universidade Tecnológica Federal do Paraná**  
  Sistemas Para Internet  
  2015 - **ATUAL**  
 

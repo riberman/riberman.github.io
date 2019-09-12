@@ -11,7 +11,7 @@ ___
 From: city Guarapuava in Paraná Brazil.  
 Age: 23.  
 Email: patrick.ferro.ribeiro@gmail.com  
-
+[Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Goals  
 ___
 Computer technician, IT and related industry, customer service, technical support, programming, internship, development web and mobile.  
