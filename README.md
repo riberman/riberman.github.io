@@ -1,9 +1,9 @@
-## HCZ Material theme
+## HCZ Material theme Riberman MOD
 
-This is a simple personal material theme, best suited for personal authors, programmars, bloggers. 
+This is a simple personal material theme, best suited for personal authors, programmars, bloggers.
 
 ### Demo
-* [https://codeasashu.github.io/hcz-jekyll-blog](https://codeasashu.github.io/hcz-jekyll-blog/)
+* [Riberman Page](https://riberman.github.io)
 
 #### Feature
 
