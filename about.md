@@ -20,7 +20,7 @@ Better professional qualification, add knowledge.
 ## Work Experience  
 ___
  - **Mobile Development Intern/ Teorema Sistemas**  
-Fev 2019 - CURRENT  
+Fev 2019 - **CURRENT**  
 Position: **Development Intern.**  
 Main activities: Development using Android Studio IDE, Kotlin, Java, data base realm.  
 

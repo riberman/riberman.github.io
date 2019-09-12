@@ -21,7 +21,7 @@ Melhor qualificação profissional, agregar conhecimento.
 ## Experiência de Trabalho  
 ___
  - **Estagiário de Desenvolvimento Mobile/ Teorema Sistemas**  
-Fev 2019 - ATUAL  
+Fev 2019 - **ATUAL**  
 Position: **Estagiário de Desenvolvimento.**  
 Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, e base de Dados Realm.  
 
