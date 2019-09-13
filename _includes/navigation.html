@@ -15,7 +15,7 @@
 	{% if pageurl == menuurl or menuurl == categorie %}
 		{% assign current = 'current-menu-item' %}
 	{% else %}
-		{% if page.layout == i.layout and categorie == nil %}
+		{% if page.layout == i.layout and page.categories == nil %}
 			{% assign current = 'current-menu-item' %}
 		{% endif %}
 	{% endif %}
