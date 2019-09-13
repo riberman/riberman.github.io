@@ -5,7 +5,7 @@ logo: /static/img/avatar.png
 github: https://github.com/riberman
 about: Developer Cyclist Student
 year: {{ site.time | date: '%Y' }}
-age: {{ site.time | date: '%Y' }} - 1995
+age: 24
 
 baseurl: "/"
 url: "https://riberman.github.io"
