@@ -4,7 +4,7 @@
 	{% assign pageurl = page.url | split:'/' | last %}
 	{% assign menuurl = i.url | split:'/' | last %}
 	{% assign categorie = page.categories.first %}
-	{% assign flag = menuurl != '' && menuurl contains categorie %}
+	{% assign flag = category + pageurl contains menuurl %}
 	{% assign linkurl = nil %}
 	{% if i.url contains '://' %}
 	{% assign linkurl = i.url %}
