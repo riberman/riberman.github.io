@@ -10,7 +10,7 @@ permalink: /sobre/
 ___
 **Patrick Ferro Ribeiro**  
 De: Guarapuava, Paraná, Brasil.  
-Idade: {{ site.year }}.  
+Idade: {{ site.age }}.  
 Email: patrick.ferro.ribeiro@gmail.com  
 [Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Objetivos  
