@@ -3,6 +3,7 @@
 	{% assign current = nil %}
 	{% assign pageurl = page.url | split:'/' | last %}
 	{% assign menuurl = i.url | split:'/' | last %}
+	{% assign categorie = i.categories | split:' ' | first %}
 	{% assign linkurl = nil %}
 	{% if i.url contains '://' %}
 	{% assign linkurl = i.url %}
@@ -11,8 +12,8 @@
 	{% endif %}
 	{% assign target = i.target %}
     {% unless target %} {% assign target = '_self' %} {% endunless %}
-	{% if pageurl == menuurl or page.layout == i.layout %} {% assign current = 'current-menu-item' %} {% endif %}
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 {{ current }}"><a href="{{ linkurl }}" target="{{ target }}"><i class="{{ i.icon }}"></i> {{ i.text }}</a></li>
+	{% if pageurl == menuurl or page.layout == i.layout or menuurl == categorie %} {% assign current = 'current-menu-item' %} {% endif %}
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 {{ current }} {{ pageurl }}"><a href="{{ linkurl }}" target="{{ target }}"><i class="{{ i.icon }}"></i> {{ i.text }}</a></li>
 	<p>{{ page.url }}</p>
 	<p>{{ pageurl }}</p>
 	<p>{{ menuurl }}</p>
