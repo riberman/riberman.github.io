@@ -4,7 +4,7 @@ author: Patrick Ferro Ribeiro
 logo: /static/img/avatar.png
 github: https://github.com/riberman
 about: Developer Cyclist Student
-year: {{ 'now' | date: "%Y" }}
+year: 2019
 age: 24
 
 baseurl: "/"
