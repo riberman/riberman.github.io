@@ -3,7 +3,7 @@
 	{% assign current = nil %}
 	{% assign pageurl = page.url | split:'/' | last %}
 	{% assign menuurl = i.url | split:'/' | last %}
-	{% assign categorie = i.categories | split:' ' | first %}
+	{% assign categorie = i.categories %}
 	{% assign linkurl = nil %}
 	{% if i.url contains '://' %}
 	{% assign linkurl = i.url %}
