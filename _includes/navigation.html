@@ -4,6 +4,7 @@
 	{% assign pageurl = page.url | split:'/' | last %}
 	{% assign menuurl = i.url | split:'/' | last %}
 	{% assign categorie = page.categories.first %}
+	{% assign flag = menuurl != '' && menuurl == categorie %}
 	{% assign linkurl = nil %}
 	{% if i.url contains '://' %}
 	{% assign linkurl = i.url %}
@@ -12,7 +13,7 @@
 	{% endif %}
 	{% assign target = i.target %}
     {% unless target %} {% assign target = '_self' %} {% endunless %}
-	{% if (pageurl == menuurl || menuurl != '' && menuurl == categorie) %}
+	{% if (pageurl == menuurl || flag) %}
 		{% assign current = 'current-menu-item' %}
 	{% endif %}
 	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 {{ current }} {{ pageurl }}"><a href="{{ linkurl }}" target="{{ target }}"><i class="{{ i.icon }}"></i> {{ i.text }}</a></li>
