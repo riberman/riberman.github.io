@@ -10,7 +10,7 @@ image: https://sdtimes.com/wp-content/uploads/2016/05/0513.sdt-news.png
 ---
 
 
-Está com dificuldades para utilizar a linha de comando do Postgres usando o Ubunto?  
+Está com dificuldades para utilizar a linha de comando do Postgres usando o Ubuntu?  
 Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um usuário configurado na instalação, e o processo postgres está sendo executado em sua máquina.  
 
 Então primeiramente para efetuar login no terminal devemos utilizar o seguinte comando.  
