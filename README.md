@@ -19,4 +19,4 @@ This is a simple personal material theme, best suited for personal authors, prog
 
 #### Screenshot
 
-![Screenshot Home Page](https://raw.githubusercontent.com/riberman/riberman.github.io/master/riberman-page.png  "Screenshot Home Page")
+![Responsive Example](https://raw.githubusercontent.com/riberman/riberman.github.io/master/screens.png  "Responsive Example")
