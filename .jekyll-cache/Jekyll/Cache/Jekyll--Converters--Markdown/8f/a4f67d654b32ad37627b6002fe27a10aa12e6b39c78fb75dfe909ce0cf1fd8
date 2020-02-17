@@ -1,0 +1,48 @@
+I"�<p>Já lhe deve ter ocorrido o caso de que seu <strong>fork</strong> precisa de um <strong>branch</strong> que foi criado somente no repositório principal, mas no seu não é possível encontrar.</p>
+
+<p>A solução para os seus problemas é a configuração correta de seu <strong>upstream</strong>, Vamos lá?</p>
+
+<p>Qual o motivo de configurar um <strong>Upstream</strong>?</p>
+
+<p>Ao efetuar um <strong>fork</strong> seu novo repositório vai ter um endereço de <strong>origin</strong> que é o seu próprio link do novo repositório, como exemplo <strong>myname/myfork</strong>, com isso ao efetuar os comandos básicos <strong>push</strong> e <strong>pull</strong>, eles serão efetuados nessa origem.</p>
+
+<p>Mas trabalhando em equipes é necessário além do meu repositório, ter o repositório remoto para conseguir copiar possíveis implementações dos meus colegas. E então assim é necessário a configuração do upstream para linkar o meu fork com o repositório remoto.</p>
+
+<h3 id="abra-seu-terminal">Abra seu terminal</h3>
+
+<p>Na raiz de seu projeto vá até seu <strong>branch</strong> master.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git checkout master
+</code></pre></div></div>
+
+<p>Verifique se seu repositório possui um <strong>upstream</strong> executando esse comando.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git fetch upstream
+</code></pre></div></div>
+<p>Se retornar <em>fatal: ‘upstream’ does not appear to be a git repository</em> é necessário efetuar os seguintes passos.</p>
+
+<p>Vá até o repositório que você efetuou o <strong>fork</strong> e copie o link <strong>ssh</strong> ou <strong>https</strong> para colar no comando.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote add upstream https://github.com/user/repo.git
+</code></pre></div></div>
+
+<p>Para confirmar use o comando</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote -v
+</code></pre></div></div>
+
+<p>Esse comando deve retornar algo como isso:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>origin      https://github.com/myuser/repo.git (fetch)  
+origin      https://github.com/myuser/repo.git (push)  
+upstream    https://github.com/user/repo.git (fetch)  
+upstream    https://github.com/user/repo.git (push)
+</code></pre></div></div>
+
+<p>Agora o comando abaixo deve ser executado sem erros.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git fetch upstream
+</code></pre></div></div>
+<p>E finalmente para copiar um <strong>branch remoto</strong> para um novo <strong>branch.</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git checkout -b newbranchlocal upstream/branchremoto
+</code></pre></div></div>
+
+<p>Para efetuar merge de um <strong>branch</strong> remoto com um seu já existente, basta usar a referência <strong>upstream/branchremoto</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git merge upstream/branchremoto
+</code></pre></div></div>
+<p><em>Nesse caso não esqueça de estar no branch correto antes do merge.</em></p>
+:ET

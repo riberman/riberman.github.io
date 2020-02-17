@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+        <meta charset="utf-8">
+        <link rel="canonical" href="https://riberman.github.io">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Git Efetuando Merge em Branchs - Patrick Ferro Ribeiro</title>
+        
+          <meta content="https://img.devrant.com/devrant/rant/r_1211764_x66wE.jpg" property="og:image">
+        
+        <link rel="shortcut icon" href="/static/img/favicon.ico" />
+        
+          <meta content="Git Efetuando Merge em Branchs" property="og:title">
+        
+        
+          <meta content="Uma das atividades mais comuns utilizando o git é o comando merge  utilizado para mesclar branchs  ..." property="og:description">
+        
+        
+          <meta content="http://localhost:4000/dev/git/gitmerge/" property="og:url">
+        
+        
+          <meta content="article" property="og:type">
+        
+        <meta name="twitter:card" content="summary_large_image">
+        
+          <meta content="Uma das atividades mais comuns utilizando o git é o comando merge  utilizado para mesclar branchs  ..." name="description">
+        
+        <meta name="keywords" content="Git Efetuando Merge em Branchs, Patrick Ferro Ribeiro, dev, git" />
+        <meta name="author" content="Patrick Ferro Ribeiro" />
+        <meta content="2087090814720473" property="fb:app_id">
+        <meta content="Patrick Ferro Ribeiro" property="og:site_name">
+        
+          <meta content="2019-04-18T18:17:00-03:00" property="article:published_time">
+          <meta content="http://localhost:4000/about/" property="article:author">
+        
+        
+          
+          <meta content="dev" property="article:section">
+          
+        
+        
+          
+        
+        <meta name="twitter:site" content="@riberman">
+        <meta name="twitter:creator" content="@riberman">
+        
+          <meta name="twitter:title" content="Git Efetuando Merge em Branchs">
+        
+        
+          <meta name="twitter:url" content="http://localhost:4000/dev/git/gitmerge/">
+        
+        
+          <meta name="twitter:description" content="Uma das atividades mais comuns utilizando o git é o comando merge  utilizado para mesclar branchs  ...">
+        
+        
+        <!--  Non-Essential, But Recommended -->
+        <meta property="og:site_name" content="Patrick Ferro Ribeiro">
+        <meta name="twitter:image:alt" content="Avatar Patrick Ferro Ribeiro Blog.">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4397171381324956",
+          enable_page_level_ads: true
+     });
+</script>
+
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+      <script type="text/javascript">window.baseurl = 'http://localhost:4000';</script>
+      
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <!-- FontAwesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/74dfc6cf47.css">
+
+        <!-- Core BootStrap CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <!-- Material Design CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/css/thickbox.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/projects.css">
+
+        <script type="text/javascript">
+          //loadingImage is relative to project dir
+          var tb_pathToImage = "/static/img/loadingAnimation.gif";
+        </script>
+
+  </head>
+
+  <body class="home overflow-hidden">
+    <button onclick="topFunction()" id="backTop" title="Voltar para cima"><i class="fas fa-chevron-up"></i></button>
+<div class="header-panel shadow-z-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="row-picture">
+              <a href="http://localhost:4000">
+              <img id="about" class="logo-img" src="/static/img/avatar.png" height="75px" width="75px">
+                </a>
+            </div>
+            <div class="row-details">
+              <h4 class="list-group-item-heading">Patrick Ferro Ribeiro</h4>
+              <p class="list-group-item-text">Developer Cyclist Student</p>
+              <div class="social-icons">
+	
+        <a class="icon" target="_blank" href="https://www.facebook.com/patrickferroribeiro"><i class="fab fa-facebook-f"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.instagram.com/patrickribeiro_oficial/"><i class="fab fa-instagram"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/patrickferroribeiro/"><i class="fab fa-linkedin-in"></i></a>
+    
+        <a class="icon" target="_blank" href="https://github.com/riberman"><i class="fab fa-github"></i></a>
+    
+</div>
+
+            </div>
+            <div class="navbar-header pull-right">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-2x fa-bars"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+          <div class="row">
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Git Efetuando Merge em Branchs</h2>
+            
+            <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
+              <input class="form-control" type="text" id="js-search__input" placeholder="Search">
+              <ul class="search__results" id="js-search__results"></ul>
+            </div>
+            
+            </div>
+            <p class="info">
+              
+                <span class="time">18 Apr 2019</span>
+              
+              
+                <span class="categories">
+                  &raquo;
+                  
+                    <a href="/dev">dev</a>
+                    , 
+                  
+                    <a href="/git">git</a>
+                    
+                  
+                </span>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main outer">
+      <div class="row">
+        <div class="col-md-3 col-xs-12">
+              <nav class="menu">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="list-separator nav navbar-nav well well-primary post">
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  gitmerge"><a href="/" target="_self"><i class="fa fa-home"></i> Principal</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  gitmerge"><a href="/ciclismo/" target="_self"><i class="fas fa-bicycle"></i> Ciclismo</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  gitmerge"><a href="/dev/" target="_self"><i class="fas fa-code"></i> Dev</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  gitmerge"><a href="/sobre/" target="_self"><i class="far fa-address-card"></i> Sobre</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  gitmerge"><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i> XML Feed</a></li>
+
+</ul>
+
+    </div>
+    </nav>
+
+        </div>
+        <div class="col-md-9 col-xs-12 full">
+          <div class="post-content well">
+<hr>
+<article class="content">
+    <div class="post"><p>Uma das atividades mais comuns utilizando o git é o comando <strong>merge</strong>  utilizado para mesclar <strong>branchs,</strong> como por exemplo quando ocorrem atualizações no branch de desenvolvimento pelos seus colegas, exatamente enquanto você trabalhava em uma funcionalidade, no momento seu branch está desatualizado, e antes de efetuar uma <strong>pull request</strong> para enviar suas alterações ao branch de desenvolvimento, é necessário efetuar uma junção dessas modificações.</p>
+
+<p>Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branchcolegas
+</code></pre></div></div>
+
+<p>Agora é necessário efetuar um <strong>pull</strong> para receber as atualizações no branch selecionado.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin branchcolegas
+</code></pre></div></div>
+
+<p>Então para que não ocorra problemas efetuando uma <strong>pull request</strong> diretamente para o <strong>branch</strong> de desenvolvimento, ao fazer um <strong>push</strong> é recomendável criar um novo branch.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b branchdetransicao  
+</code></pre></div></div>
+
+<p>Ou você pode utilizar o mesmo <strong>branch</strong> que estava trabalhando, no caso basta ir até ele.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout meubranch
+</code></pre></div></div>
+
+<p>Se você escolheu a opção de criar um <strong>branch</strong>, é necessário efetuar o comando <strong>merge</strong> nele.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge meubranch  
+</code></pre></div></div>
+
+<p>Ou se não criou um <strong>branch</strong> novo, você precisa trazer os arquivos do <strong>branch</strong> de seus colegas para o seu usando.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branchcolegas
+</code></pre></div></div>
+
+<p>Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use <strong>ESC + : + Q</strong>,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .
+git commit -m "Exemplo efetuado merge no branch"  
+</code></pre></div></div>
+
+<p>Agora então é só efetuar uma <strong>pull request</strong> para o <strong>branch</strong> de desenvolvimento normalmente, efetuando um <strong>push</strong> ou <strong>pull request</strong> pelo <strong>GitHub</strong>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin branchdedesenvolvimento  
+</code></pre></div></div>
+
+<p><em>É recomendável efetuar <strong>pull request</strong> para branchs principais usando o <strong>site</strong>, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.</em></p>
+</div>
+    <hr />
+    <div class="share-page">
+    Share this on &rarr;
+<a href="https://api.whatsapp.com/send?text= Visite o blog Patrick Ferro Ribeiro http://localhost:4000/dev/git/gitmerge/" target="_blank" title="Share on WhatsApp" class="whatsapp">WhatsApp</a>
+<a href="https://twitter.com/intent/tweet?text=Git Efetuando Merge em Branchs&url=http://localhost:4000/dev/git/gitmerge/&via=riberman" rel="nofollow" target="_blank" title="Share on Twitter" class="twitter">Twitter</a>
+<a href="https://facebook.com/sharer.php?u=http://localhost:4000/dev/git/gitmerge/" rel="nofollow" target="_blank" title="Share on Facebook" class="facebook">Facebook</a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/dev/git/gitmerge/&title=Git Efetuando Merge em Branchs&summary=Uma das atividades mais comuns utilizando o git é o comando merge  utilizado para mesclar branchs  ..." target="_blank" title="Share on LinkedIn" class="linkedin">LinkedIn</a>
+<a href="http://www.reddit.com/submit?url=http://localhost:4000/dev/git/gitmerge/&title=Git Efetuando Merge em Branchs" target="_blank" title="Share on Reddit" class="reddit">Reddit</a>
+  </div>
+<!--
+ <a href="https://twitter.com/share" class="twitter-share-button" data-via="riberman" style="position: static;visibility: visible;width: 61px;height: 20px;margin-bottom: -8;margin-bottom: -7px;margin-left: 3px;">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="fb-share-button" data-href="http://localhost:4000/dev/git/gitmerge/" data-layout="button_count" style="position: relative;left: 3px;"></div>
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=2087090814720473";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+-->
+
+</article>
+<hr />
+
+
+    
+    
+        
+            
+        
+            
+        
+    
+        
+            
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="http://localhost:4000/dev/android/androidrefreshonrotatescreen/">Android não Salva Dados Quando A Tela É Rotacionada Ou Teclado É Conectado</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/android">android</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+            
+        
+    
+        
+            
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://localhost:4000/dev/db/terminalpostgresubuntu/">Acessando Postgres via Terminal Ubuntu</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/db">db</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+            
+        
+    
+        
+            
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://localhost:4000/dev/git/gitremoveruntracked/">Removendo Arquivos Untracked do Git</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/git">git</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+            
+        
+    
+        
+            
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://localhost:4000/dev/git/gitupstream/">Como Clonar Branch do Repositório Principal</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/git">git</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+            
+        
+    
+        
+            
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev pull-left" href="http://localhost:4000/dev/android/androidrefreshonrotatescreen/">&laquo; Android não Salva Dados Quando A Tela É Rotacionada Ou Teclado É Conectado</a>
+  
+  
+</div>
+
+
+<div class="disqus-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+
+        var disqus_shortname = "https-riberman-github-io";
+        var disqus_identifier = "http://localhost:4000_Git Efetuando Merge em Branchs";
+        var disqus_title = "Git Efetuando Merge em Branchs";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    /* ]]> */
+    </script>
+</div>
+</div>
+
+          <div class="row">
+            <div class="col-md-12 col-xs-12 footer">
+              <footer>
+  © <script>document.write(new Date().getFullYear());</script> Patrick Ferro Ribeiro <a href="https://github.com/riberman">My GitHub</a> - by Jekyll.
+</footer>
+<div align="center">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Riberman Ads -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4397171381324956"
+       data-ad-slot="8171465187"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+            </div>
+          </div>
+        </div> <!-- end /.col-md-9 -->
+      </div> <!-- end /.row -->
+    </div>
+
+    
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script src="/static/js/super-search.js"></script>
+
+<script src="/static/js/thickbox-compressed.js"></script>
+<script src="/static/js/material.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/projects.js"></script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113720530-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

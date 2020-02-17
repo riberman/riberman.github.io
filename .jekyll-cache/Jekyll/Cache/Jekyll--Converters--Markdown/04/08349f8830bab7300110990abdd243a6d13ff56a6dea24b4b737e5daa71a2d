@@ -1,0 +1,28 @@
+I"x<p>É comum usando uma <strong>IDE</strong> ou um <strong>Framework</strong> a geração automática de arquivos, sejam eles de <em>model</em>, <em>view</em>, <em>controller</em>, ou qualquer mero arquivo criado.</p>
+
+<p>Se necessário desfazer essas criações automáticas precisamos deletar esses arquivos ou pastas geradas, pois desfazendo as alterações usando o comando <strong>git checkout – .</strong> somente as alterações em arquivos que já existem no ultimo <strong>commit</strong> vão ser desfeitas, mas todas as pastas e arquivos novos ainda vão permanecer em seu <strong>branch</strong> atual para serem commitados.</p>
+
+<p>Para resolver isso é bem simples, basta seguir as instruções.</p>
+
+<p>Utilize o comando abaixo somente para visualizar os arquivos que estão nessa situação <strong>antes de deletar</strong>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clean -n  
+</code></pre></div></div>
+
+<p>Após verificar, se for de seu interesse para deletar basta substituir o <strong>-n</strong> por <strong>-f</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean -f  
+</code></pre></div></div>
+
+<p>Nesse caso, se existir pastas criadas elas vão permanecer, para deletar é necessário outro comando.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean -fd  
+</code></pre></div></div>
+
+<p>E pronto, para listar suas modificações podemos usar o comando.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status  
+</code></pre></div></div>
+
+<p>Agora todos os arquivos e pastas criadas nesse <strong>branch</strong> não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo <strong>commit</strong> vão permanecer caso você tenha efetuado alguma alteração.</p>
+:ET

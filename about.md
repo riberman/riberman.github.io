@@ -9,7 +9,10 @@ permalink: /about/
 ___
 **Patrick Ferro Ribeiro**  
 From: city Guarapuava in Paraná Brazil.  
-Age: {{ site.age }}.  
+Age: <script>var birth = new Date("August 26, 1995 00:00:00");
+  var curr  = new Date();
+  var diff = curr.getTime() - birth.getTime();
+   document.write(Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25)));</script>.  
 Email: patrick.ferro.ribeiro@gmail.com  
 [Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Goals  

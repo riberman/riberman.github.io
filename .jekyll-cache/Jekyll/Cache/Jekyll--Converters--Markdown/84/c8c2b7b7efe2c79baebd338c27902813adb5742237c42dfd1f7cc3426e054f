@@ -1,0 +1,39 @@
+I"]
+<p>Problemas ao <strong>rotacionar</strong> a tela do android ou conectar novo <strong>dipositivo de entrada de dados</strong>, o android automaticamente cria novamente a tela da aplicação, e assim a entrada de texto ou dados armazenados nela são perdidos, como solucionar?</p>
+
+<p>Para resolver esse problema temos uma solução muito simples, mas primeiramente vamos entender o motivo de o android perder esses dados ao efetuar essas atualizações de tela ou dispositivos de entrada.</p>
+
+<p>Ao rotacionar a tela do aparelho, ou conectando um teclado, leitora de códigos ou outro dispositivo que gere um pequeno <strong>toast</strong> dizendo que o dispositivo foi conectado, essa ação é invocada pelo android avisando para que sua aplicação seja atualizada, pois existem coisas novas no dispositivo que a aplicação pode ou não utilizar…</p>
+
+<p>E com isso por padrão essa chamada é invocada automaticamente e os dados da aplicação são perdidos, pois o código não diz ao android como se comportar no caso especifico.</p>
+
+<p>Vamos ao que interessa?</p>
+
+<p>A solução mais simples encontrada para contornar essa situação é configurar seu <strong>AndroidManifest.xml</strong> que fica em <em>app/manifests/AndroidManifest.xml</em></p>
+
+<p>Então em todas as suas activitys que não podem perder dados caso ocorra essa atualização de tela, você deve adicionar a seguinte linha de código.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+    android:configChanges="parametros necessários"
+    android:label="@string/app_name"&gt;
+</code></pre></div></div>
+
+<p>Para  correção de atualização de tela utilize</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize"
+</code></pre></div></div>
+
+<p>Para novos dispositivos de entrada conectados utilize</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="keyboard|keyboardHidden"
+</code></pre></div></div>
+
+<p>Um exemplo abaixo utilizando as duas opções ao mesmo tempo</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+    android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+    android:label="@string/app_name"&gt;
+</code></pre></div></div>
+
+<p><em>Com isso o android automaticamente entende que você quer manter as configurações dessa tela, e depois que a aplicação é atualizada os dados são recuperados, sem a menor percepção do usuário.</em></p>
+:ET

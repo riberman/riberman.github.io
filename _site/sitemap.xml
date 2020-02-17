@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patrick Ferro Ribeiro</title>
+    <description>Web page about Code, Sport, Blog... and more.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 17 Feb 2020 20:19:13 -0300</pubDate>
+    <lastBuildDate>Mon, 17 Feb 2020 20:19:13 -0300</lastBuildDate>
+    <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Git Efetuando Merge em Branchs</title>
+        <description>&lt;p&gt;Uma das atividades mais comuns utilizando o git é o comando &lt;strong&gt;merge&lt;/strong&gt;  utilizado para mesclar &lt;strong&gt;branchs,&lt;/strong&gt; como por exemplo quando ocorrem atualizações no branch de desenvolvimento pelos seus colegas, exatamente enquanto você trabalhava em uma funcionalidade, no momento seu branch está desatualizado, e antes de efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para enviar suas alterações ao branch de desenvolvimento, é necessário efetuar uma junção dessas modificações.&lt;/p&gt;
+
+&lt;p&gt;Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora é necessário efetuar um &lt;strong&gt;pull&lt;/strong&gt; para receber as atualizações no branch selecionado.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git pull origin branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Então para que não ocorra problemas efetuando uma &lt;strong&gt;pull request&lt;/strong&gt; diretamente para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento, ao fazer um &lt;strong&gt;push&lt;/strong&gt; é recomendável criar um novo branch.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b branchdetransicao  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou você pode utilizar o mesmo &lt;strong&gt;branch&lt;/strong&gt; que estava trabalhando, no caso basta ir até ele.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout meubranch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você escolheu a opção de criar um &lt;strong&gt;branch&lt;/strong&gt;, é necessário efetuar o comando &lt;strong&gt;merge&lt;/strong&gt; nele.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge meubranch  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou se não criou um &lt;strong&gt;branch&lt;/strong&gt; novo, você precisa trazer os arquivos do &lt;strong&gt;branch&lt;/strong&gt; de seus colegas para o seu usando.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use &lt;strong&gt;ESC + : + Q&lt;/strong&gt;,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+git commit -m &quot;Exemplo efetuado merge no branch&quot;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora então é só efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento normalmente, efetuando um &lt;strong&gt;push&lt;/strong&gt; ou &lt;strong&gt;pull request&lt;/strong&gt; pelo &lt;strong&gt;GitHub&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin branchdedesenvolvimento  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;É recomendável efetuar &lt;strong&gt;pull request&lt;/strong&gt; para branchs principais usando o &lt;strong&gt;site&lt;/strong&gt;, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Apr 2019 18:17:00 -0300</pubDate>
+        <link>http://localhost:4000/dev/git/gitmerge/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/git/gitmerge/</guid>
+        
+        
+        <category>dev</category>
+        
+        <category>git</category>
+        
+      </item>
+    
+      <item>
+        <title>Android não Salva Dados Quando A Tela É Rotacionada Ou Teclado É Conectado</title>
+        <description>&lt;p&gt;Problemas ao &lt;strong&gt;rotacionar&lt;/strong&gt; a tela do android ou conectar novo &lt;strong&gt;dipositivo de entrada de dados&lt;/strong&gt;, o android automaticamente cria novamente a tela da aplicação, e assim a entrada de texto ou dados armazenados nela são perdidos, como solucionar?&lt;/p&gt;
+
+&lt;p&gt;Para resolver esse problema temos uma solução muito simples, mas primeiramente vamos entender o motivo de o android perder esses dados ao efetuar essas atualizações de tela ou dispositivos de entrada.&lt;/p&gt;
+
+&lt;p&gt;Ao rotacionar a tela do aparelho, ou conectando um teclado, leitora de códigos ou outro dispositivo que gere um pequeno &lt;strong&gt;toast&lt;/strong&gt; dizendo que o dispositivo foi conectado, essa ação é invocada pelo android avisando para que sua aplicação seja atualizada, pois existem coisas novas no dispositivo que a aplicação pode ou não utilizar…&lt;/p&gt;
+
+&lt;p&gt;E com isso por padrão essa chamada é invocada automaticamente e os dados da aplicação são perdidos, pois o código não diz ao android como se comportar no caso especifico.&lt;/p&gt;
+
+&lt;p&gt;Vamos ao que interessa?&lt;/p&gt;
+
+&lt;p&gt;A solução mais simples encontrada para contornar essa situação é configurar seu &lt;strong&gt;AndroidManifest.xml&lt;/strong&gt; que fica em &lt;em&gt;app/manifests/AndroidManifest.xml&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Então em todas as suas activitys que não podem perder dados caso ocorra essa atualização de tela, você deve adicionar a seguinte linha de código.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;activity android:name=&quot;.MyActivity&quot;
+    android:configChanges=&quot;parametros necessários&quot;
+    android:label=&quot;@string/app_name&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para  correção de atualização de tela utilize&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:configChanges=&quot;orientation|screenSize&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para novos dispositivos de entrada conectados utilize&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android:configChanges=&quot;keyboard|keyboardHidden&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Um exemplo abaixo utilizando as duas opções ao mesmo tempo&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;activity android:name=&quot;.MyActivity&quot;
+    android:configChanges=&quot;orientation|screenSize|keyboard|keyboardHidden&quot;
+    android:label=&quot;@string/app_name&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Com isso o android automaticamente entende que você quer manter as configurações dessa tela, e depois que a aplicação é atualizada os dados são recuperados, sem a menor percepção do usuário.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Apr 2019 20:22:00 -0300</pubDate>
+        <link>http://localhost:4000/dev/android/androidrefreshonrotatescreen/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/android/androidrefreshonrotatescreen/</guid>
+        
+        
+        <category>dev</category>
+        
+        <category>android</category>
+        
+      </item>
+    
+      <item>
+        <title>Acessando Postgres via Terminal Ubuntu</title>
+        <description>&lt;p&gt;Está com dificuldades para utilizar a linha de comando do Postgres usando o Ubuntu?&lt;br /&gt;
+Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um usuário configurado na instalação, e o processo postgres está sendo executado em sua máquina.&lt;/p&gt;
+
+&lt;p&gt;Então primeiramente para efetuar login no terminal devemos utilizar o seguinte comando.&lt;br /&gt;
+&lt;em&gt;substituindo postgres pelo usuário que você criou durante a configuração.&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u postgres psql  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Primeiro vai ser necessário digitar a senha de root do linux e após isso a senha cadastrada no usuário do postgres.&lt;/p&gt;
+
+&lt;p&gt;Ao efetuar isso seu terminal deve estar mostrando &lt;strong&gt;postgres=#&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse momento já é possível efetuar comandos, primeiramente vamos testar o comando&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\l  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Este comando vai listar todas as bases de dados do seu postgres.&lt;/p&gt;
+
+&lt;p&gt;Copie o name de qualquer base que deseja acessar, e para sair dessa listagem use &lt;strong&gt;q&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Então para entrar na base use&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\c mybase  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;substitua mybase pelo name da sua base.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora dentro de sua base é possivel efetuar qualquer consulta &lt;strong&gt;SQL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Antes vamos descobrir qual o nome das &lt;strong&gt;tables&lt;/strong&gt; para efetuar as consultas.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\d  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;esse comando lista todas as &lt;strong&gt;tables&lt;/strong&gt; da base atual selecionada.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Sabendo o name da table basta usar qualquer comando.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;select * from nomedatable;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;não esqueça do &lt;strong&gt;;&lt;/strong&gt; ao final de qualquer comando.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ao final de cada consulta para voltar ao terminal basta a tecla &lt;strong&gt;q&lt;/strong&gt; e para sair do terminal do postgres e voltar ao linux basta usar &lt;strong&gt;\q&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Apr 2019 22:14:00 -0300</pubDate>
+        <link>http://localhost:4000/dev/db/terminalpostgresubuntu/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/db/terminalpostgresubuntu/</guid>
+        
+        
+        <category>dev</category>
+        
+        <category>db</category>
+        
+      </item>
+    
+      <item>
+        <title>Removendo Arquivos Untracked do Git</title>
+        <description>&lt;p&gt;É comum usando uma &lt;strong&gt;IDE&lt;/strong&gt; ou um &lt;strong&gt;Framework&lt;/strong&gt; a geração automática de arquivos, sejam eles de &lt;em&gt;model&lt;/em&gt;, &lt;em&gt;view&lt;/em&gt;, &lt;em&gt;controller&lt;/em&gt;, ou qualquer mero arquivo criado.&lt;/p&gt;
+
+&lt;p&gt;Se necessário desfazer essas criações automáticas precisamos deletar esses arquivos ou pastas geradas, pois desfazendo as alterações usando o comando &lt;strong&gt;git checkout – .&lt;/strong&gt; somente as alterações em arquivos que já existem no ultimo &lt;strong&gt;commit&lt;/strong&gt; vão ser desfeitas, mas todas as pastas e arquivos novos ainda vão permanecer em seu &lt;strong&gt;branch&lt;/strong&gt; atual para serem commitados.&lt;/p&gt;
+
+&lt;p&gt;Para resolver isso é bem simples, basta seguir as instruções.&lt;/p&gt;
+
+&lt;p&gt;Utilize o comando abaixo somente para visualizar os arquivos que estão nessa situação &lt;strong&gt;antes de deletar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clean -n  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Após verificar, se for de seu interesse para deletar basta substituir o &lt;strong&gt;-n&lt;/strong&gt; por &lt;strong&gt;-f&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clean -f  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse caso, se existir pastas criadas elas vão permanecer, para deletar é necessário outro comando.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clean -fd  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E pronto, para listar suas modificações podemos usar o comando.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git status  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora todos os arquivos e pastas criadas nesse &lt;strong&gt;branch&lt;/strong&gt; não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo &lt;strong&gt;commit&lt;/strong&gt; vão permanecer caso você tenha efetuado alguma alteração.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Apr 2019 20:36:00 -0300</pubDate>
+        <link>http://localhost:4000/dev/git/gitremoveruntracked/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/git/gitremoveruntracked/</guid>
+        
+        
+        <category>dev</category>
+        
+        <category>git</category>
+        
+      </item>
+    
+      <item>
+        <title>Registre Sua Bicicleta Online Gratuitamente</title>
+        <description>&lt;p&gt;Hoje com a facilidade do uso da bike no ambiente urbano como meio de transporte ou como esporte e lazer, a bicicleta tem se tornado algo ainda mais comum nas grandes cidades, e com essa popularização é claro que não poderia deixar de aumentar a insegurança, pois muitas dessas bicicletas são produtos visados pelo seu alto valor.&lt;/p&gt;
+
+&lt;p&gt;E como posso me manter em segurança?&lt;/p&gt;
+
+&lt;p&gt;Bom no vídeo abaixo temos bons exemplos e dicas sobre o assunto feito pelo canal Pedaleria, que tem um conteúdo muito interessante. Recomendo assistir para tirar algumas dúvidas e aprender um pouco mais.&lt;/p&gt;
+
+&lt;div class=&quot;mycontainer&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/lSwczRklyig&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;allowfullscreen&quot; class=&quot;video&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ao visualizar o vídeo acima, são citados sites de registro de bicicletas, o mais famoso é o &lt;a href=&quot;https://bikeregistrada.com.br/&quot; target=&quot;_blank&quot;&gt;Bike Registrada&lt;/a&gt;, nele é necessário efetuar um cadastro de seus dados pessoais para obter seu usuário no sistema, após isso é possível cadastrar bicicletas, São necessárias as seguintes informações para o registro.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Numero de Série da bicicleta.&lt;/li&gt;
+  &lt;li&gt;Marca e Modelo.&lt;/li&gt;
+  &lt;li&gt;Descrição de cor&lt;/li&gt;
+  &lt;li&gt;Descrição de grupos e acessórios.&lt;/li&gt;
+  &lt;li&gt;Fotos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Com todas essas informações sua bike agora possui um registro único no sistema, onde qualquer usuário que pesquisar esse numero vai poder relacionar se ela é uma bike regular ou um produto de roubo/furto. Nesse site também é possível comprar um adesivo que possui um numero único para identificação também, mas não é obrigatório a compra desse adesivo para utilizar o sistema.&lt;/p&gt;
+
+&lt;p&gt;E para quem mora no estado do Paraná, existe o sistema do governo do estado &lt;a href=&quot;http://www.minhabike.pr.gov.br/&quot; target=&quot;_blank&quot;&gt;Minha Bike&lt;/a&gt;, nele são práticamente as mesmas informações necessárias, porém eu achei ele mais completo que o Bike Registrada, pois é possível adicionar maior quantidade de fotos. E essas informações ficam registradas no governo do estado, ou seja a polícia tem total acesso as informações. Não sei sobre os outros estados, se possuem essa forma de registro, mas muito bacana essa iniciativa positiva.&lt;/p&gt;
+
+&lt;p&gt;Para ter acesso é necessário possuir dados do DETRAN atualizados, pois antes de entrar nesse sistema de registro de bicicletas o cidadão precisa ter seu registro junto ao site do &lt;a href=&quot;https://www.governodigital.pr.gov.br/&quot; target=&quot;_blank&quot;&gt;https://www.governodigital.pr.gov.br/&lt;/a&gt; é bem tranquilo efetuar o cadastro, pois todas as informações são bem detalhadas no processo.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Apr 2019 14:16:00 -0300</pubDate>
+        <link>http://localhost:4000/ciclismo/registrodebicicletas/</link>
+        <guid isPermaLink="true">http://localhost:4000/ciclismo/registrodebicicletas/</guid>
+        
+        
+        <category>ciclismo</category>
+        
+      </item>
+    
+      <item>
+        <title>Como Clonar Branch do Repositório Principal</title>
+        <description>&lt;p&gt;Já lhe deve ter ocorrido o caso de que seu &lt;strong&gt;fork&lt;/strong&gt; precisa de um &lt;strong&gt;branch&lt;/strong&gt; que foi criado somente no repositório principal, mas no seu não é possível encontrar.&lt;/p&gt;
+
+&lt;p&gt;A solução para os seus problemas é a configuração correta de seu &lt;strong&gt;upstream&lt;/strong&gt;, Vamos lá?&lt;/p&gt;
+
+&lt;p&gt;Qual o motivo de configurar um &lt;strong&gt;Upstream&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;Ao efetuar um &lt;strong&gt;fork&lt;/strong&gt; seu novo repositório vai ter um endereço de &lt;strong&gt;origin&lt;/strong&gt; que é o seu próprio link do novo repositório, como exemplo &lt;strong&gt;myname/myfork&lt;/strong&gt;, com isso ao efetuar os comandos básicos &lt;strong&gt;push&lt;/strong&gt; e &lt;strong&gt;pull&lt;/strong&gt;, eles serão efetuados nessa origem.&lt;/p&gt;
+
+&lt;p&gt;Mas trabalhando em equipes é necessário além do meu repositório, ter o repositório remoto para conseguir copiar possíveis implementações dos meus colegas. E então assim é necessário a configuração do upstream para linkar o meu fork com o repositório remoto.&lt;/p&gt;
+
+&lt;h3 id=&quot;abra-seu-terminal&quot;&gt;Abra seu terminal&lt;/h3&gt;
+
+&lt;p&gt;Na raiz de seu projeto vá até seu &lt;strong&gt;branch&lt;/strong&gt; master.&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verifique se seu repositório possui um &lt;strong&gt;upstream&lt;/strong&gt; executando esse comando.&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git fetch upstream
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Se retornar &lt;em&gt;fatal: ‘upstream’ does not appear to be a git repository&lt;/em&gt; é necessário efetuar os seguintes passos.&lt;/p&gt;
+
+&lt;p&gt;Vá até o repositório que você efetuou o &lt;strong&gt;fork&lt;/strong&gt; e copie o link &lt;strong&gt;ssh&lt;/strong&gt; ou &lt;strong&gt;https&lt;/strong&gt; para colar no comando.&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote add upstream https://github.com/user/repo.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para confirmar use o comando&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse comando deve retornar algo como isso:&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;origin      https://github.com/myuser/repo.git (fetch)  
+origin      https://github.com/myuser/repo.git (push)  
+upstream    https://github.com/user/repo.git (fetch)  
+upstream    https://github.com/user/repo.git (push)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora o comando abaixo deve ser executado sem erros.&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git fetch upstream
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;E finalmente para copiar um &lt;strong&gt;branch remoto&lt;/strong&gt; para um novo &lt;strong&gt;branch.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b newbranchlocal upstream/branchremoto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para efetuar merge de um &lt;strong&gt;branch&lt;/strong&gt; remoto com um seu já existente, basta usar a referência &lt;strong&gt;upstream/branchremoto&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git merge upstream/branchremoto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Nesse caso não esqueça de estar no branch correto antes do merge.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Apr 2019 20:42:00 -0300</pubDate>
+        <link>http://localhost:4000/dev/git/gitupstream/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/git/gitupstream/</guid>
+        
+        
+        <category>dev</category>
+        
+        <category>git</category>
+        
+      </item>
+    
+    
+      <item>
+        <title>Cool project 1</title>
+        <description>Cool project 1</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Wed, 01 Jan 2014 00:00:00 -0200</pubDate>
+        
+        <category>Angular JS</category>
+        
+        <category>API</category>
+        
+      </item>
+    
+      <item>
+        <title>Cool project 2</title>
+        <description>Cool project 2</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Thu, 01 May 2014 00:00:00 -0300</pubDate>
+        
+        <category>Android</category>
+        
+        <category>PHP</category>
+        
+      </item>
+    
+      <item>
+        <title>Cool project 3</title>
+        <description>Cool project 3</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Sun, 01 Jun 2014 00:00:00 -0300</pubDate>
+        
+        <category>HTML</category>
+        
+        <category>JQuery</category>
+        
+        <category>PHP</category>
+        
+      </item>
+    
+      <item>
+        <title>Cool project 4</title>
+        <description>Cool project 4</description>
+        <link>http://localhost:4000</link>
+        <pubDate>Sat, 01 Oct 2016 00:00:00 -0300</pubDate>
+        
+        <category>Android</category>
+        
+        <category>nodejs</category>
+        
+      </item>
+    
+  </channel>
+</rss>

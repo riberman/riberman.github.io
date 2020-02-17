@@ -1,0 +1,47 @@
+I"�<p>Está com dificuldades para utilizar a linha de comando do Postgres usando o Ubuntu?<br />
+Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um usuário configurado na instalação, e o processo postgres está sendo executado em sua máquina.</p>
+
+<p>Então primeiramente para efetuar login no terminal devemos utilizar o seguinte comando.<br />
+<em>substituindo postgres pelo usuário que você criou durante a configuração.</em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo -u postgres psql  
+</code></pre></div></div>
+
+<p>Primeiro vai ser necessário digitar a senha de root do linux e após isso a senha cadastrada no usuário do postgres.</p>
+
+<p>Ao efetuar isso seu terminal deve estar mostrando <strong>postgres=#</strong></p>
+
+<p>Nesse momento já é possível efetuar comandos, primeiramente vamos testar o comando</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\l  
+</code></pre></div></div>
+
+<p>Este comando vai listar todas as bases de dados do seu postgres.</p>
+
+<p>Copie o name de qualquer base que deseja acessar, e para sair dessa listagem use <strong>q</strong></p>
+
+<p>Então para entrar na base use</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\c mybase  
+</code></pre></div></div>
+
+<p><em>substitua mybase pelo name da sua base.</em></p>
+
+<p>Agora dentro de sua base é possivel efetuar qualquer consulta <strong>SQL</strong></p>
+
+<p>Antes vamos descobrir qual o nome das <strong>tables</strong> para efetuar as consultas.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\d  
+</code></pre></div></div>
+
+<p><em>esse comando lista todas as <strong>tables</strong> da base atual selecionada.</em></p>
+
+<p>Sabendo o name da table basta usar qualquer comando.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from nomedatable;  
+</code></pre></div></div>
+
+<p><em>não esqueça do <strong>;</strong> ao final de qualquer comando.</em></p>
+
+<p>Ao final de cada consulta para voltar ao terminal basta a tecla <strong>q</strong> e para sair do terminal do postgres e voltar ao linux basta usar <strong>\q</strong></p>
+:ET
