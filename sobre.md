@@ -23,7 +23,7 @@ ___
  - **Desenvolvedor Trainee/ Teorema Sistemas**  
 Fev 2019 - **ATUAL**  
 Position: **Desenvolvedor Trainee.**  
-Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, e base de Dados Realm.  
+Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, Spring, Angular, e base de Dados Realm.  
 
  - **Estagiário de Suporte Técnico / Universidade Federal Tecnológica do Paraná**  
 Jul 2018 - Fev 2019  

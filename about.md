@@ -22,7 +22,7 @@ ___
  - **Trainee Developer/ Teorema Sistemas**  
 Fev 2019 - **CURRENT**  
 Position: **Trainee Developer.**  
-Main activities: Development using Android Studio IDE, Kotlin, Java, data base realm, Spring, Angular.  
+Main activities: Development using Android Studio IDE, Kotlin, Java, Spring, Angular and data base realm.  
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  
