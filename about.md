@@ -19,10 +19,10 @@ Better professional qualification, add knowledge.
 
 ## Work Experience  
 ___
- - **Mobile Development Intern/ Teorema Sistemas**  
+ - **Trainee Developer/ Teorema Sistemas**  
 Fev 2019 - **CURRENT**  
-Position: **Development Intern.**  
-Main activities: Development using Android Studio IDE, Kotlin, Java, data base realm.  
+Position: **Trainee Developer.**  
+Main activities: Development using Android Studio IDE, Kotlin, Java, data base realm, Spring, Angular.  
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  

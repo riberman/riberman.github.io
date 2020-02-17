@@ -20,9 +20,9 @@ Melhor qualificação profissional, agregar conhecimento.
 
 ## Experiência de Trabalho  
 ___
- - **Estagiário de Desenvolvimento Mobile/ Teorema Sistemas**  
+ - **Desenvolvedor Trainee/ Teorema Sistemas**  
 Fev 2019 - **ATUAL**  
-Position: **Estagiário de Desenvolvimento.**  
+Position: **Desenvolvedor Trainee.**  
 Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, e base de Dados Realm.  
 
  - **Estagiário de Suporte Técnico / Universidade Federal Tecnológica do Paraná**  
