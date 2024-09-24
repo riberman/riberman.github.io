@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  [EN-US](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}    
+[PT-BR](/sobre){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  [EN-US](/about){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}    
 ## Who I am  
 ___
 **Patrick Ferro Ribeiro**  
@@ -14,18 +14,25 @@ Age: <script>var birth = new Date("August 26, 1995 00:00:00");
   var diff = curr.getTime() - birth.getTime();
    document.write(Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25)));</script>.  
 Email: patrick.ferro.ribeiro@gmail.com  
-[Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
+<a href="https://www.linkedin.com/in/patrickferroribeiro/" target="_blank">LinkedIn</a>{:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Goals  
 ___
-Computer technician, IT and related industry, customer service, technical support, programming, internship, development web and mobile.  
-Better professional qualification, add knowledge.  
+Currently a mid-level web and mobile developer at Teorema Sistemas.
+Postgraduate student in Networks at UTFPR, Cornélio Procópio campus.
+Technologist in Internet Systems from UTFPR, Guarapuava campus.
+IT technician from Francisco Carneiro Martins State School.  
 
 ## Work Experience  
 ___
- - **Trainee Developer/ Teorema Sistemas**  
-Fev 2019 - **CURRENT**  
+- **Developer / Teorema Sistemas**  
+Jun 2021 - **CURRENT**  
+Position: **Developer.**  
+Main activities: Development using Android Studio IDE, Kotlin, Java, Spring, Flutter, Laravel, Node, Python, Angular and data base realm.  
+
+ - **Trainee Developer / Teorema Sistemas**  
+Fev 2019 - Jun 2021  
 Position: **Trainee Developer.**  
-Main activities: Development using Android Studio IDE, Kotlin, Java, Spring, Angular and data base realm.  
+Main activities: Development using Android Studio IDE, Kotlin, Java, Spring, Flutter, Laravel, Node, Python, Angular and data base realm.  
 
  - **Intern Technical Support / Federal Technological University Of Paraná**  
 Jul 2018 - Fev 2019  
@@ -51,9 +58,14 @@ remote and physical support, maintenance services and POSITIVO authorized suppor
 
 ## Education  
 ___
+- **Federal Technological University Of Paraná**  
+Graduate Degree, Computer Networks  
+2023 - **Currently**  
+
+
  - **Federal Technological University Of Paraná**  
- Systems For Internet  
- 2015 - **Currently**  
+ Graduate, Systems For Internet  
+ 2015 - 2022  
 
 
  - **Francisco Carneiro Martins State College**  

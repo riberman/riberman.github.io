@@ -42,6 +42,10 @@
                     {% if forloop.last == false %}, {% endif %}
                   {% endfor %}
                 </span>
+              {% else %}
+                <span class="categories">
+                  <a href="" style="visibility: hidden;">-</a>
+                </span>
               {% endif %}
             </p>
           </div>

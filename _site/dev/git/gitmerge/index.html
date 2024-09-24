@@ -245,43 +245,43 @@
 
 <p>Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branchcolegas
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branchcolegas
 </code></pre></div></div>
 
 <p>Agora é necessário efetuar um <strong>pull</strong> para receber as atualizações no branch selecionado.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin branchcolegas
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin branchcolegas
 </code></pre></div></div>
 
 <p>Então para que não ocorra problemas efetuando uma <strong>pull request</strong> diretamente para o <strong>branch</strong> de desenvolvimento, ao fazer um <strong>push</strong> é recomendável criar um novo branch.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b branchdetransicao  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b branchdetransicao  
 </code></pre></div></div>
 
 <p>Ou você pode utilizar o mesmo <strong>branch</strong> que estava trabalhando, no caso basta ir até ele.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout meubranch
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout meubranch
 </code></pre></div></div>
 
 <p>Se você escolheu a opção de criar um <strong>branch</strong>, é necessário efetuar o comando <strong>merge</strong> nele.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge meubranch  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge meubranch  
 </code></pre></div></div>
 
 <p>Ou se não criou um <strong>branch</strong> novo, você precisa trazer os arquivos do <strong>branch</strong> de seus colegas para o seu usando.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branchcolegas
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branchcolegas
 </code></pre></div></div>
 
 <p>Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use <strong>ESC + : + Q</strong>,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .
 git commit -m "Exemplo efetuado merge no branch"  
 </code></pre></div></div>
 
 <p>Agora então é só efetuar uma <strong>pull request</strong> para o <strong>branch</strong> de desenvolvimento normalmente, efetuando um <strong>push</strong> ou <strong>pull request</strong> pelo <strong>GitHub</strong>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin branchdedesenvolvimento  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin branchdedesenvolvimento  
 </code></pre></div></div>
 
 <p><em>É recomendável efetuar <strong>pull request</strong> para branchs principais usando o <strong>site</strong>, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.</em></p>

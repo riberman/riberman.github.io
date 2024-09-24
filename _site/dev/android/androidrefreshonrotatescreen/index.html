@@ -255,24 +255,24 @@
 
 <p>Então em todas as suas activitys que não podem perder dados caso ocorra essa atualização de tela, você deve adicionar a seguinte linha de código.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
     android:configChanges="parametros necessários"
     android:label="@string/app_name"&gt;
 </code></pre></div></div>
 
 <p>Para  correção de atualização de tela utilize</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize"
 </code></pre></div></div>
 
 <p>Para novos dispositivos de entrada conectados utilize</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="keyboard|keyboardHidden"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="keyboard|keyboardHidden"
 </code></pre></div></div>
 
 <p>Um exemplo abaixo utilizando as duas opções ao mesmo tempo</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
     android:label="@string/app_name"&gt;
 </code></pre></div></div>

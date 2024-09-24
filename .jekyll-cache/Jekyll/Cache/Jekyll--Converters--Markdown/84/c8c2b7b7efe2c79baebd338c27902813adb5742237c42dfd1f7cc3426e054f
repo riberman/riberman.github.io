@@ -1,4 +1,4 @@
-I"]
+I"�
 <p>Problemas ao <strong>rotacionar</strong> a tela do android ou conectar novo <strong>dipositivo de entrada de dados</strong>, o android automaticamente cria novamente a tela da aplicação, e assim a entrada de texto ou dados armazenados nela são perdidos, como solucionar?</p>
 
 <p>Para resolver esse problema temos uma solução muito simples, mas primeiramente vamos entender o motivo de o android perder esses dados ao efetuar essas atualizações de tela ou dispositivos de entrada.</p>
@@ -13,24 +13,24 @@
 
 <p>Então em todas as suas activitys que não podem perder dados caso ocorra essa atualização de tela, você deve adicionar a seguinte linha de código.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
     android:configChanges="parametros necessários"
     android:label="@string/app_name"&gt;
 </code></pre></div></div>
 
 <p>Para  correção de atualização de tela utilize</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="orientation|screenSize"
 </code></pre></div></div>
 
 <p>Para novos dispositivos de entrada conectados utilize</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="keyboard|keyboardHidden"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:configChanges="keyboard|keyboardHidden"
 </code></pre></div></div>
 
 <p>Um exemplo abaixo utilizando as duas opções ao mesmo tempo</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;activity android:name=".MyActivity"
     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
     android:label="@string/app_name"&gt;
 </code></pre></div></div>

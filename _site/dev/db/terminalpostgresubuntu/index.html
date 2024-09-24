@@ -247,7 +247,7 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 <p>Então primeiramente para efetuar login no terminal devemos utilizar o seguinte comando.<br />
 <em>substituindo postgres pelo usuário que você criou durante a configuração.</em></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo -u postgres psql  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo -u postgres psql  
 </code></pre></div></div>
 
 <p>Primeiro vai ser necessário digitar a senha de root do linux e após isso a senha cadastrada no usuário do postgres.</p>
@@ -256,7 +256,7 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 
 <p>Nesse momento já é possível efetuar comandos, primeiramente vamos testar o comando</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\l  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\l  
 </code></pre></div></div>
 
 <p>Este comando vai listar todas as bases de dados do seu postgres.</p>
@@ -265,7 +265,7 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 
 <p>Então para entrar na base use</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\c mybase  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\c mybase  
 </code></pre></div></div>
 
 <p><em>substitua mybase pelo name da sua base.</em></p>
@@ -274,14 +274,14 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 
 <p>Antes vamos descobrir qual o nome das <strong>tables</strong> para efetuar as consultas.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\d  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\d  
 </code></pre></div></div>
 
 <p><em>esse comando lista todas as <strong>tables</strong> da base atual selecionada.</em></p>
 
 <p>Sabendo o name da table basta usar qualquer comando.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from nomedatable;  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from nomedatable;  
 </code></pre></div></div>
 
 <p><em>não esqueça do <strong>;</strong> ao final de qualquer comando.</em></p>

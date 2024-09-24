@@ -4,7 +4,7 @@ title: Sobre
 permalink: /sobre/
 ---
 
-[PT-BR](https://riberman.github.io/sobre/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  [EN-US](https://riberman.github.io/about/){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  
+[PT-BR](/sobre){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  [EN-US](/about){:rel='something'}{:.btn}{:.btn-sm}{:.btn-default}{:.btn-raised}  
 
 ## Quem sou eu  
 ___
@@ -15,18 +15,25 @@ Idade: <script>var birth = new Date("August 26, 1995 00:00:00");
   var diff = curr.getTime() - birth.getTime();
    document.write(Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25)));</script>.  
 Email: patrick.ferro.ribeiro@gmail.com  
-[Curriculum Pdf](https://raw.githubusercontent.com/riberman/riberman.github.io/master/files/patrick_ferro_ribeiro.pdf){:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
+<a href="https://www.linkedin.com/in/patrickferroribeiro/" target="_blank">LinkedIn</a>{:rel='something'}{:.btn}{:.btn-sm}{:.btn-primary}{:.btn-raised}  
 ## Objetivos  
 ___
-Técnico de informática, informática e indústria relacionada, atendimento ao cliente, suporte técnico, programação,   estágio, desenvolvimento web e mobile.  
-Melhor qualificação profissional, agregar conhecimento.  
+Atualmente desenvolvedor pleno web e mobile em Teorema Sistemas.
+Pós-Graduando em Redes pela UTFPR campus Cornélio Procópio.
+Tecnólogo em sistemas para internet pela UTFPR campus Guarapuava.
+Técnico em informática pelo Colégio estadual Francisco Carneiro Martins.  
 
 ## Experiência de Trabalho  
 ___
- - **Desenvolvedor Trainee/ Teorema Sistemas**  
-Fev 2019 - **ATUAL**  
+- **Desenvolvedor Pleno / Teorema Sistemas**  
+Jun 2021 - **ATUAL**  
+Position: **Desenvolvedor Pleno.**  
+Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, Spring, Flutter, Laravel, Node, Python, Angular e base de Dados Realm.  
+
+ - **Desenvolvedor Trainee / Teorema Sistemas**  
+Fev 2019 - Jun 2021  
 Position: **Desenvolvedor Trainee.**  
-Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, Spring, Angular, e base de Dados Realm.  
+Atividades Principais: Desenvolver utilizando Android Studio IDE, Kotlin, Java, Spring, Flutter, Laravel, Node, Python, Angular e base de Dados Realm.  
 
  - **Estagiário de Suporte Técnico / Universidade Federal Tecnológica do Paraná**  
 Jul 2018 - Fev 2019  
@@ -52,9 +59,14 @@ suporte remoto e físico, serviços de manutenção e suporte autorizado POSITIV
 
 ## Educação  
 ___
+- **Universidade Tecnológica Federal do Paraná**  
+Pós Graduação, Redes  
+2023 - **ATUAL**  
+
+
  - **Universidade Tecnológica Federal do Paraná**  
- Sistemas Para Internet  
- 2015 - **ATUAL**  
+ Graduação, Sistemas Para Internet  
+ 2015 - 2022  
 
 
  - **Colégio Estadual Francisco Carneiro Martins**  

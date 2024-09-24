@@ -7,7 +7,7 @@ about: Developer Cyclist Student
 year: 2019
 age: 24
 
-baseurl: "/"
+baseurl: ""
 url: "https://riberman.github.io"
 timezone: America/Sao_Paulo
 
@@ -32,3 +32,5 @@ markdown: kramdown
 plugins: [jekyll-paginate, jekyll-gist]
 
 permalink: /:categories/:title/
+
+assets_dir: static
