@@ -5,56 +5,293 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 13:51:05 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 13:51:05 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 15:36:59 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 15:36:59 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
         <title>WhatsApp Hack</title>
-        <description>&lt;p&gt;Uma das atividades mais comuns utilizando o git é o comando &lt;strong&gt;merge&lt;/strong&gt;  utilizado para mesclar &lt;strong&gt;branchs,&lt;/strong&gt; como por exemplo quando ocorrem atualizações no branch de desenvolvimento pelos seus colegas, exatamente enquanto você trabalhava em uma funcionalidade, no momento seu branch está desatualizado, e antes de efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para enviar suas alterações ao branch de desenvolvimento, é necessário efetuar uma junção dessas modificações.&lt;/p&gt;
+        <description>&lt;h2 id=&quot;extrutura-básica&quot;&gt;Extrutura básica&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Nesse passo a passo estamos ignorando a instalação do NodeJS na máquina…&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Crie uma pasta com o nome do projeto exemplo “&lt;strong&gt;whatsapp-hack&lt;/strong&gt;”.&lt;/li&gt;
+  &lt;li&gt;Abra o &lt;strong&gt;Visual Studio Code&lt;/strong&gt; nessa pasta.&lt;/li&gt;
+  &lt;li&gt;Abra um &lt;strong&gt;CMD/Terminal&lt;/strong&gt; dentro da pasta criada e execute os comando abaixo.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.&lt;/p&gt;
+&lt;p&gt;npm init -y 
+npm install venom-bot express ejs socket.io&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout branchcolegas
+&lt;ul&gt;
+  &lt;li&gt;Crie um arquivo na raiz do projeto chamado de “&lt;strong&gt;app.js&lt;/strong&gt;”.&lt;/li&gt;
+  &lt;li&gt;Crie uma pasta na raiz do projeto chamada de “&lt;strong&gt;views&lt;/strong&gt;”.&lt;/li&gt;
+  &lt;li&gt;Crie dois arquivos dentro da pasta &lt;strong&gt;views&lt;/strong&gt;, o &lt;strong&gt;index.ejs&lt;/strong&gt; e &lt;strong&gt;send.ejs&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Após isso a sua extrutura deve estar assim:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/whatsapp-hack
+│
+├── /node_modules
+├── /views                # Páginas EJS (QR Code e Envio de Mensagens)
+│   ├── index.ejs
+│   └── send.ejs
+├── app.js                # Arquivo principal do servidor
+└── package.json ## Iniciando a codificação
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Agora é necessário efetuar um &lt;strong&gt;pull&lt;/strong&gt; para receber as atualizações no branch selecionado.&lt;/p&gt;
+&lt;p&gt;No inicio do arquivo &lt;strong&gt;app.js&lt;/strong&gt; cole o seguinte trecho, vamos conversar um pouco sobre cada linha.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git pull origin branchcolegas
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//Importando bibliotecas
+const express = require(&apos;express&apos;);
+const { create } = require(&apos;venom-bot&apos;);
+const http = require(&apos;http&apos;);
+const path = require(&apos;path&apos;);
+const socketIo = require(&apos;socket.io&apos;);
+
+//Iniciando serviços
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
+//Configurando a aplicação
+app.set(&apos;view engine&apos;, &apos;ejs&apos;);
+app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));
+app.use(express.json());
+app.use(express.urlencoded({ extended:  true }));
+
+const  PORT = 3000;
+let venomClient = null;
+let venomStatus = null;
+let venomQR = null;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Então para que não ocorra problemas efetuando uma &lt;strong&gt;pull request&lt;/strong&gt; diretamente para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento, ao fazer um &lt;strong&gt;push&lt;/strong&gt; é recomendável criar um novo branch.&lt;/p&gt;
+&lt;p&gt;Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo &lt;strong&gt;app.js&lt;/strong&gt; logo abaixo do código anterior.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b branchdetransicao  
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// URL leitura/status da conexão
+app.get(&apos;/&apos;, (req, res) =&amp;gt; {
+  res.render(&apos;index&apos;, { venomStatus, venomQR });
+});
+
+// URL envio de mensagens (Form)
+app.get(&apos;/send&apos;, (req, res) =&amp;gt; {
+    res.render(&apos;send&apos;);
+});
+
+// URL envio de mensagens (Json)
+app.post(&apos;/send-message&apos;, (req, res) =&amp;gt; {
+    const { number, message } = req.body;
+
+    if (venomClient) {
+        venomClient
+            .sendText(`55${number}@c.us`, message)
+            .then((result) =&amp;gt; res.status(200).json({ status: &apos;success&apos;, result }))
+            .catch((error) =&amp;gt; res.status(500).json({ status: &apos;error&apos;, error }));
+    } else {
+        res.status(500).json({ status: &apos;error&apos;, message: &apos;WhatsApp não conectado.&apos; });
+    }
+});
+
+// Iniciar o servidor
+server.listen(PORT, () =&amp;gt; {
+    console.log(`Servidor executando na porta: ${PORT}`);
+});  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Ou você pode utilizar o mesmo &lt;strong&gt;branch&lt;/strong&gt; que estava trabalhando, no caso basta ir até ele.&lt;/p&gt;
+&lt;p&gt;No arquivo &lt;strong&gt;send.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout meubranch
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;pt-BR&quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+        &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&amp;gt;
+        &amp;lt;title&amp;gt;Nova Mensagem | WhatsApp Hack-Workshop&amp;lt;/title&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;h1&amp;gt;Envie uma Mensagem via WhatsApp&amp;lt;/h1&amp;gt;
+
+        &amp;lt;form action=&quot;/send-message&quot; method=&quot;POST&quot;&amp;gt;
+            &amp;lt;label for=&quot;number&quot;&amp;gt;Número:&amp;lt;/label&amp;gt;&amp;lt;br&amp;gt;
+            &amp;lt;input type=&quot;text&quot; id=&quot;number&quot; name=&quot;number&quot; required&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+
+            &amp;lt;label for=&quot;message&quot;&amp;gt;Mensagem:&amp;lt;/label&amp;gt;&amp;lt;br&amp;gt;
+            &amp;lt;textarea id=&quot;message&quot; name=&quot;message&quot; rows=&quot;4&quot; required&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+
+            &amp;lt;button type=&quot;submit&quot;&amp;gt;Enviar&amp;lt;/button&amp;gt;
+        &amp;lt;/form&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Se você escolheu a opção de criar um &lt;strong&gt;branch&lt;/strong&gt;, é necessário efetuar o comando &lt;strong&gt;merge&lt;/strong&gt; nele.&lt;/p&gt;
+&lt;p&gt;No arquivo &lt;strong&gt;index.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge meubranch  
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;en&quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+        &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&amp;gt;
+        &amp;lt;title&amp;gt;Qr Code | WhatsApp Hack-Workshop&amp;lt;/title&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;center&amp;gt;  
+            &amp;lt;h1&amp;gt;WhatsApp Hack-Workshop&amp;lt;/h1&amp;gt;
+            &amp;lt;p id=&quot;status&quot;&amp;gt;&amp;lt;/p&amp;gt;
+            &amp;lt;img id=&quot;qr&quot;/&amp;gt;
+        &amp;lt;/center&amp;gt; 
+
+        &amp;lt;script src=&quot;/socket.io/socket.io.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+        &amp;lt;script&amp;gt;
+            const socket = io();
+
+            const loading_icon_url = `https://riberman.github.io/static/img/dev/loading.gif`;
+            const ok_icon_url = `https://riberman.github.io/static/img/dev/ok_icon.png`;
+
+            //Recebe o status e QR do Venom (app.js)
+            setQr(&apos;&amp;lt;%= venomQR %&amp;gt;&apos;);
+            setStatus(&apos;&amp;lt;%= venomStatus %&amp;gt;&apos;);
+
+            //Recebe o status do Venom (Socket.io)
+            socket.on(&apos;status&apos;, (status) =&amp;gt; {
+                setStatus(status);
+            });
+
+            //Recebe QR code (Socket.io)
+            socket.on(&apos;qr&apos;, (qrCode) =&amp;gt; {
+            if (qrCode) {
+                setQr(qrCode);
+            } else {
+                setQr(loading_icon_url);
+            }
+            });
+
+            //Altera Status na tag &amp;lt;p id=&quot;status&quot;&amp;gt;
+            function setStatus(status) {
+                const statusDiv = document.getElementById(&apos;status&apos;);
+        
+                switch (status) {
+                    case &apos;notLogged&apos;:
+                        statusDiv.innerHTML = &apos;Efetue a leitura do QR Code.&apos;;
+                        break;
+                    case &apos;successChat&apos;:
+                    case &apos;CONNECTED&apos;:
+                        setQr(ok_icon_url);
+                        statusDiv.innerHTML = &apos;Chat estabelecido com sucesso.&apos;;
+                        break;
+                    default:
+                        setQr(loading_icon_url);
+                        statusDiv.innerHTML = &apos;Carregando WhatsApp aguarde.&apos;;
+                        break;
+                }
+            }
+
+            //Altera Imagem na tag &amp;lt;img id=&quot;qr&quot;&amp;gt;
+            function setQr(image) {
+                const qrDiv = document.getElementById(&apos;qr&apos;);
+                qrDiv.src = image;
+            }
+        &amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Ou se não criou um &lt;strong&gt;branch&lt;/strong&gt; novo, você precisa trazer os arquivos do &lt;strong&gt;branch&lt;/strong&gt; de seus colegas para o seu usando.&lt;/p&gt;
+&lt;p&gt;Agora podemos testar e executar o servidor, na raiz do projeto execute:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge branchcolegas
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node app.js  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use &lt;strong&gt;ESC + : + Q&lt;/strong&gt;,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.&lt;/p&gt;
+&lt;p&gt;Teste no navegador as URLs&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://localhost:3000&lt;/li&gt;
+  &lt;li&gt;http://localhost:3000/send&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
-git commit -m &quot;Exemplo efetuado merge no branch&quot;  
+&lt;p&gt;Para parar o servidor use &lt;strong&gt;CTRL+C&lt;/strong&gt; no CMD/Terminal.&lt;/p&gt;
+
+&lt;p&gt;Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no &lt;strong&gt;app.js&lt;/strong&gt; entre os trechos &lt;strong&gt;// URL envio de mensagens (Json)&lt;/strong&gt; e &lt;strong&gt;// Iniciar o servidor&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Criando sessão Venom-bot e capturando QR/Status
+venomClient = create({
+        session: &apos;whatsapp-bot&apos;,
+        multidevice: true,
+    },
+    // Gerencia mudanças na variável base64Qr
+    (base64Qr) =&amp;gt; {
+        venomQR = base64Qr;
+        io.emit(&apos;qr&apos;, base64Qr);              
+    },
+    // Gerencia mudanças na variável statusFind
+    (statusFind) =&amp;gt; {
+        venomStatus = statusFind;
+        io.emit(&apos;status&apos;, statusFind);
+});
+
+//Configurando ações quando o cliente é inicializado.
+venomClient.then(async (client) =&amp;gt; {
+
+    // Gerencia mudanças de status
+    client.onStateChange((state) =&amp;gt; {
+        venomStatus = state;
+        io.emit(&apos;status&apos;, state); 
+    });
+
+    // Listener para mensagens recebidas
+    client.onMessage(async (message) =&amp;gt; {
+        try {
+            console.log(&apos;Received Message:&apos;, message);
+
+            // Adicionando múltiplas condições e validações
+            if (message.isGroupMsg === false) {
+                if (message.body.toLowerCase() === &apos;hi&apos;) {
+                    await sendMessage(client, message.from, &apos;Bem-vindo ao Venom 🕷&apos;);
+                } else if (message.body.toLowerCase().includes(&apos;dev&apos;)) {
+                    await sendMessage(client, message.from, &apos;Bem-vindo dev!&apos;);
+                } else if (message.from === &apos;55NUMERO_COM_DDD@c.us&apos;) {
+                    await sendMessage(client, message.from, &apos;Você é 55NUMERO_COM_DDD@c.us!&apos;);
+                }
+            }
+        } catch (error) {
+            console.error(&apos;Erro onMessage:&apos;, error);
+        }
+    });
+}).catch((err) =&amp;gt; {
+    console.error(&apos;Erro Venom-bot:&apos;, err);
+});
+
+async function sendMessage(client, to, message) {
+    try {
+        const result = await client.sendText(to, message);
+        console.log(&apos;Mensagem enviada:&apos;, result);
+    } catch (error) {
+        console.error(&apos;Erro ao enviar:&apos;, error);
+    }
+}
+
+io.on(&apos;connection&apos;, (socket) =&amp;gt; {
+    console.log(&apos;Client conectado ao Socket.io&apos;);
+    socket.on(&apos;disconnect&apos;, () =&amp;gt; console.log(&apos;Client desconectado do Socket.io&apos;));
+});  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Agora então é só efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento normalmente, efetuando um &lt;strong&gt;push&lt;/strong&gt; ou &lt;strong&gt;pull request&lt;/strong&gt; pelo &lt;strong&gt;GitHub&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Agora com o ambiente configurado, podemos subir o servidor novamente:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin branchdedesenvolvimento  
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node app.js
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;em&gt;É recomendável efetuar &lt;strong&gt;pull request&lt;/strong&gt; para branchs principais usando o &lt;strong&gt;site&lt;/strong&gt;, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Com o servidor em execução abrimos o navegador e vamos para:
+http://localhost:3000&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;É possível visualizar a página carregando e algumas mudanças de status até que o QR Code do WhatsApp seja carregado na tela.&lt;/li&gt;
+  &lt;li&gt;Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;O projeto apresentou o básico da manipulação e integração usando o Venom Bot. Existem várias possíbilidades e aplicações dessa ferramenta, para mais informações aconselho estudar a documentação do projeto no GitHub.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;links-úteis&quot;&gt;Links Úteis&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Projeto Venom Bot: &lt;a href=&quot;https://github.com/orkestral/venom&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Apresentação: &lt;a href=&quot;https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/&quot; target=&quot;_blank&quot;&gt;Google Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Fri, 18 Oct 2024 10:00:00 -0300</pubDate>
         <link>http://0.0.0.0:4000/dev/whatshack/</link>

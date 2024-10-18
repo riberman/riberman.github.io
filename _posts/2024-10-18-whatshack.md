@@ -9,48 +9,272 @@ description: Como usar uma ferramenta opensource para desenvolver integração c
 image: https://blog.softaliza.com.br/wp-content/uploads/2023/02/WhatsApp-Image-2023-02-07-at-14.23.15.jpeg
 ---
 
+## Extrutura básica
+*Nesse passo a passo estamos ignorando a instalação do NodeJS na máquina...*
+- Crie uma pasta com o nome do projeto exemplo "**whatsapp-hack**".  
+- Abra o **Visual Studio Code** nessa pasta.
+- Abra um **CMD/Terminal** dentro da pasta criada e execute os comando abaixo.
+  
+npm init -y 
+npm install venom-bot express ejs socket.io
+  
+- Crie um arquivo na raiz do projeto chamado de "**app.js**".
+- Crie uma pasta na raiz do projeto chamada de "**views**".
+- Crie dois arquivos dentro da pasta **views**, o **index.ejs** e **send.ejs**.
 
-Uma das atividades mais comuns utilizando o git é o comando **merge**  utilizado para mesclar **branchs,** como por exemplo quando ocorrem atualizações no branch de desenvolvimento pelos seus colegas, exatamente enquanto você trabalhava em uma funcionalidade, no momento seu branch está desatualizado, e antes de efetuar uma **pull request** para enviar suas alterações ao branch de desenvolvimento, é necessário efetuar uma junção dessas modificações.  
+Após isso a sua extrutura deve estar assim:
 
-Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.  
+    /whatsapp-hack
+    │
+    ├── /node_modules
+    ├── /views                # Páginas EJS (QR Code e Envio de Mensagens)
+    │   ├── index.ejs
+    │   └── send.ejs
+    ├── app.js                # Arquivo principal do servidor
+    └── package.json
+## Iniciando a codificação
+
+No inicio do arquivo **app.js** cole o seguinte trecho, vamos conversar um pouco sobre cada linha.
+
+    //Importando bibliotecas
+    const express = require('express');
+    const { create } = require('venom-bot');
+    const http = require('http');
+    const path = require('path');
+    const socketIo = require('socket.io');
+    
+    //Iniciando serviços
+    const app = express();
+    const server = http.createServer(app);
+    const io = socketIo(server);
+    
+    //Configurando a aplicação
+    app.set('view engine', 'ejs');
+    app.set('views', path.join(__dirname, 'views'));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended:  true }));
+    
+    const  PORT = 3000;
+    let venomClient = null;
+    let venomStatus = null;
+    let venomQR = null;
+
+  Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.
+
+    // URL leitura/status da conexão
+    app.get('/', (req, res) => {
+      res.render('index', { venomStatus, venomQR });
+    });
+    
+    // URL envio de mensagens (Form)
+    app.get('/send', (req, res) => {
+        res.render('send');
+    });
+    
+    // URL envio de mensagens (Json)
+    app.post('/send-message', (req, res) => {
+        const { number, message } = req.body;
+    
+        if (venomClient) {
+            venomClient
+                .sendText(`55${number}@c.us`, message)
+                .then((result) => res.status(200).json({ status: 'success', result }))
+                .catch((error) => res.status(500).json({ status: 'error', error }));
+        } else {
+            res.status(500).json({ status: 'error', message: 'WhatsApp não conectado.' });
+        }
+    });
+    
+    // Iniciar o servidor
+    server.listen(PORT, () => {
+        console.log(`Servidor executando na porta: ${PORT}`);
+    });  
 
 
-    git checkout branchcolegas
+No arquivo **send.ejs** cole o seguinte trecho:
 
-   Agora é necessário efetuar um **pull** para receber as atualizações no branch selecionado.  
-
-    git pull origin branchcolegas
-
-
-  Então para que não ocorra problemas efetuando uma **pull request** diretamente para o **branch** de desenvolvimento, ao fazer um **push** é recomendável criar um novo branch.  
-
-    git checkout -b branchdetransicao  
-
-Ou você pode utilizar o mesmo **branch** que estava trabalhando, no caso basta ir até ele.  
-
-    git checkout meubranch
-
-
-Se você escolheu a opção de criar um **branch**, é necessário efetuar o comando **merge** nele.
-
-
-
-    git merge meubranch  
-
-Ou se não criou um **branch** novo, você precisa trazer os arquivos do **branch** de seus colegas para o seu usando.  
-
-    git merge branchcolegas
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nova Mensagem | WhatsApp Hack-Workshop</title>
+        </head>
+        <body>
+            <h1>Envie uma Mensagem via WhatsApp</h1>
+    
+            <form action="/send-message" method="POST">
+                <label for="number">Número:</label><br>
+                <input type="text" id="number" name="number" required><br><br>
+    
+                <label for="message">Mensagem:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+    
+                <button type="submit">Enviar</button>
+            </form>
+        </body>
+    </html>  
 
 
+No arquivo **index.ejs** cole o seguinte trecho:  
 
-Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use **ESC + : + Q**,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.  
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Qr Code | WhatsApp Hack-Workshop</title>
+        </head>
+        <body>
+            <center>  
+                <h1>WhatsApp Hack-Workshop</h1>
+                <p id="status"></p>
+                <img id="qr"/>
+            </center> 
+    
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+                const socket = io();
+    
+                const loading_icon_url = `https://riberman.github.io/static/img/dev/loading.gif`;
+                const ok_icon_url = `https://riberman.github.io/static/img/dev/ok_icon.png`;
+    
+                //Recebe o status e QR do Venom (app.js)
+                setQr('<%= venomQR %>');
+                setStatus('<%= venomStatus %>');
+    
+                //Recebe o status do Venom (Socket.io)
+                socket.on('status', (status) => {
+                    setStatus(status);
+                });
+    
+                //Recebe QR code (Socket.io)
+                socket.on('qr', (qrCode) => {
+                if (qrCode) {
+                    setQr(qrCode);
+                } else {
+                    setQr(loading_icon_url);
+                }
+                });
+    
+                //Altera Status na tag <p id="status">
+                function setStatus(status) {
+                    const statusDiv = document.getElementById('status');
+            
+                    switch (status) {
+                        case 'notLogged':
+                            statusDiv.innerHTML = 'Efetue a leitura do QR Code.';
+                            break;
+                        case 'successChat':
+                        case 'CONNECTED':
+                            setQr(ok_icon_url);
+                            statusDiv.innerHTML = 'Chat estabelecido com sucesso.';
+                            break;
+                        default:
+                            setQr(loading_icon_url);
+                            statusDiv.innerHTML = 'Carregando WhatsApp aguarde.';
+                            break;
+                    }
+                }
+    
+                //Altera Imagem na tag <img id="qr">
+                function setQr(image) {
+                    const qrDiv = document.getElementById('qr');
+                    qrDiv.src = image;
+                }
+            </script>
+        </body>
+    </html>  
 
 
-    git add .
-    git commit -m "Exemplo efetuado merge no branch"  
+Agora podemos testar e executar o servidor, na raiz do projeto execute:  
 
-Agora então é só efetuar uma **pull request** para o **branch** de desenvolvimento normalmente, efetuando um **push** ou **pull request** pelo **GitHub**.
+    node app.js  
 
-    git push origin branchdedesenvolvimento  
+Teste no navegador as URLs 
+- http://localhost:3000
+- http://localhost:3000/send  
 
-*É recomendável efetuar **pull request** para branchs principais usando o **site**, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.*
+Para parar o servidor use **CTRL+C** no CMD/Terminal.
+
+
+Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no **app.js** entre os trechos **// URL envio de mensagens (Json)** e **// Iniciar o servidor**:
+
+    // Criando sessão Venom-bot e capturando QR/Status
+    venomClient = create({
+            session: 'whatsapp-bot',
+            multidevice: true,
+        },
+        // Gerencia mudanças na variável base64Qr
+        (base64Qr) => {
+            venomQR = base64Qr;
+            io.emit('qr', base64Qr);              
+        },
+        // Gerencia mudanças na variável statusFind
+        (statusFind) => {
+            venomStatus = statusFind;
+            io.emit('status', statusFind);
+    });
+    
+    //Configurando ações quando o cliente é inicializado.
+    venomClient.then(async (client) => {
+    
+        // Gerencia mudanças de status
+        client.onStateChange((state) => {
+            venomStatus = state;
+            io.emit('status', state); 
+        });
+    
+        // Listener para mensagens recebidas
+        client.onMessage(async (message) => {
+            try {
+                console.log('Received Message:', message);
+    
+                // Adicionando múltiplas condições e validações
+                if (message.isGroupMsg === false) {
+                    if (message.body.toLowerCase() === 'hi') {
+                        await sendMessage(client, message.from, 'Bem-vindo ao Venom 🕷');
+                    } else if (message.body.toLowerCase().includes('dev')) {
+                        await sendMessage(client, message.from, 'Bem-vindo dev!');
+                    } else if (message.from === '55NUMERO_COM_DDD@c.us') {
+                        await sendMessage(client, message.from, 'Você é 55NUMERO_COM_DDD@c.us!');
+                    }
+                }
+            } catch (error) {
+                console.error('Erro onMessage:', error);
+            }
+        });
+    }).catch((err) => {
+        console.error('Erro Venom-bot:', err);
+    });
+    
+    async function sendMessage(client, to, message) {
+        try {
+            const result = await client.sendText(to, message);
+            console.log('Mensagem enviada:', result);
+        } catch (error) {
+            console.error('Erro ao enviar:', error);
+        }
+    }
+    
+    io.on('connection', (socket) => {
+        console.log('Client conectado ao Socket.io');
+        socket.on('disconnect', () => console.log('Client desconectado do Socket.io'));
+    });  
+
+
+Agora com o ambiente configurado, podemos subir o servidor novamente:
+
+    node app.js
+
+Com o servidor em execução abrimos o navegador e vamos para:
+http://localhost:3000
+
+- É possível visualizar a página carregando e algumas mudanças de status até que o QR Code do WhatsApp seja carregado na tela.
+- Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.  
+  
+*O projeto apresentou o básico da manipulação e integração usando o Venom Bot. Existem várias possíbilidades e aplicações dessa ferramenta, para mais informações aconselho estudar a documentação do projeto no GitHub.*  
+  
+## Links Úteis
+- Projeto Venom Bot: [GitHub](https://github.com/orkestral/venom){:target="_blank"}
+- Apresentação: [Google Slides](https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/){:target="_blank"}
