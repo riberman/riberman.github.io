@@ -32,6 +32,7 @@ Após isso a sua extrutura deve estar assim:
     │   └── send.ejs
     ├── app.js                # Arquivo principal do servidor
     └── package.json  
+    
 <br>  
     
 ## Iniciando a codificação

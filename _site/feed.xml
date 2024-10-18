@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 16:11:02 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 16:11:02 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 16:16:09 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 16:16:09 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -35,8 +35,10 @@
 │   ├── index.ejs
 │   └── send.ejs
 ├── app.js                # Arquivo principal do servidor
-└── package.json   &amp;lt;br&amp;gt;  
+└── package.json  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;iniciando-a-codificação&quot;&gt;Iniciando a codificação&lt;/h2&gt;
 
