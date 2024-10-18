@@ -32,7 +32,7 @@ Após isso a sua extrutura deve estar assim:
     │   └── send.ejs
     ├── app.js                # Arquivo principal do servidor
     └── package.json  
-    
+
 <br>  
     
 ## Iniciando a codificação
@@ -61,6 +61,7 @@ No inicio do arquivo **app.js** cole o seguinte trecho, vamos conversar um pouco
     let venomClient = null;
     let venomStatus = null;
     let venomQR = null;
+
 <br>
 <br>
   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.

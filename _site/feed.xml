@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 16:16:09 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 16:16:09 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 16:20:47 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 16:20:47 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -65,9 +65,14 @@ app.use(express.urlencoded({ extended:  true }));
 const  PORT = 3000;
 let venomClient = null;
 let venomStatus = null;
-let venomQR = null; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt;   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.
+let venomQR = null;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-// URL leitura/status da conexão
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+  Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo &lt;strong&gt;app.js&lt;/strong&gt; logo abaixo do código anterior.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// URL leitura/status da conexão
 app.get(&apos;/&apos;, (req, res) =&amp;gt; {
   res.render(&apos;index&apos;, { venomStatus, venomQR });
 });

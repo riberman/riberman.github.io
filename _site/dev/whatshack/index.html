@@ -292,9 +292,14 @@ app.use(express.urlencoded({ extended:  true }));
 const  PORT = 3000;
 let venomClient = null;
 let venomStatus = null;
-let venomQR = null; &lt;br&gt; &lt;br&gt;   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.
+let venomQR = null;
+</code></pre></div></div>
 
-// URL leitura/status da conexão
+<p><br />
+<br />
+  Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo <strong>app.js</strong> logo abaixo do código anterior.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// URL leitura/status da conexão
 app.get('/', (req, res) =&gt; {
   res.render('index', { venomStatus, venomQR });
 });
