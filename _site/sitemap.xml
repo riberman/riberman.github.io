@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 15:47:59 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 15:47:59 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 16:11:02 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 16:11:02 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -16,12 +16,11 @@
 &lt;ul&gt;
   &lt;li&gt;Crie uma pasta com o nome do projeto exemplo “&lt;strong&gt;whatsapp-hack&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Abra o &lt;strong&gt;Visual Studio Code&lt;/strong&gt; nessa pasta.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Abra um &lt;strong&gt;CMD/Terminal&lt;/strong&gt; dentro da pasta criada e execute os comando abaixo.&lt;/p&gt;
-
-    &lt;p&gt;npm init -y &lt;br /&gt;
-  npm install venom-bot express ejs socket.io&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Abra um &lt;strong&gt;CMD/Terminal&lt;/strong&gt; dentro da pasta criada e execute os comando abaixo.&lt;br /&gt;
+&lt;br /&gt;
+  npm init -y &lt;br /&gt;
+  npm install venom-bot express ejs socket.io&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
   &lt;li&gt;Crie um arquivo na raiz do projeto chamado de “&lt;strong&gt;app.js&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Crie uma pasta na raiz do projeto chamada de “&lt;strong&gt;views&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Crie dois arquivos dentro da pasta &lt;strong&gt;views&lt;/strong&gt;, o &lt;strong&gt;index.ejs&lt;/strong&gt; e &lt;strong&gt;send.ejs&lt;/strong&gt;.&lt;/li&gt;
@@ -36,8 +35,10 @@
 │   ├── index.ejs
 │   └── send.ejs
 ├── app.js                # Arquivo principal do servidor
-└── package.json ## Iniciando a codificação
+└── package.json   &amp;lt;br&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;iniciando-a-codificação&quot;&gt;Iniciando a codificação&lt;/h2&gt;
 
 &lt;p&gt;No inicio do arquivo &lt;strong&gt;app.js&lt;/strong&gt; cole o seguinte trecho, vamos conversar um pouco sobre cada linha.&lt;/p&gt;
 
@@ -62,12 +63,9 @@ app.use(express.urlencoded({ extended:  true }));
 const  PORT = 3000;
 let venomClient = null;
 let venomStatus = null;
-let venomQR = null;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+let venomQR = null; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt;   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.
 
-&lt;p&gt;Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo &lt;strong&gt;app.js&lt;/strong&gt; logo abaixo do código anterior.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// URL leitura/status da conexão
+// URL leitura/status da conexão
 app.get(&apos;/&apos;, (req, res) =&amp;gt; {
   res.render(&apos;index&apos;, { venomStatus, venomQR });
 });
@@ -97,7 +95,9 @@ server.listen(PORT, () =&amp;gt; {
 });  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;No arquivo &lt;strong&gt;send.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+No arquivo &lt;strong&gt;send.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html lang=&quot;pt-BR&quot;&amp;gt;
@@ -122,7 +122,9 @@ server.listen(PORT, () =&amp;gt; {
 &amp;lt;/html&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;No arquivo &lt;strong&gt;index.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+No arquivo &lt;strong&gt;index.ejs&lt;/strong&gt; cole o seguinte trecho:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html lang=&quot;en&quot;&amp;gt;
@@ -193,20 +195,23 @@ server.listen(PORT, () =&amp;gt; {
 &amp;lt;/html&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Agora podemos testar e executar o servidor, na raiz do projeto execute:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+Agora podemos testar e executar o servidor, na raiz do projeto execute:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node app.js  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Teste no navegador as URLs&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;http://localhost:3000&lt;/li&gt;
-  &lt;li&gt;http://localhost:3000/send&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://localhost:3000&quot; target=&quot;_blank&quot;&gt;http://localhost:3000&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://localhost:3000/send&quot; target=&quot;_blank&quot;&gt;http://localhost:3000/send&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Para parar o servidor use &lt;strong&gt;CTRL+C&lt;/strong&gt; no CMD/Terminal.&lt;/p&gt;
-
-&lt;p&gt;Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no &lt;strong&gt;app.js&lt;/strong&gt; entre os trechos &lt;strong&gt;// URL envio de mensagens (Json)&lt;/strong&gt; e &lt;strong&gt;// Iniciar o servidor&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Para parar o servidor use &lt;strong&gt;CTRL+C&lt;/strong&gt; no CMD/Terminal.
+&lt;br /&gt;
+&lt;br /&gt;&lt;br /&gt;
+Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no &lt;strong&gt;app.js&lt;/strong&gt; entre os trechos &lt;strong&gt;// URL envio de mensagens (Json)&lt;/strong&gt; e &lt;strong&gt;// Iniciar o servidor&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Criando sessão Venom-bot e capturando QR/Status
 venomClient = create({
@@ -271,7 +276,9 @@ io.on(&apos;connection&apos;, (socket) =&amp;gt; {
 });  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Agora com o ambiente configurado, podemos subir o servidor novamente:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+Agora com o ambiente configurado, podemos subir o servidor novamente:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node app.js
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -281,7 +288,9 @@ http://localhost:3000&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;É possível visualizar a página carregando e algumas mudanças de status até que o QR Code do WhatsApp seja carregado na tela.&lt;/li&gt;
-  &lt;li&gt;Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.&lt;/li&gt;
+  &lt;li&gt;Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;em&gt;O projeto apresentou o básico da manipulação e integração usando o Venom Bot. Existem várias possíbilidades e aplicações dessa ferramenta, para mais informações aconselho estudar a documentação do projeto no GitHub.&lt;/em&gt;&lt;/p&gt;
@@ -292,6 +301,9 @@ http://localhost:3000&lt;/p&gt;
   &lt;li&gt;Apresentação: &lt;a href=&quot;https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/&quot; target=&quot;_blank&quot;&gt;Google Slides&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Projeto WhatsHack: &lt;em&gt;Disponível após a apresentação.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 18 Oct 2024 10:00:00 -0300</pubDate>
         <link>http://0.0.0.0:4000/dev/whatshack/</link>

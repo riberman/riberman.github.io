@@ -243,12 +243,11 @@
 <ul>
   <li>Crie uma pasta com o nome do projeto exemplo “<strong>whatsapp-hack</strong>”.</li>
   <li>Abra o <strong>Visual Studio Code</strong> nessa pasta.</li>
-  <li>
-    <p>Abra um <strong>CMD/Terminal</strong> dentro da pasta criada e execute os comando abaixo.</p>
-
-    <p>npm init -y <br />
-  npm install venom-bot express ejs socket.io</p>
-  </li>
+  <li>Abra um <strong>CMD/Terminal</strong> dentro da pasta criada e execute os comando abaixo.<br />
+<br />
+  npm init -y <br />
+  npm install venom-bot express ejs socket.io<br />
+<br /></li>
   <li>Crie um arquivo na raiz do projeto chamado de “<strong>app.js</strong>”.</li>
   <li>Crie uma pasta na raiz do projeto chamada de “<strong>views</strong>”.</li>
   <li>Crie dois arquivos dentro da pasta <strong>views</strong>, o <strong>index.ejs</strong> e <strong>send.ejs</strong>.</li>
@@ -263,8 +262,10 @@
 │   ├── index.ejs
 │   └── send.ejs
 ├── app.js                # Arquivo principal do servidor
-└── package.json ## Iniciando a codificação
+└── package.json   &lt;br&gt;  
 </code></pre></div></div>
+
+<h2 id="iniciando-a-codificação">Iniciando a codificação</h2>
 
 <p>No inicio do arquivo <strong>app.js</strong> cole o seguinte trecho, vamos conversar um pouco sobre cada linha.</p>
 
@@ -289,12 +290,9 @@ app.use(express.urlencoded({ extended:  true }));
 const  PORT = 3000;
 let venomClient = null;
 let venomStatus = null;
-let venomQR = null;
-</code></pre></div></div>
+let venomQR = null; &lt;br&gt; &lt;br&gt;   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo **app.js** logo abaixo do código anterior.
 
-<p>Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo <strong>app.js</strong> logo abaixo do código anterior.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// URL leitura/status da conexão
+// URL leitura/status da conexão
 app.get('/', (req, res) =&gt; {
   res.render('index', { venomStatus, venomQR });
 });
@@ -324,7 +322,9 @@ server.listen(PORT, () =&gt; {
 });  
 </code></pre></div></div>
 
-<p>No arquivo <strong>send.ejs</strong> cole o seguinte trecho:</p>
+<p><br />
+<br />
+No arquivo <strong>send.ejs</strong> cole o seguinte trecho:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="pt-BR"&gt;
@@ -349,7 +349,9 @@ server.listen(PORT, () =&gt; {
 &lt;/html&gt;  
 </code></pre></div></div>
 
-<p>No arquivo <strong>index.ejs</strong> cole o seguinte trecho:</p>
+<p><br />
+<br />
+No arquivo <strong>index.ejs</strong> cole o seguinte trecho:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -420,20 +422,23 @@ server.listen(PORT, () =&gt; {
 &lt;/html&gt;  
 </code></pre></div></div>
 
-<p>Agora podemos testar e executar o servidor, na raiz do projeto execute:</p>
+<p><br />
+<br />
+Agora podemos testar e executar o servidor, na raiz do projeto execute:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node app.js  
 </code></pre></div></div>
 
 <p>Teste no navegador as URLs</p>
 <ul>
-  <li>http://localhost:3000</li>
-  <li>http://localhost:3000/send</li>
+  <li><a href="http://localhost:3000" target="_blank">http://localhost:3000</a></li>
+  <li><a href="http://localhost:3000/send" target="_blank">http://localhost:3000/send</a></li>
 </ul>
 
-<p>Para parar o servidor use <strong>CTRL+C</strong> no CMD/Terminal.</p>
-
-<p>Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no <strong>app.js</strong> entre os trechos <strong>// URL envio de mensagens (Json)</strong> e <strong>// Iniciar o servidor</strong>:</p>
+<p>Para parar o servidor use <strong>CTRL+C</strong> no CMD/Terminal.
+<br />
+<br /><br />
+Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no <strong>app.js</strong> entre os trechos <strong>// URL envio de mensagens (Json)</strong> e <strong>// Iniciar o servidor</strong>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Criando sessão Venom-bot e capturando QR/Status
 venomClient = create({
@@ -498,7 +503,9 @@ io.on('connection', (socket) =&gt; {
 });  
 </code></pre></div></div>
 
-<p>Agora com o ambiente configurado, podemos subir o servidor novamente:</p>
+<p><br />
+<br />
+Agora com o ambiente configurado, podemos subir o servidor novamente:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node app.js
 </code></pre></div></div>
@@ -508,7 +515,9 @@ http://localhost:3000</p>
 
 <ul>
   <li>É possível visualizar a página carregando e algumas mudanças de status até que o QR Code do WhatsApp seja carregado na tela.</li>
-  <li>Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.</li>
+  <li>Após efetuar a leitura do QR Code o nosso script é capaz de interagir com o WhatsApp, como receber mensagens, enviar mensagens, visualizar contatos e etc.<br />
+<br />
+<br /></li>
 </ul>
 
 <p><em>O projeto apresentou o básico da manipulação e integração usando o Venom Bot. Existem várias possíbilidades e aplicações dessa ferramenta, para mais informações aconselho estudar a documentação do projeto no GitHub.</em></p>
@@ -519,6 +528,9 @@ http://localhost:3000</p>
   <li>Apresentação: <a href="https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/" target="_blank">Google Slides</a></li>
   <li>Projeto WhatsHack: <em>Disponível após a apresentação.</em></li>
 </ul>
+
+<p><br />
+<br /></p>
 </div>
     <hr />
     <div class="share-page">
