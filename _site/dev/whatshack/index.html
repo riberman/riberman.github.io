@@ -245,9 +245,11 @@
   <li>Abra o <strong>Visual Studio Code</strong> nessa pasta.</li>
   <li>Abra um <strong>CMD/Terminal</strong> dentro da pasta criada e execute os comando abaixo.<br />
 <br />
-  npm init -y <br />
-  npm install venom-bot express ejs socket.io<br />
-<br /></li>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init <span class="nt">-y</span>   
+npm <span class="nb">install </span>venom-bot express ejs socket.io
+</code></pre></div>    </div>
+    <p><br /></p>
+  </li>
   <li>Crie um arquivo na raiz do projeto chamado de “<strong>app.js</strong>”.</li>
   <li>Crie uma pasta na raiz do projeto chamada de “<strong>views</strong>”.</li>
   <li>Crie dois arquivos dentro da pasta <strong>views</strong>, o <strong>index.ejs</strong> e <strong>send.ejs</strong>.</li>
@@ -271,64 +273,62 @@
 
 <p>No inicio do arquivo <strong>app.js</strong> cole o seguinte trecho, vamos conversar um pouco sobre cada linha.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//Importando bibliotecas
-const express = require('express');
-const { create } = require('venom-bot');
-const http = require('http');
-const path = require('path');
-const socketIo = require('socket.io');
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Importando bibliotecas</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">create</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">venom-bot</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">socketIo</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">socket.io</span><span class="dl">'</span><span class="p">);</span>
 
-//Iniciando serviços
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+<span class="c1">//Iniciando serviços</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">io</span> <span class="o">=</span> <span class="nf">socketIo</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
 
-//Configurando a aplicação
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.json());
-app.use(express.urlencoded({ extended:  true }));
+<span class="c1">//Configurando a aplicação</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">'</span><span class="s1">view engine</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ejs</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">'</span><span class="s1">views</span><span class="dl">'</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">views</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nf">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nf">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span>  <span class="kc">true</span> <span class="p">}));</span>
 
-const  PORT = 3000;
-let venomClient = null;
-let venomStatus = null;
-let venomQR = null;
+<span class="kd">const</span>  <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">venomClient</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">venomStatus</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">venomQR</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 </code></pre></div></div>
-
 <p><br />
 <br />
   Agora vamos iniciar a configuração das rotas desse servidor. Copie o trecho a seguir no mesmo arquivo <strong>app.js</strong> logo abaixo do código anterior.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// URL leitura/status da conexão
-app.get('/', (req, res) =&gt; {
-  res.render('index', { venomStatus, venomQR });
-});
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// URL leitura/status da conexão</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">venomStatus</span><span class="p">,</span> <span class="nx">venomQR</span> <span class="p">});</span>
+<span class="p">});</span>
 
-// URL envio de mensagens (Form)
-app.get('/send', (req, res) =&gt; {
-    res.render('send');
-});
+<span class="c1">// URL envio de mensagens (Form)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/send</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">send</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
 
-// URL envio de mensagens (Json)
-app.post('/send-message', (req, res) =&gt; {
-    const { number, message } = req.body;
+<span class="c1">// URL envio de mensagens (Json)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/send-message</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">message</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
 
-    if (venomClient) {
-        venomClient
-            .sendText(`55${number}@c.us`, message)
-            .then((result) =&gt; res.status(200).json({ status: 'success', result }))
-            .catch((error) =&gt; res.status(500).json({ status: 'error', error }));
-    } else {
-        res.status(500).json({ status: 'error', message: 'WhatsApp não conectado.' });
-    }
-});
+    <span class="k">if </span><span class="p">(</span><span class="nx">venomClient</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">venomClient</span>
+            <span class="p">.</span><span class="nf">sendText</span><span class="p">(</span><span class="s2">`55</span><span class="p">${</span><span class="nx">number</span><span class="p">}</span><span class="s2">@c.us`</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">json</span><span class="p">({</span> <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="nx">result</span> <span class="p">}))</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nf">json</span><span class="p">({</span> <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nf">json</span><span class="p">({</span> <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">WhatsApp não conectado.</span><span class="dl">'</span> <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
 
-// Iniciar o servidor
-server.listen(PORT, () =&gt; {
-    console.log(`Servidor executando na porta: ${PORT}`);
-});  
+<span class="c1">// Iniciar o servidor</span>
+<span class="nx">server</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Servidor executando na porta: </span><span class="p">${</span><span class="nx">PORT</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">});</span>  
 </code></pre></div></div>
-
 <p><br />
 <br />
 No arquivo <strong>send.ejs</strong> cole o seguinte trecho:</p>
@@ -447,70 +447,69 @@ Agora podemos testar e executar o servidor, na raiz do projeto execute:</p>
 <br /><br />
 Até o momento já temos o básico configurado, agora precisamos integrar a nossa aplicação com o WhatsApp, e assim interagir com ele. Copie o trecho abaixo no <strong>app.js</strong> entre os trechos <strong>// URL envio de mensagens (Json)</strong> e <strong>// Iniciar o servidor</strong>:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Criando sessão Venom-bot e capturando QR/Status
-venomClient = create({
-        session: 'whatsapp-bot',
-        multidevice: true,
-    },
-    // Gerencia mudanças na variável base64Qr
-    (base64Qr) =&gt; {
-        venomQR = base64Qr;
-        io.emit('qr', base64Qr);              
-    },
-    // Gerencia mudanças na variável statusFind
-    (statusFind) =&gt; {
-        venomStatus = statusFind;
-        io.emit('status', statusFind);
-});
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Criando sessão Venom-bot e capturando QR/Status</span>
+<span class="nx">venomClient</span> <span class="o">=</span> <span class="nf">create</span><span class="p">({</span>
+        <span class="na">session</span><span class="p">:</span> <span class="dl">'</span><span class="s1">whatsapp-bot</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">multidevice</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="c1">// Gerencia mudanças na variável base64Qr</span>
+    <span class="p">(</span><span class="nx">base64Qr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">venomQR</span> <span class="o">=</span> <span class="nx">base64Qr</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">qr</span><span class="dl">'</span><span class="p">,</span> <span class="nx">base64Qr</span><span class="p">);</span>              
+    <span class="p">},</span>
+    <span class="c1">// Gerencia mudanças na variável statusFind</span>
+    <span class="p">(</span><span class="nx">statusFind</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">venomStatus</span> <span class="o">=</span> <span class="nx">statusFind</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">status</span><span class="dl">'</span><span class="p">,</span> <span class="nx">statusFind</span><span class="p">);</span>
+<span class="p">});</span>
 
-//Configurando ações quando o cliente é inicializado.
-venomClient.then(async (client) =&gt; {
-    venomClient = client;
+<span class="c1">//Configurando ações quando o cliente é inicializado.</span>
+<span class="nx">venomClient</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">client</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">venomClient</span> <span class="o">=</span> <span class="nx">client</span><span class="p">;</span>
 
-    // Gerencia mudanças de status
-    client.onStateChange((state) =&gt; {
-        venomStatus = state;
-        io.emit('status', state); 
-    });
+    <span class="c1">// Gerencia mudanças de status</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nf">onStateChange</span><span class="p">((</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">venomStatus</span> <span class="o">=</span> <span class="nx">state</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">status</span><span class="dl">'</span><span class="p">,</span> <span class="nx">state</span><span class="p">);</span> 
+    <span class="p">});</span>
 
-    // Listener para mensagens recebidas
-    client.onMessage(async (message) =&gt; {
-        try {
-            console.log('Received Message:', message);
+    <span class="c1">// Listener para mensagens recebidas</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nf">onMessage</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received Message:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
 
-            // Adicionando múltiplas condições e validações
-            if (message.isGroupMsg === false) {
-                if (message.body.toLowerCase() === 'hi') {
-                    await sendMessage(client, message.from, 'Bem-vindo ao Venom 🕷');
-                } else if (message.body.toLowerCase().includes('dev')) {
-                    await sendMessage(client, message.from, 'Bem-vindo dev!');
-                } else if (message.from === '55NUMERO_COM_DDD@c.us') {
-                    await sendMessage(client, message.from, 'Você é 55NUMERO_COM_DDD@c.us!');
-                }
-            }
-        } catch (error) {
-            console.error('Erro onMessage:', error);
-        }
-    });
-}).catch((err) =&gt; {
-    console.error('Erro Venom-bot:', err);
-});
+            <span class="c1">// Adicionando múltiplas condições e validações</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">isGroupMsg</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">await</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Bem-vindo ao Venom 🕷</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">().</span><span class="nf">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">dev</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">await</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Bem-vindo dev!</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="k">from</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">55NUMERO_COM_DDD@c.us</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">await</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Você é 55NUMERO_COM_DDD@c.us!</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Erro onMessage:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Erro Venom-bot:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
 
-async function sendMessage(client, to, message) {
-    try {
-        const result = await client.sendText(to, message);
-        console.log('Mensagem enviada:', result);
-    } catch (error) {
-        console.error('Erro ao enviar:', error);
-    }
-}
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">to</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nf">sendText</span><span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mensagem enviada:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Erro ao enviar:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-io.on('connection', (socket) =&gt; {
-    console.log('Client conectado ao Socket.io');
-    socket.on('disconnect', () =&gt; console.log('Client desconectado do Socket.io'));
-});  
+<span class="nx">io</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">socket</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client conectado ao Socket.io</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">disconnect</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client desconectado do Socket.io</span><span class="dl">'</span><span class="p">));</span>
+<span class="p">});</span>  
 </code></pre></div></div>
-
 <p><br />
 <br />
 Agora com o ambiente configurado, podemos subir o servidor novamente:</p>
