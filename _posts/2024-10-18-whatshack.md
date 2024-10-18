@@ -15,8 +15,8 @@ image: https://blog.softaliza.com.br/wp-content/uploads/2023/02/WhatsApp-Image-2
 - Abra o **Visual Studio Code** nessa pasta.
 - Abra um **CMD/Terminal** dentro da pasta criada e execute os comando abaixo.
   
-npm init -y 
-npm install venom-bot express ejs socket.io
+    npm init -y   
+    npm install venom-bot express ejs socket.io  
   
 - Crie um arquivo na raiz do projeto chamado de "**app.js**".
 - Crie uma pasta na raiz do projeto chamada de "**views**".

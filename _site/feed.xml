@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 15:42:28 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 15:42:28 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 15:47:59 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 15:47:59 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -16,13 +16,12 @@
 &lt;ul&gt;
   &lt;li&gt;Crie uma pasta com o nome do projeto exemplo “&lt;strong&gt;whatsapp-hack&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Abra o &lt;strong&gt;Visual Studio Code&lt;/strong&gt; nessa pasta.&lt;/li&gt;
-  &lt;li&gt;Abra um &lt;strong&gt;CMD/Terminal&lt;/strong&gt; dentro da pasta criada e execute os comando abaixo.&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Abra um &lt;strong&gt;CMD/Terminal&lt;/strong&gt; dentro da pasta criada e execute os comando abaixo.&lt;/p&gt;
 
-&lt;p&gt;npm init -y 
-npm install venom-bot express ejs socket.io&lt;/p&gt;
-
-&lt;ul&gt;
+    &lt;p&gt;npm init -y &lt;br /&gt;
+  npm install venom-bot express ejs socket.io&lt;/p&gt;
+  &lt;/li&gt;
   &lt;li&gt;Crie um arquivo na raiz do projeto chamado de “&lt;strong&gt;app.js&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Crie uma pasta na raiz do projeto chamada de “&lt;strong&gt;views&lt;/strong&gt;”.&lt;/li&gt;
   &lt;li&gt;Crie dois arquivos dentro da pasta &lt;strong&gt;views&lt;/strong&gt;, o &lt;strong&gt;index.ejs&lt;/strong&gt; e &lt;strong&gt;send.ejs&lt;/strong&gt;.&lt;/li&gt;
