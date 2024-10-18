@@ -5,13 +5,13 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 17:48:01 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 17:48:01 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 17:52:47 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 17:52:47 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
         <title>WhatsApp Hack</title>
-        <description>&lt;h2 id=&quot;extrutura-básica&quot;&gt;Extrutura básica&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;estrutura-básica&quot;&gt;Estrutura básica&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Nesse passo a passo estamos ignorando a instalação do NodeJS na máquina…&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Crie uma pasta com o nome do projeto exemplo “&lt;strong&gt;whatsapp-hack&lt;/strong&gt;”.&lt;/li&gt;

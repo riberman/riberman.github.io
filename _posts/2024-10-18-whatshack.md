@@ -9,7 +9,7 @@ description: Como usar uma ferramenta opensource para desenvolver integração c
 image: https://blog.softaliza.com.br/wp-content/uploads/2023/02/WhatsApp-Image-2023-02-07-at-14.23.15.jpeg
 ---
 
-## Extrutura básica
+## Estrutura básica
 *Nesse passo a passo estamos ignorando a instalação do NodeJS na máquina...*
 - Crie uma pasta com o nome do projeto exemplo "**whatsapp-hack**".  
 - Abra o **Visual Studio Code** nessa pasta.
