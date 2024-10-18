@@ -34,3 +34,7 @@ This is a simple personal material theme, best suited for personal authors, prog
         ~/project-folder  $  bundle exec jekyll serve  
 
     # => Now browse to http://localhost:4000
+
+#### Docker
+    docker build -t jekyll-container .
+    docker run -p 4000:4000 -v $(pwd):/srv/jekyll jekyll-container

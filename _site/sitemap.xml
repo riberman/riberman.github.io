@@ -3,11 +3,67 @@
   <channel>
     <title>Patrick Ferro Ribeiro</title>
     <description>Web page about Code, Sport, Blog... and more.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Sep 2024 17:34:58 -0300</pubDate>
-    <lastBuildDate>Tue, 24 Sep 2024 17:34:58 -0300</lastBuildDate>
+    <link>http://0.0.0.0:4000/</link>
+    <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 18 Oct 2024 13:51:05 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 13:51:05 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>WhatsApp Hack</title>
+        <description>&lt;p&gt;Uma das atividades mais comuns utilizando o git é o comando &lt;strong&gt;merge&lt;/strong&gt;  utilizado para mesclar &lt;strong&gt;branchs,&lt;/strong&gt; como por exemplo quando ocorrem atualizações no branch de desenvolvimento pelos seus colegas, exatamente enquanto você trabalhava em uma funcionalidade, no momento seu branch está desatualizado, e antes de efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para enviar suas alterações ao branch de desenvolvimento, é necessário efetuar uma junção dessas modificações.&lt;/p&gt;
+
+&lt;p&gt;Primeiramente selecione o branch que foi atualizado no GitHub por seus colegas, o qual ainda não possui as alterações na sua máquina localmente.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora é necessário efetuar um &lt;strong&gt;pull&lt;/strong&gt; para receber as atualizações no branch selecionado.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git pull origin branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Então para que não ocorra problemas efetuando uma &lt;strong&gt;pull request&lt;/strong&gt; diretamente para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento, ao fazer um &lt;strong&gt;push&lt;/strong&gt; é recomendável criar um novo branch.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b branchdetransicao  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou você pode utilizar o mesmo &lt;strong&gt;branch&lt;/strong&gt; que estava trabalhando, no caso basta ir até ele.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout meubranch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você escolheu a opção de criar um &lt;strong&gt;branch&lt;/strong&gt;, é necessário efetuar o comando &lt;strong&gt;merge&lt;/strong&gt; nele.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge meubranch  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou se não criou um &lt;strong&gt;branch&lt;/strong&gt; novo, você precisa trazer os arquivos do &lt;strong&gt;branch&lt;/strong&gt; de seus colegas para o seu usando.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git merge branchcolegas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Em alguns casos é aberto uma tela para efetuar os comentários dessa pull request, comente ou use &lt;strong&gt;ESC + : + Q&lt;/strong&gt;,  após isso podem ocorrer problemas na mesclagem por conta de seus colegas tiverem trabalhado nos mesmos arquivos que você, para corrigir verifique no terminal o nome dos arquivos com conflitos e abra seu editor ou IDE neles, todos os conflitos são comentados dentro do arquivo informando a sua alteração e a de seus colegas, para corrigir basta descomentar deixando somente o código correto, e após todas as correções serem efetuadas é necessário efetuar um commit.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+git commit -m &quot;Exemplo efetuado merge no branch&quot;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora então é só efetuar uma &lt;strong&gt;pull request&lt;/strong&gt; para o &lt;strong&gt;branch&lt;/strong&gt; de desenvolvimento normalmente, efetuando um &lt;strong&gt;push&lt;/strong&gt; ou &lt;strong&gt;pull request&lt;/strong&gt; pelo &lt;strong&gt;GitHub&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin branchdedesenvolvimento  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;É recomendável efetuar &lt;strong&gt;pull request&lt;/strong&gt; para branchs principais usando o &lt;strong&gt;site&lt;/strong&gt;, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Oct 2024 10:00:00 -0300</pubDate>
+        <link>http://0.0.0.0:4000/dev/whatshack/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/whatshack/</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
     
       <item>
         <title>Git Efetuando Merge em Branchs</title>
@@ -57,8 +113,8 @@ git commit -m &quot;Exemplo efetuado merge no branch&quot;
 &lt;p&gt;&lt;em&gt;É recomendável efetuar &lt;strong&gt;pull request&lt;/strong&gt; para branchs principais usando o &lt;strong&gt;site&lt;/strong&gt;, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Apr 2019 18:17:00 -0300</pubDate>
-        <link>http://localhost:4000/dev/git/gitmerge/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/git/gitmerge/</guid>
+        <link>http://0.0.0.0:4000/dev/git/gitmerge/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitmerge/</guid>
         
         
         <category>dev</category>
@@ -108,8 +164,8 @@ git commit -m &quot;Exemplo efetuado merge no branch&quot;
 &lt;p&gt;&lt;em&gt;Com isso o android automaticamente entende que você quer manter as configurações dessa tela, e depois que a aplicação é atualizada os dados são recuperados, sem a menor percepção do usuário.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 20:22:00 -0300</pubDate>
-        <link>http://localhost:4000/dev/android/androidrefreshonrotatescreen/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/android/androidrefreshonrotatescreen/</guid>
+        <link>http://0.0.0.0:4000/dev/android/androidrefreshonrotatescreen/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/android/androidrefreshonrotatescreen/</guid>
         
         
         <category>dev</category>
@@ -168,8 +224,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Ao final de cada consulta para voltar ao terminal basta a tecla &lt;strong&gt;q&lt;/strong&gt; e para sair do terminal do postgres e voltar ao linux basta usar &lt;strong&gt;\q&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Apr 2019 22:14:00 -0300</pubDate>
-        <link>http://localhost:4000/dev/db/terminalpostgresubuntu/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/db/terminalpostgresubuntu/</guid>
+        <link>http://0.0.0.0:4000/dev/db/terminalpostgresubuntu/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/db/terminalpostgresubuntu/</guid>
         
         
         <category>dev</category>
@@ -209,8 +265,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Agora todos os arquivos e pastas criadas nesse &lt;strong&gt;branch&lt;/strong&gt; não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo &lt;strong&gt;commit&lt;/strong&gt; vão permanecer caso você tenha efetuado alguma alteração.&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Apr 2019 20:36:00 -0300</pubDate>
-        <link>http://localhost:4000/dev/git/gitremoveruntracked/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/git/gitremoveruntracked/</guid>
+        <link>http://0.0.0.0:4000/dev/git/gitremoveruntracked/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitremoveruntracked/</guid>
         
         
         <category>dev</category>
@@ -248,8 +304,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Para ter acesso é necessário possuir dados do DETRAN atualizados, pois antes de entrar nesse sistema de registro de bicicletas o cidadão precisa ter seu registro junto ao site do &lt;a href=&quot;https://www.governodigital.pr.gov.br/&quot; target=&quot;_blank&quot;&gt;https://www.governodigital.pr.gov.br/&lt;/a&gt; é bem tranquilo efetuar o cadastro, pois todas as informações são bem detalhadas no processo.&lt;/p&gt;
 </description>
         <pubDate>Sat, 06 Apr 2019 14:16:00 -0300</pubDate>
-        <link>http://localhost:4000/ciclismo/registrodebicicletas/</link>
-        <guid isPermaLink="true">http://localhost:4000/ciclismo/registrodebicicletas/</guid>
+        <link>http://0.0.0.0:4000/ciclismo/registrodebicicletas/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/ciclismo/registrodebicicletas/</guid>
         
         
         <category>ciclismo</category>
@@ -307,8 +363,8 @@ upstream    https://github.com/user/repo.git (push)
 &lt;p&gt;&lt;em&gt;Nesse caso não esqueça de estar no branch correto antes do merge.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 03 Apr 2019 20:42:00 -0300</pubDate>
-        <link>http://localhost:4000/dev/git/gitupstream/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/git/gitupstream/</guid>
+        <link>http://0.0.0.0:4000/dev/git/gitupstream/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitupstream/</guid>
         
         
         <category>dev</category>
@@ -321,7 +377,7 @@ upstream    https://github.com/user/repo.git (push)
       <item>
         <title>Cool project 1</title>
         <description>Cool project 1</description>
-        <link>http://localhost:4000#</link>
+        <link>http://0.0.0.0:4000#</link>
         <pubDate>Wed, 01 Jan 2014 00:00:00 -0200</pubDate>
         
         <category>Angular JS</category>
@@ -333,7 +389,7 @@ upstream    https://github.com/user/repo.git (push)
       <item>
         <title>Cool project 2</title>
         <description>Cool project 2</description>
-        <link>http://localhost:4000#</link>
+        <link>http://0.0.0.0:4000#</link>
         <pubDate>Thu, 01 May 2014 00:00:00 -0300</pubDate>
         
         <category>Android</category>
@@ -345,7 +401,7 @@ upstream    https://github.com/user/repo.git (push)
       <item>
         <title>Cool project 3</title>
         <description>Cool project 3</description>
-        <link>http://localhost:4000#</link>
+        <link>http://0.0.0.0:4000#</link>
         <pubDate>Sun, 01 Jun 2014 00:00:00 -0300</pubDate>
         
         <category>HTML</category>
@@ -359,7 +415,7 @@ upstream    https://github.com/user/repo.git (push)
       <item>
         <title>Cool project 4</title>
         <description>Cool project 4</description>
-        <link>http://localhost:4000</link>
+        <link>http://0.0.0.0:4000</link>
         <pubDate>Sat, 01 Oct 2016 00:00:00 -0300</pubDate>
         
         <category>Android</category>
