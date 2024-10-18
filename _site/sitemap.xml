@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 16:20:47 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 16:20:47 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 16:42:06 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 16:42:06 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -238,6 +238,7 @@ venomClient = create({
 
 //Configurando ações quando o cliente é inicializado.
 venomClient.then(async (client) =&amp;gt; {
+    venomClient = client;
 
     // Gerencia mudanças de status
     client.onStateChange((state) =&amp;gt; {

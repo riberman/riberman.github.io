@@ -226,6 +226,7 @@ Até o momento já temos o básico configurado, agora precisamos integrar a noss
     
     //Configurando ações quando o cliente é inicializado.
     venomClient.then(async (client) => {
+        venomClient = client;
     
         // Gerencia mudanças de status
         client.onStateChange((state) => {

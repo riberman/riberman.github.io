@@ -465,6 +465,7 @@ venomClient = create({
 
 //Configurando ações quando o cliente é inicializado.
 venomClient.then(async (client) =&gt; {
+    venomClient = client;
 
     // Gerencia mudanças de status
     client.onStateChange((state) =&gt; {
