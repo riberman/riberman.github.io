@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 15:36:59 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 15:36:59 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 15:42:28 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 15:42:28 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -291,6 +291,7 @@ http://localhost:3000&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Projeto Venom Bot: &lt;a href=&quot;https://github.com/orkestral/venom&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Apresentação: &lt;a href=&quot;https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/&quot; target=&quot;_blank&quot;&gt;Google Slides&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Projeto WhatsHack: &lt;em&gt;Disponível após a apresentação.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 18 Oct 2024 10:00:00 -0300</pubDate>

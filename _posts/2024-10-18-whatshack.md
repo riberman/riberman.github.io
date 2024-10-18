@@ -278,3 +278,4 @@ http://localhost:3000
 ## Links Úteis
 - Projeto Venom Bot: [GitHub](https://github.com/orkestral/venom){:target="_blank"}
 - Apresentação: [Google Slides](https://docs.google.com/presentation/d/1ujXL3OWhtRp7vYeWMHNCgQWd_bbU5nHdx0TzbB0wg5g/){:target="_blank"}
+- Projeto WhatsHack: *Disponível após a apresentação.*
