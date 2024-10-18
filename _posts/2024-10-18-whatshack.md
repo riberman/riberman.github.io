@@ -24,7 +24,7 @@ npm install venom-bot express ejs socket.io
 - Crie uma pasta na raiz do projeto chamada de "**views**".
 - Crie dois arquivos dentro da pasta **views**, o **index.ejs** e **send.ejs**.
 
-Após isso a sua extrutura deve estar assim:
+Após isso a sua estrutura deve estar assim:
 ```sh
 /whatsapp-hack
 │

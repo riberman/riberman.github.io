@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 17:52:47 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 17:52:47 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Oct 2024 17:54:14 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Oct 2024 17:54:14 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -28,7 +28,7 @@ npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;venom-bot express ejs 
   &lt;li&gt;Crie dois arquivos dentro da pasta &lt;strong&gt;views&lt;/strong&gt;, o &lt;strong&gt;index.ejs&lt;/strong&gt; e &lt;strong&gt;send.ejs&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Após isso a sua extrutura deve estar assim:&lt;/p&gt;
+&lt;p&gt;Após isso a sua estrutura deve estar assim:&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/whatsapp-hack
 │
 ├── /node_modules
