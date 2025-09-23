@@ -5,9 +5,139 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Oct 2024 17:54:14 -0300</pubDate>
-    <lastBuildDate>Fri, 18 Oct 2024 17:54:14 -0300</lastBuildDate>
+    <pubDate>Mon, 22 Sep 2025 22:57:00 -0300</pubDate>
+    <lastBuildDate>Mon, 22 Sep 2025 22:57:00 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform</title>
+        <description>&lt;h1 id=&quot;conceitos-essenciais-do-terraform&quot;&gt;Conceitos Essenciais do Terraform&lt;/h1&gt;
+
+&lt;p&gt;O Terraform é uma ferramenta de Infraestrutura como Código (IaC) desenvolvida pela HashiCorp, permitindo a definição, provisionamento e gerenciamento de infraestrutura de forma declarativa e automatizada.&lt;/p&gt;
+
+&lt;h2 id=&quot;providers&quot;&gt;Providers&lt;/h2&gt;
+
+&lt;p&gt;Os &lt;strong&gt;providers&lt;/strong&gt; são responsáveis por interagir com APIs de serviços de infraestrutura, como AWS, Azure, Google Cloud, entre outros. Eles permitem que o Terraform crie, modifique e destrua recursos nesses serviços.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;provider&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aws&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;us-west-2&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;resources-recursos&quot;&gt;Resources (Recursos)&lt;/h2&gt;
+
+&lt;p&gt;Os &lt;strong&gt;resources&lt;/strong&gt; representam os componentes da infraestrutura que você deseja criar ou gerenciar, como instâncias de máquinas virtuais, buckets de armazenamento, regras de firewall, etc.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aws_instance&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;example&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ami&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ami-12345678&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;instance_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;t2.micro&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;variables-variáveis&quot;&gt;Variables (Variáveis)&lt;/h2&gt;
+
+&lt;p&gt;As &lt;strong&gt;variáveis&lt;/strong&gt; permitem parametrizar os recursos, tornando o código mais reutilizável e flexível.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;instance_type&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;t2.micro&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;outputs&quot;&gt;Outputs&lt;/h2&gt;
+
+&lt;p&gt;Os &lt;strong&gt;outputs&lt;/strong&gt; são valores que o Terraform retorna após a execução, úteis para fornecer informações sobre os recursos criados, como endereços IP ou IDs de instâncias.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;instance_ip&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aws_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;public_ip&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;state-estado&quot;&gt;State (Estado)&lt;/h2&gt;
+
+&lt;p&gt;O &lt;strong&gt;state&lt;/strong&gt; é o arquivo que mantém o mapeamento entre os recursos definidos no código e os recursos reais na infraestrutura. Ele é essencial para o Terraform determinar o que precisa ser criado, modificado ou destruído.&lt;/p&gt;
+
+&lt;h2 id=&quot;plan--apply--destroy&quot;&gt;Plan / Apply / Destroy&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform plan&lt;/code&gt;: Gera um plano de execução, mostrando o que será alterado na infraestrutura.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform apply&lt;/code&gt;: Aplica as mudanças definidas no código à infraestrutura.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform destroy&lt;/code&gt;: Remove todos os recursos gerenciados pelo Terraform.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;estrutura-recomendada-de-arquivos&quot;&gt;Estrutura Recomendada de Arquivos&lt;/h1&gt;
+
+&lt;p&gt;Uma boa estrutura de arquivos facilita a manutenção e escalabilidade do projeto. Abaixo está uma estrutura modularizada e organizada:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projeto_terraform/
+│
+├── modules/                # Módulos reutilizáveis
+│   ├── webserver/          # Módulo para servidor web
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── database/           # Módulo para banco de dados
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│
+├── envs/                   # Ambientes
+│   ├── dev/                # Ambiente de desenvolvimento
+│   │   ├── main.tf
+│   │   └── terraform.tfvars
+│   ├── staging/            # Ambiente de staging
+│   │   └── terraform.tfvars
+│   └── prod/               # Ambiente de produção
+│       └── terraform.tfvars
+│
+├── main.tf                 # Arquivo principal de configuração
+├── variables.tf            # Declaração de variáveis
+├── outputs.tf              # Definição de outputs
+├── providers.tf            # Configuração dos providers
+└── versions.tf             # Versões do Terraform e dos providers
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;descrição-dos-arquivos&quot;&gt;Descrição dos Arquivos&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.tf&lt;/code&gt;: Contém a definição dos recursos principais da infraestrutura.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt;: Declara as variáveis utilizadas nos arquivos de configuração.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;outputs.tf&lt;/code&gt;: Define os valores que serão retornados após a execução.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;providers.tf&lt;/code&gt;: Configura os providers necessários para o projeto.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;versions.tf&lt;/code&gt;: Especifica as versões mínimas do Terraform e dos providers a serem utilizados.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;módulos&quot;&gt;Módulos&lt;/h2&gt;
+
+&lt;p&gt;Os módulos são unidades reutilizáveis de configuração. Eles permitem organizar o código de forma modular, facilitando a manutenção e reutilização em diferentes partes do projeto.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;webserver&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./modules/webserver&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;instance_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;instance_type&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ambientes&quot;&gt;Ambientes&lt;/h2&gt;
+
+&lt;p&gt;A estrutura de ambientes permite isolar configurações específicas para diferentes estágios do ciclo de vida do projeto, como desenvolvimento, staging e produção.&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dev&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../modules/webserver&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;instance_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;t2.micro&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 22 Sep 2025 18:00:00 -0300</pubDate>
+        <link>http://0.0.0.0:4000/dev/terraform-basics-and-structure/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/terraform-basics-and-structure/</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
     
       <item>
         <title>WhatsApp Hack</title>
@@ -367,8 +497,8 @@ git commit -m &quot;Exemplo efetuado merge no branch&quot;
 &lt;p&gt;&lt;em&gt;É recomendável efetuar &lt;strong&gt;pull request&lt;/strong&gt; para branchs principais usando o &lt;strong&gt;site&lt;/strong&gt;, onde assim que abertas repassar aos colegas com a finalidade de revisão, sendo mais seguro de não ocorrer nenhum problema nas alterações enviadas.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Apr 2019 18:17:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/dev/git/gitmerge/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitmerge/</guid>
+        <link>http://0.0.0.0:4000/dev/git/git-merge/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/git-merge/</guid>
         
         
         <category>dev</category>
@@ -418,8 +548,8 @@ git commit -m &quot;Exemplo efetuado merge no branch&quot;
 &lt;p&gt;&lt;em&gt;Com isso o android automaticamente entende que você quer manter as configurações dessa tela, e depois que a aplicação é atualizada os dados são recuperados, sem a menor percepção do usuário.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 20:22:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/dev/android/androidrefreshonrotatescreen/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/dev/android/androidrefreshonrotatescreen/</guid>
+        <link>http://0.0.0.0:4000/dev/android/android-refresh-on-rotate-screen/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/android/android-refresh-on-rotate-screen/</guid>
         
         
         <category>dev</category>
@@ -478,8 +608,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Ao final de cada consulta para voltar ao terminal basta a tecla &lt;strong&gt;q&lt;/strong&gt; e para sair do terminal do postgres e voltar ao linux basta usar &lt;strong&gt;\q&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Apr 2019 22:14:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/dev/db/terminalpostgresubuntu/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/dev/db/terminalpostgresubuntu/</guid>
+        <link>http://0.0.0.0:4000/dev/db/terminal-postgres-ubuntu/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/db/terminal-postgres-ubuntu/</guid>
         
         
         <category>dev</category>
@@ -519,8 +649,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Agora todos os arquivos e pastas criadas nesse &lt;strong&gt;branch&lt;/strong&gt; não vão estar sendo mostrados, somente os arquivos modificados já existentes no ultimo &lt;strong&gt;commit&lt;/strong&gt; vão permanecer caso você tenha efetuado alguma alteração.&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Apr 2019 20:36:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/dev/git/gitremoveruntracked/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitremoveruntracked/</guid>
+        <link>http://0.0.0.0:4000/dev/git/git-remover-untracked/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/git-remover-untracked/</guid>
         
         
         <category>dev</category>
@@ -558,8 +688,8 @@ Bom estou partindo do ponto em que seu banco de dados foi instalado, possui um u
 &lt;p&gt;Para ter acesso é necessário possuir dados do DETRAN atualizados, pois antes de entrar nesse sistema de registro de bicicletas o cidadão precisa ter seu registro junto ao site do &lt;a href=&quot;https://www.governodigital.pr.gov.br/&quot; target=&quot;_blank&quot;&gt;https://www.governodigital.pr.gov.br/&lt;/a&gt; é bem tranquilo efetuar o cadastro, pois todas as informações são bem detalhadas no processo.&lt;/p&gt;
 </description>
         <pubDate>Sat, 06 Apr 2019 14:16:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/ciclismo/registrodebicicletas/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/ciclismo/registrodebicicletas/</guid>
+        <link>http://0.0.0.0:4000/ciclismo/registro-de-bicicletas/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/ciclismo/registro-de-bicicletas/</guid>
         
         
         <category>ciclismo</category>
@@ -617,8 +747,8 @@ upstream    https://github.com/user/repo.git (push)
 &lt;p&gt;&lt;em&gt;Nesse caso não esqueça de estar no branch correto antes do merge.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 03 Apr 2019 20:42:00 -0300</pubDate>
-        <link>http://0.0.0.0:4000/dev/git/gitupstream/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/gitupstream/</guid>
+        <link>http://0.0.0.0:4000/dev/git/git-upstream/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/git/git-upstream/</guid>
         
         
         <category>dev</category>
