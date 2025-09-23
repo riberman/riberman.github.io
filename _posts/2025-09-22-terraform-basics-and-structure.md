@@ -13,6 +13,9 @@ image: https://adictosaltrabajo.com/wp-content/uploads/2020/06/og-image-large-e6
 
 O Terraform é uma ferramenta de Infraestrutura como Código (IaC) desenvolvida pela HashiCorp, permitindo a definição, provisionamento e gerenciamento de infraestrutura de forma declarativa e automatizada.
 
+[Documentação oficial](https://terraform.io){:target="_blank"}<br>
+[Terraform Registry](https://registry.terraform.io){:target="_blank"}
+
 ## Providers
 
 Os **providers** são responsáveis por interagir com APIs de serviços de infraestrutura, como AWS, Azure, Google Cloud, entre outros. Eles permitem que o Terraform crie, modifique e destrua recursos nesses serviços.

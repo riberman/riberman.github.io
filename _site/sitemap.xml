@@ -5,8 +5,8 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Sep 2025 22:57:00 -0300</pubDate>
-    <lastBuildDate>Mon, 22 Sep 2025 22:57:00 -0300</lastBuildDate>
+    <pubDate>Mon, 22 Sep 2025 23:33:15 -0300</pubDate>
+    <lastBuildDate>Mon, 22 Sep 2025 23:33:15 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -14,6 +14,9 @@
         <description>&lt;h1 id=&quot;conceitos-essenciais-do-terraform&quot;&gt;Conceitos Essenciais do Terraform&lt;/h1&gt;
 
 &lt;p&gt;O Terraform é uma ferramenta de Infraestrutura como Código (IaC) desenvolvida pela HashiCorp, permitindo a definição, provisionamento e gerenciamento de infraestrutura de forma declarativa e automatizada.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://terraform.io&quot; target=&quot;_blank&quot;&gt;Documentação oficial&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://registry.terraform.io&quot; target=&quot;_blank&quot;&gt;Terraform Registry&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;providers&quot;&gt;Providers&lt;/h2&gt;
 
