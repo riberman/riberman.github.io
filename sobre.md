@@ -61,7 +61,7 @@ suporte remoto e físico, serviços de manutenção e suporte autorizado POSITIV
 ___
 - **Universidade Tecnológica Federal do Paraná**  
 Pós Graduação, Redes  
-2023 - **ATUAL**  
+2023 - 2024  
 
 
  - **Universidade Tecnológica Federal do Paraná**  

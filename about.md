@@ -60,7 +60,7 @@ remote and physical support, maintenance services and POSITIVO authorized suppor
 ___
 - **Federal Technological University Of Paraná**  
 Graduate Degree, Computer Networks  
-2023 - **Currently**  
+2023 - 2024  
 
 
  - **Federal Technological University Of Paraná**  
