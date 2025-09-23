@@ -7,16 +7,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title>Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform - Patrick Ferro Ribeiro</title>
+        <title>Estrutura Básica Terraform - Patrick Ferro Ribeiro</title>
         
           <meta content="https://adictosaltrabajo.com/wp-content/uploads/2020/06/og-image-large-e60c82fe.png" property="og:image">
         
         <link rel="shortcut icon" href="/static/img/favicon.ico" />
         
-          <meta content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform" property="og:title">
+          <meta content="Estrutura Básica Terraform" property="og:title">
         
         
-          <meta content="Descubra como transformar código em servidores!  ..." property="og:description">
+          <meta content="Como usar os arquivos .tf do Terraform  ..." property="og:description">
         
         
           <meta content="http://0.0.0.0:4000/dev/terraform-basics-and-structure/" property="og:url">
@@ -26,9 +26,9 @@
         
         <meta name="twitter:card" content="summary_large_image">
         
-          <meta content="Descubra como transformar código em servidores!  ..." name="description">
+          <meta content="Como usar os arquivos .tf do Terraform  ..." name="description">
         
-        <meta name="keywords" content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform, Patrick Ferro Ribeiro, dev" />
+        <meta name="keywords" content="Estrutura Básica Terraform, Patrick Ferro Ribeiro, dev" />
         <meta name="author" content="Patrick Ferro Ribeiro" />
         <meta content="2087090814720473" property="fb:app_id">
         <meta content="Patrick Ferro Ribeiro" property="og:site_name">
@@ -47,13 +47,13 @@
         <meta name="twitter:site" content="@riberman">
         <meta name="twitter:creator" content="@riberman">
         
-          <meta name="twitter:title" content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform">
+          <meta name="twitter:title" content="Estrutura Básica Terraform">
         
         
           <meta name="twitter:url" content="http://0.0.0.0:4000/dev/terraform-basics-and-structure/">
         
         
-          <meta name="twitter:description" content="Descubra como transformar código em servidores!  ...">
+          <meta name="twitter:description" content="Como usar os arquivos .tf do Terraform  ...">
         
         
         <!--  Non-Essential, But Recommended -->
@@ -134,7 +134,7 @@
           </div>
           <div class="col-md-9 col-sm-8 col-xs-12">
           <div class="row">
-            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform</h2>
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Estrutura Básica Terraform</h2>
             
             <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
               <input class="form-control" type="text" id="js-search__input" placeholder="Search">
@@ -364,10 +364,10 @@
     <div class="share-page">
     Share this on &rarr;
 <a href="https://api.whatsapp.com/send?text= Visite o blog Patrick Ferro Ribeiro http://0.0.0.0:4000/dev/terraform-basics-and-structure/" target="_blank" title="Share on WhatsApp" class="whatsapp">WhatsApp</a>
-<a href="https://twitter.com/intent/tweet?text=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform&url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&via=riberman" rel="nofollow" target="_blank" title="Share on Twitter" class="twitter">Twitter</a>
+<a href="https://twitter.com/intent/tweet?text=Estrutura Básica Terraform&url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&via=riberman" rel="nofollow" target="_blank" title="Share on Twitter" class="twitter">Twitter</a>
 <a href="https://facebook.com/sharer.php?u=http://0.0.0.0:4000/dev/terraform-basics-and-structure/" rel="nofollow" target="_blank" title="Share on Facebook" class="facebook">Facebook</a>
-<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&title=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform&summary=Descubra como transformar código em servidores!  ..." target="_blank" title="Share on LinkedIn" class="linkedin">LinkedIn</a>
-<a href="http://www.reddit.com/submit?url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&title=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform" target="_blank" title="Share on Reddit" class="reddit">Reddit</a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&title=Estrutura Básica Terraform&summary=Como usar os arquivos .tf do Terraform  ..." target="_blank" title="Share on LinkedIn" class="linkedin">LinkedIn</a>
+<a href="http://www.reddit.com/submit?url=http://0.0.0.0:4000/dev/terraform-basics-and-structure/&title=Estrutura Básica Terraform" target="_blank" title="Share on Reddit" class="reddit">Reddit</a>
   </div>
 <!--
  <a href="https://twitter.com/share" class="twitter-share-button" data-via="riberman" style="position: static;visibility: visible;width: 61px;height: 20px;margin-bottom: -8;margin-bottom: -7px;margin-left: 3px;">Tweet</a>
@@ -393,6 +393,20 @@
     
         
             
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/terraform-hello-world/">Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>)</small>
+                    
+                </li>
+                
+                
+            
         
     
 
@@ -400,10 +414,13 @@
     
         
             
-                
-                <div class="panel-body">
-                <h4>Related Posts</h4>
-                <ul>
+        
+    
+
+    
+    
+        
+            
                 
                 <li class="relatedPost">
                     <a href="http://0.0.0.0:4000/dev/whatshack/">WhatsApp Hack</a>
@@ -512,16 +529,6 @@
     
         
             
-                
-                <li class="relatedPost">
-                    <a href="http://0.0.0.0:4000/dev/git/git-upstream/">Como Clonar Branch do Repositório Principal</a>
-                    
-                        <small>(Categories: <a href="/dev">dev</a>, <a href="/git">git</a>)</small>
-                    
-                </li>
-                
-                
-            
         
     
         
@@ -539,6 +546,8 @@
     <a class="prev pull-left" href="http://0.0.0.0:4000/dev/whatshack/">&laquo; WhatsApp Hack</a>
   
   
+    <a class="next pull-right" href="http://0.0.0.0:4000/dev/terraform-hello-world/">Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform &raquo;</a>
+  
 </div>
 
 
@@ -548,8 +557,8 @@
         /* <![CDATA[ */
 
         var disqus_shortname = "https-riberman-github-io";
-        var disqus_identifier = "http://0.0.0.0:4000_Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform";
-        var disqus_title = "Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform";
+        var disqus_identifier = "http://0.0.0.0:4000_Estrutura Básica Terraform";
+        var disqus_title = "Estrutura Básica Terraform";
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {

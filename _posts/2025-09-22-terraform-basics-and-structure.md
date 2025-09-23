@@ -1,11 +1,11 @@
 ---
 layout: post
 comments: true
-title: Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform
+title: Estrutura Básica Terraform
 date: 2025-09-22 21:00:00
 categories: dev
 icon: fas fa-code
-description: Descubra como transformar código em servidores!  ...
+description: Como usar os arquivos .tf do Terraform  ...
 image: https://adictosaltrabajo.com/wp-content/uploads/2020/06/og-image-large-e60c82fe.png
 ---
 

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+        <meta charset="utf-8">
+        <link rel="canonical" href="https://riberman.github.io">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform - Patrick Ferro Ribeiro</title>
+        
+          <meta content="https://adictosaltrabajo.com/wp-content/uploads/2020/06/og-image-large-e60c82fe.png" property="og:image">
+        
+        <link rel="shortcut icon" href="/static/img/favicon.ico" />
+        
+          <meta content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform" property="og:title">
+        
+        
+          <meta content="Descubra como transformar código em servidores!  ..." property="og:description">
+        
+        
+          <meta content="http://0.0.0.0:4000/dev/terraform-hello-world/" property="og:url">
+        
+        
+          <meta content="article" property="og:type">
+        
+        <meta name="twitter:card" content="summary_large_image">
+        
+          <meta content="Descubra como transformar código em servidores!  ..." name="description">
+        
+        <meta name="keywords" content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform, Patrick Ferro Ribeiro, dev" />
+        <meta name="author" content="Patrick Ferro Ribeiro" />
+        <meta content="2087090814720473" property="fb:app_id">
+        <meta content="Patrick Ferro Ribeiro" property="og:site_name">
+        
+          <meta content="2025-09-23T14:21:00-03:00" property="article:published_time">
+          <meta content="http://0.0.0.0:4000/about/" property="article:author">
+        
+        
+          
+          <meta content="dev" property="article:section">
+          
+        
+        
+          
+        
+        <meta name="twitter:site" content="@riberman">
+        <meta name="twitter:creator" content="@riberman">
+        
+          <meta name="twitter:title" content="Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform">
+        
+        
+          <meta name="twitter:url" content="http://0.0.0.0:4000/dev/terraform-hello-world/">
+        
+        
+          <meta name="twitter:description" content="Descubra como transformar código em servidores!  ...">
+        
+        
+        <!--  Non-Essential, But Recommended -->
+        <meta property="og:site_name" content="Patrick Ferro Ribeiro">
+        <meta name="twitter:image:alt" content="Avatar Patrick Ferro Ribeiro Blog.">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4397171381324956",
+          enable_page_level_ads: true
+     });
+</script>
+
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+      <script type="text/javascript">window.baseurl = 'http://0.0.0.0:4000';</script>
+      
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <!-- FontAwesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/74dfc6cf47.css">
+
+        <!-- Core BootStrap CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <!-- Material Design CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/css/thickbox.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/projects.css">
+
+        <script type="text/javascript">
+          //loadingImage is relative to project dir
+          var tb_pathToImage = "/static/img/loadingAnimation.gif";
+        </script>
+
+  </head>
+
+  <body class="home overflow-hidden">
+    <button onclick="topFunction()" id="backTop" title="Voltar para cima"><i class="fas fa-chevron-up"></i></button>
+<div class="header-panel shadow-z-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="row-picture">
+              <a href="http://0.0.0.0:4000">
+              <img id="about" class="logo-img" src="/static/img/avatar.png" height="75px" width="75px">
+                </a>
+            </div>
+            <div class="row-details">
+              <h4 class="list-group-item-heading">Patrick Ferro Ribeiro</h4>
+              <p class="list-group-item-text">Developer Cyclist Student</p>
+              <div class="social-icons">
+	
+        <a class="icon" target="_blank" href="https://www.facebook.com/patrickferroribeiro"><i class="fab fa-facebook-f"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.instagram.com/patrickribeiro_oficial/"><i class="fab fa-instagram"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/patrickferroribeiro/"><i class="fab fa-linkedin-in"></i></a>
+    
+        <a class="icon" target="_blank" href="https://github.com/riberman"><i class="fab fa-github"></i></a>
+    
+</div>
+
+            </div>
+            <div class="navbar-header pull-right">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-2x fa-bars"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+          <div class="row">
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform</h2>
+            
+            <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
+              <input class="form-control" type="text" id="js-search__input" placeholder="Search">
+              <ul class="search__results" id="js-search__results"></ul>
+            </div>
+            
+            </div>
+            <p class="info">
+              
+                <span class="time">23 Sep 2025</span>
+              
+              
+                <span class="categories">
+                  &raquo;
+                  
+                    <a href="/dev">dev</a>
+                    
+                  
+                </span>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main outer">
+      <div class="row">
+        <div class="col-md-3 col-xs-12">
+              <nav class="menu">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="list-separator nav navbar-nav well well-primary post">
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  terraform-hello-world"><a href="/" target="_self"><i class="fa fa-home"></i> Principal</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  terraform-hello-world"><a href="/ciclismo/" target="_self"><i class="fas fa-bicycle"></i> Ciclismo</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  terraform-hello-world"><a href="/dev/" target="_self"><i class="fas fa-code"></i> Dev</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  terraform-hello-world"><a href="/sobre/" target="_self"><i class="far fa-address-card"></i> Sobre</a></li>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  terraform-hello-world"><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i> XML Feed</a></li>
+
+</ul>
+
+    </div>
+    </nav>
+
+        </div>
+        <div class="col-md-9 col-xs-12 full">
+          <div class="post-content well">
+<hr>
+<article class="content">
+    <div class="post"><h1 id="criando-um-droplet-digitalocean-com-nginx-e-hello-world">Criando um Droplet DigitalOcean com Nginx e Hello World</h1>
+
+<hr />
+
+<h2 id="1-introdução-ao-projeto">1. Introdução ao Projeto</h2>
+
+<p>Neste workshop, vamos criar uma infraestrutura completa usando Terraform que inclui:</p>
+
+<ul>
+  <li>Um droplet (VPS) na DigitalOcean</li>
+  <li>Instalação automática do Nginx</li>
+  <li>Uma página HTML “Hello World”</li>
+  <li>Configuração de acesso SSH por senha</li>
+</ul>
+
+<p><strong>Pré-requisitos:</strong></p>
+
+<ul>
+  <li>Terraform instalado</li>
+  <li>Conta na DigitalOcean</li>
+  <li>Token de API da DigitalOcean</li>
+</ul>
+
+<hr />
+
+<h2 id="2-configuração-inicial-do-projeto">2. Configuração Inicial do Projeto</h2>
+
+<p>Primeiro, vamos criar a estrutura de diretórios e arquivos do projeto:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>terraform-workshop
+<span class="nb">cd </span>terraform-workshop
+</code></pre></div></div>
+
+<p>Vamos organizar o projeto seguindo as melhores práticas do Terraform:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">providers.tf</code> — Configuração do provider</li>
+  <li><code class="language-plaintext highlighter-rouge">variables.tf</code> — Definição das variáveis</li>
+  <li><code class="language-plaintext highlighter-rouge">droplet.tf</code> — Recurso do droplet</li>
+  <li><code class="language-plaintext highlighter-rouge">outputs.tf</code> — Outputs do projeto</li>
+  <li><code class="language-plaintext highlighter-rouge">main.tf</code> — Arquivo principal</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform.tfvars</code> — Valores das variáveis</li>
+</ul>
+
+<hr />
+
+<h2 id="3-criando-o-arquivo-providerstf">3. Criando o arquivo <code class="language-plaintext highlighter-rouge">providers.tf</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">providers.tf</code>:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="p">{</span>
+  <span class="nx">required_providers</span> <span class="p">{</span>
+    <span class="nx">digitalocean</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">source</span> <span class="o">=</span> <span class="s2">"digitalocean/digitalocean"</span>
+      <span class="nx">version</span> <span class="o">=</span> <span class="s2">"~&gt; 2.0"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">provider</span> <span class="s2">"digitalocean"</span> <span class="p">{</span>
+  <span class="nx">token</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">do_token</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explicação:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">terraform</code> — Bloco de configuração do Terraform</li>
+  <li><code class="language-plaintext highlighter-rouge">required_providers</code> — Define quais providers são necessários</li>
+  <li><code class="language-plaintext highlighter-rouge">digitalocean</code> — Provider oficial da DigitalOcean</li>
+  <li><code class="language-plaintext highlighter-rouge">version = "~&gt; 2.0"</code> — Versão compatível (2.x)</li>
+  <li><code class="language-plaintext highlighter-rouge">provider "digitalocean"</code> — Configuração do provider</li>
+  <li><code class="language-plaintext highlighter-rouge">token = var.do_token</code> — Usa a variável para o token</li>
+</ul>
+
+<hr />
+
+<h2 id="4-criando-o-arquivo-variablestf">4. Criando o arquivo <code class="language-plaintext highlighter-rouge">variables.tf</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">variables.tf</code>:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Token da API da DigitalOcean</span>
+<span class="nx">variable</span> <span class="s2">"do_token"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Token de API da DigitalOcean"</span>
+  <span class="nx">type</span> <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">sensitive</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="c1"># Senha para o usuário root do droplet</span>
+<span class="nx">variable</span> <span class="s2">"root_password"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Senha para o usuário root"</span>
+  <span class="nx">type</span> <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">sensitive</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">default</span> <span class="o">=</span> <span class="s2">"Terraform2025***"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explicação:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">variable</code> — Define uma variável</li>
+  <li><code class="language-plaintext highlighter-rouge">description</code> — Descrição da variável</li>
+  <li><code class="language-plaintext highlighter-rouge">type = string</code> — Tipo da variável</li>
+  <li><code class="language-plaintext highlighter-rouge">sensitive = true</code> — Oculta o valor nos logs</li>
+  <li><code class="language-plaintext highlighter-rouge">default</code> — Valor padrão (opcional)</li>
+</ul>
+
+<hr />
+
+<h2 id="5-criando-o-arquivo-droplettf">5. Criando o arquivo <code class="language-plaintext highlighter-rouge">droplet.tf</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">droplet.tf</code>:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"digitalocean_droplet"</span> <span class="s2">"vps"</span> <span class="p">{</span>
+  <span class="nx">image</span> <span class="o">=</span> <span class="s2">"ubuntu-25-04-x64"</span>
+  <span class="nx">name</span> <span class="o">=</span> <span class="s2">"vps-terraform"</span>
+  <span class="nx">region</span> <span class="o">=</span> <span class="s2">"sfo2"</span>
+  <span class="nx">size</span> <span class="o">=</span> <span class="s2">"s-1vcpu-512mb-10gb"</span>
+  <span class="nx">user_data</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="nx">EOF</span>
+    <span class="c1">#!/bin/bash</span>
+    <span class="c1"># Permitir login do root por senha</span>
+    <span class="nx">sed</span> <span class="o">-</span><span class="nx">i</span> <span class="s1">'s/#PermitRootLogin prohibit-password/PermitRootLogin yes/'</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">ssh</span><span class="o">/</span><span class="nx">sshd_config</span>
+    <span class="nx">sed</span> <span class="o">-</span><span class="nx">i</span> <span class="s1">'s/#PasswordAuthentication yes/PasswordAuthentication yes/'</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">ssh</span><span class="o">/</span><span class="nx">sshd_config</span>
+    <span class="nx">sed</span> <span class="o">-</span><span class="nx">i</span> <span class="s1">'s/PasswordAuthentication no/PasswordAuthentication yes/'</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">ssh</span><span class="o">/</span><span class="nx">sshd_config</span>
+
+    <span class="c1"># Definir senha para o usuário root</span>
+    <span class="nx">echo</span> <span class="s1">'root:${var.root_password}'</span> <span class="o">|</span> <span class="nx">chpasswd</span>
+
+    <span class="c1"># Reiniciar serviço SSH</span>
+    <span class="nx">systemctl</span> <span class="nx">restart</span> <span class="nx">sshd</span>
+
+    <span class="c1"># Atualizar sistema</span>
+    <span class="nx">apt</span> <span class="nx">update</span> <span class="o">-</span><span class="nx">y</span>
+    <span class="c1"># Instalar nginx sem interação</span>
+    <span class="nx">apt</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">nginx</span>
+
+    <span class="c1"># Baixar página HTML hello world e fazer substituição</span>
+    <span class="nx">curl</span> <span class="o">-</span><span class="nx">o</span> <span class="o">/</span><span class="nx">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="nx">index</span><span class="err">.</span><span class="nx">html</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//softweek.nuvemapps.com.br/hello-world.html</span>
+
+    <span class="c1"># Substituir texto aluno_example por teste123</span>
+    <span class="nx">sed</span> <span class="o">-</span><span class="nx">i</span> <span class="s1">'s/aluno_example/teste123/g'</span> <span class="o">/</span><span class="nx">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="nx">index</span><span class="err">.</span><span class="nx">html</span>
+    <span class="c1"># Reiniciar serviço nginx</span>
+    <span class="nx">systemctl</span> <span class="nx">restart</span> <span class="nx">nginx</span>
+    <span class="nx">systemctl</span> <span class="nx">enable</span> <span class="nx">nginx</span>
+  <span class="nx">EOF</span>
+
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"terraform"</span><span class="p">,</span> <span class="s2">"vps"</span><span class="p">]</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p><strong>Explicação:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">resource "digitalocean_droplet"</code> — Define um recurso droplet</li>
+  <li><code class="language-plaintext highlighter-rouge">image = "ubuntu-25-04-x64"</code> — Imagem do Ubuntu</li>
+  <li><code class="language-plaintext highlighter-rouge">region = "sfo2"</code> — Região São Francisco</li>
+  <li><code class="language-plaintext highlighter-rouge">size = "s-1vcpu-512mb-10gb"</code> — Tamanho do droplet</li>
+  <li><code class="language-plaintext highlighter-rouge">user_data</code> — Script executado na inicialização</li>
+  <li><code class="language-plaintext highlighter-rouge">sed</code> — Comandos para configurar SSH</li>
+  <li><code class="language-plaintext highlighter-rouge">chpasswd</code> — Define senha do root</li>
+  <li><code class="language-plaintext highlighter-rouge">apt install -y nginx</code> — Instala nginx sem interação</li>
+  <li>etc.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-criando-o-arquivo-outputstf">6. Criando o arquivo <code class="language-plaintext highlighter-rouge">outputs.tf</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">outputs.tf</code>:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">output</span> <span class="s2">"droplet_ip"</span> <span class="p">{</span>
+  <span class="nx">value</span> <span class="o">=</span> <span class="nx">digitalocean_droplet</span><span class="p">.</span><span class="nx">vps</span><span class="p">.</span><span class="nx">ipv4_address</span>
+<span class="p">}</span>
+
+<span class="nx">output</span> <span class="s2">"droplet_name"</span> <span class="p">{</span>
+  <span class="nx">value</span> <span class="o">=</span> <span class="nx">digitalocean_droplet</span><span class="p">.</span><span class="nx">vps</span><span class="p">.</span><span class="nx">name</span>
+<span class="p">}</span>
+
+<span class="nx">output</span> <span class="s2">"ssh_connection"</span> <span class="p">{</span>
+  <span class="nx">value</span> <span class="o">=</span> <span class="s2">"ssh root@${digitalocean_droplet.vps.ipv4_address}"</span>
+<span class="p">}</span>
+
+<span class="nx">output</span> <span class="s2">"website_url"</span> <span class="p">{</span>
+  <span class="nx">value</span> <span class="o">=</span> <span class="s2">"http://${digitalocean_droplet.vps.ipv4_address}"</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"URL para acessar o site hello world"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-criando-o-arquivo-maintf">7. Criando o arquivo <code class="language-plaintext highlighter-rouge">main.tf</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">main.tf</code>:</p>
+
+<blockquote>
+  <p>Este arquivo principal do projeto Terraform serve como documentação e ponto de entrada. A organização modular facilita a manutenção e compreensão do código.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="8-criando-o-arquivo-terraformtfvars">8. Criando o arquivo <code class="language-plaintext highlighter-rouge">terraform.tfvars</code></h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">terraform.tfvars</code>:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Token da API da DigitalOcean</span>
+<span class="nx">do_token</span> <span class="o">=</span> <span class="s2">"seu_token_aqui"</span>
+<span class="c1"># Senha para o usuário root (altere conforme necessário)</span>
+<span class="nx">root_password</span> <span class="o">=</span> <span class="s2">"Terraform2025***"</span>
+</code></pre></div></div>
+
+<p>⚠️ <strong>Importante:</strong></p>
+
+<ul>
+  <li>Substitua <code class="language-plaintext highlighter-rouge">"seu_token_aqui"</code> pelo seu token real da DigitalOcean</li>
+  <li>Use uma senha forte para o root</li>
+  <li>Nunca commite este arquivo com tokens reais</li>
+</ul>
+
+<hr />
+
+<h2 id="9-deploy-da-infraestrutura">9. Deploy da Infraestrutura</h2>
+
+<p>Agora vamos fazer o deploy da infraestrutura:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform init
+terraform plan
+terraform apply
+</code></pre></div></div>
+
+<p>✅ Resultado esperado:</p>
+
+<p>O Terraform criará um droplet na DigitalOcean com nginx instalado e uma página HTML hello world.</p>
+
+<p>Comandos úteis:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">terraform init</code> — Baixa providers e inicializa</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform plan</code> — Mostra o que será criado</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform apply</code> — Cria os recursos</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform show</code> — Mostra estado atual</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform output</code> — Mostra outputs</li>
+</ul>
+
+<hr />
+
+<h2 id="10-testando-o-resultado">10. Testando o Resultado</h2>
+
+<p>Após o deploy, vamos testar se tudo funcionou:</p>
+
+<ol>
+  <li>
+    <p>Ver os outputs:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform output
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Acessar o site:</p>
+
+    <blockquote>
+      <p>Use o IP mostrado no output <code class="language-plaintext highlighter-rouge">website_url</code><br />
+Exemplo: <code class="language-plaintext highlighter-rouge">http://157.245.123.456</code></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Conectar via SSH:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@IP_DO_DROPLET
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>✅ O que você deve ver:</p>
+
+<ul>
+  <li>Uma página HTML bonita com “Hello World”</li>
+  <li>Nginx funcionando corretamente</li>
+  <li>Acesso SSH funcionando com senha</li>
+</ul>
+
+<hr />
+
+<h2 id="11-limpeza-dos-recursos">11. Limpeza dos Recursos</h2>
+
+<p>Para evitar custos desnecessários, sempre destrua os recursos após os testes:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform destroy
+</code></pre></div></div>
+
+<p>⚠️ Atenção:</p>
+
+<p>Este comando irá deletar o droplet e todos os dados nele. Certifique-se de que não há dados importantes antes de executar.</p>
+
+<hr />
+
+<h2 id="-parabéns">🎉 Parabéns!</h2>
+
+<p>Você completou o workshop de Terraform e criou sua primeira infraestrutura na nuvem!</p>
+
+<p><strong>Próximos passos:</strong> Explore mais recursos do Terraform, como módulos, workspaces e state remoto.</p>
+</div>
+    <hr />
+    <div class="share-page">
+    Share this on &rarr;
+<a href="https://api.whatsapp.com/send?text= Visite o blog Patrick Ferro Ribeiro http://0.0.0.0:4000/dev/terraform-hello-world/" target="_blank" title="Share on WhatsApp" class="whatsapp">WhatsApp</a>
+<a href="https://twitter.com/intent/tweet?text=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform&url=http://0.0.0.0:4000/dev/terraform-hello-world/&via=riberman" rel="nofollow" target="_blank" title="Share on Twitter" class="twitter">Twitter</a>
+<a href="https://facebook.com/sharer.php?u=http://0.0.0.0:4000/dev/terraform-hello-world/" rel="nofollow" target="_blank" title="Share on Facebook" class="facebook">Facebook</a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/dev/terraform-hello-world/&title=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform&summary=Descubra como transformar código em servidores!  ..." target="_blank" title="Share on LinkedIn" class="linkedin">LinkedIn</a>
+<a href="http://www.reddit.com/submit?url=http://0.0.0.0:4000/dev/terraform-hello-world/&title=Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform" target="_blank" title="Share on Reddit" class="reddit">Reddit</a>
+  </div>
+<!--
+ <a href="https://twitter.com/share" class="twitter-share-button" data-via="riberman" style="position: static;visibility: visible;width: 61px;height: 20px;margin-bottom: -8;margin-bottom: -7px;margin-left: 3px;">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="fb-share-button" data-href="http://0.0.0.0:4000/dev/terraform-hello-world/" data-layout="button_count" style="position: relative;left: 3px;"></div>
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=2087090814720473";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+-->
+
+</article>
+<hr />
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/terraform-basics-and-structure/">Estrutura Básica Terraform</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/whatshack/">WhatsApp Hack</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/git/git-merge/">Git Efetuando Merge em Branchs</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/git">git</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/android/android-refresh-on-rotate-screen/">Android não Salva Dados Quando A Tela É Rotacionada Ou Teclado É Conectado</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/android">android</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/db/terminal-postgres-ubuntu/">Acessando Postgres via Terminal Ubuntu</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/db">db</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="http://0.0.0.0:4000/dev/git/git-remover-untracked/">Removendo Arquivos Untracked do Git</a>
+                    
+                        <small>(Categories: <a href="/dev">dev</a>, <a href="/git">git</a>)</small>
+                    
+                </li>
+                
+                
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev pull-left" href="http://0.0.0.0:4000/dev/terraform-basics-and-structure/">&laquo; Estrutura Básica Terraform</a>
+  
+  
+</div>
+
+
+<div class="disqus-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+
+        var disqus_shortname = "https-riberman-github-io";
+        var disqus_identifier = "http://0.0.0.0:4000_Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform";
+        var disqus_title = "Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    /* ]]> */
+    </script>
+</div>
+</div>
+
+          <div class="row">
+            <div class="col-md-12 col-xs-12 footer">
+              <footer>
+  © <script>document.write(new Date().getFullYear());</script> Patrick Ferro Ribeiro <a target="_blank" href="https://github.com/riberman">My GitHub</a> - by Jekyll.
+</footer>
+<div align="center">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Riberman Ads -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4397171381324956"
+       data-ad-slot="8171465187"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+            </div>
+          </div>
+        </div> <!-- end /.col-md-9 -->
+      </div> <!-- end /.row -->
+    </div>
+
+    
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script src="/static/js/super-search.js"></script>
+
+<script src="/static/js/thickbox-compressed.js"></script>
+<script src="/static/js/material.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/projects.js"></script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113720530-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

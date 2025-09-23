@@ -1,4 +1,4 @@
-FROM ruby:3
+FROM ruby:3.4.2
 
 # Instalar dependências do sistema (precisa para compilar gems nativas)
 RUN apt-get update && apt-get install -y \

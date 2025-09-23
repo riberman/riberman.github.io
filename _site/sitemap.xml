@@ -5,12 +5,324 @@
     <description>Web page about Code, Sport, Blog... and more.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Sep 2025 23:45:30 -0300</pubDate>
-    <lastBuildDate>Mon, 22 Sep 2025 23:45:30 -0300</lastBuildDate>
+    <pubDate>Tue, 23 Sep 2025 17:33:20 -0300</pubDate>
+    <lastBuildDate>Tue, 23 Sep 2025 17:33:20 -0300</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
         <title>Infraestrutura como Código (IaC) Seu Primeiro Deploy com Terraform</title>
+        <description>&lt;h1 id=&quot;criando-um-droplet-digitalocean-com-nginx-e-hello-world&quot;&gt;Criando um Droplet DigitalOcean com Nginx e Hello World&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-introdução-ao-projeto&quot;&gt;1. Introdução ao Projeto&lt;/h2&gt;
+
+&lt;p&gt;Neste workshop, vamos criar uma infraestrutura completa usando Terraform que inclui:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Um droplet (VPS) na DigitalOcean&lt;/li&gt;
+  &lt;li&gt;Instalação automática do Nginx&lt;/li&gt;
+  &lt;li&gt;Uma página HTML “Hello World”&lt;/li&gt;
+  &lt;li&gt;Configuração de acesso SSH por senha&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Pré-requisitos:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Terraform instalado&lt;/li&gt;
+  &lt;li&gt;Conta na DigitalOcean&lt;/li&gt;
+  &lt;li&gt;Token de API da DigitalOcean&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-configuração-inicial-do-projeto&quot;&gt;2. Configuração Inicial do Projeto&lt;/h2&gt;
+
+&lt;p&gt;Primeiro, vamos criar a estrutura de diretórios e arquivos do projeto:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;terraform-workshop
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;terraform-workshop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vamos organizar o projeto seguindo as melhores práticas do Terraform:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;providers.tf&lt;/code&gt; — Configuração do provider&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt; — Definição das variáveis&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;droplet.tf&lt;/code&gt; — Recurso do droplet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;outputs.tf&lt;/code&gt; — Outputs do projeto&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.tf&lt;/code&gt; — Arquivo principal&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt; — Valores das variáveis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-criando-o-arquivo-providerstf&quot;&gt;3. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;providers.tf&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;providers.tf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;terraform&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;required_providers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;digitalocean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;digitalocean/digitalocean&quot;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 2.0&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;provider&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;digitalocean&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;do_token&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicação:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform&lt;/code&gt; — Bloco de configuração do Terraform&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;required_providers&lt;/code&gt; — Define quais providers são necessários&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;digitalocean&lt;/code&gt; — Provider oficial da DigitalOcean&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version = &quot;~&amp;gt; 2.0&quot;&lt;/code&gt; — Versão compatível (2.x)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provider &quot;digitalocean&quot;&lt;/code&gt; — Configuração do provider&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;token = var.do_token&lt;/code&gt; — Usa a variável para o token&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-criando-o-arquivo-variablestf&quot;&gt;4. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Token da API da DigitalOcean&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;do_token&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Token de API da DigitalOcean&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;sensitive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Senha para o usuário root do droplet&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;root_password&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Senha para o usuário root&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;sensitive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Terraform2025***&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicação:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variable&lt;/code&gt; — Define uma variável&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;description&lt;/code&gt; — Descrição da variável&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type = string&lt;/code&gt; — Tipo da variável&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sensitive = true&lt;/code&gt; — Oculta o valor nos logs&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; — Valor padrão (opcional)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-criando-o-arquivo-droplettf&quot;&gt;5. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;droplet.tf&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;droplet.tf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;digitalocean_droplet&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vps&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ubuntu-25-04-x64&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vps-terraform&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sfo2&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s-1vcpu-512mb-10gb&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;user_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;EOF&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#!/bin/bash&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Permitir login do root por senha&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sshd_config&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/#PasswordAuthentication yes/PasswordAuthentication yes/&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sshd_config&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/PasswordAuthentication no/PasswordAuthentication yes/&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sshd_config&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Definir senha para o usuário root&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;root:${var.root_password}&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chpasswd&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Reiniciar serviço SSH&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;restart&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sshd&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Atualizar sistema&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Instalar nginx sem interação&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nginx&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Baixar página HTML hello world e fazer substituição&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//softweek.nuvemapps.com.br/hello-world.html&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Substituir texto aluno_example por teste123&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/aluno_example/teste123/g&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Reiniciar serviço nginx&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;restart&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nginx&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nginx&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;EOF&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;terraform&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vps&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicação:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resource &quot;digitalocean_droplet&quot;&lt;/code&gt; — Define um recurso droplet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image = &quot;ubuntu-25-04-x64&quot;&lt;/code&gt; — Imagem do Ubuntu&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;region = &quot;sfo2&quot;&lt;/code&gt; — Região São Francisco&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size = &quot;s-1vcpu-512mb-10gb&quot;&lt;/code&gt; — Tamanho do droplet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_data&lt;/code&gt; — Script executado na inicialização&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sed&lt;/code&gt; — Comandos para configurar SSH&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chpasswd&lt;/code&gt; — Define senha do root&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install -y nginx&lt;/code&gt; — Instala nginx sem interação&lt;/li&gt;
+  &lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-criando-o-arquivo-outputstf&quot;&gt;6. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;outputs.tf&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;outputs.tf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;droplet_ip&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;digitalocean_droplet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ipv4_address&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;droplet_name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;digitalocean_droplet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ssh_connection&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ssh root@${digitalocean_droplet.vps.ipv4_address}&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;website_url&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://${digitalocean_droplet.vps.ipv4_address}&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;URL para acessar o site hello world&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;7-criando-o-arquivo-maintf&quot;&gt;7. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.tf&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.tf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Este arquivo principal do projeto Terraform serve como documentação e ponto de entrada. A organização modular facilita a manutenção e compreensão do código.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;8-criando-o-arquivo-terraformtfvars&quot;&gt;8. Criando o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Crie o arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-hcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Token da API da DigitalOcean&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;do_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;seu_token_aqui&quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Senha para o usuário root (altere conforme necessário)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;root_password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Terraform2025***&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;⚠️ &lt;strong&gt;Importante:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Substitua &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;seu_token_aqui&quot;&lt;/code&gt; pelo seu token real da DigitalOcean&lt;/li&gt;
+  &lt;li&gt;Use uma senha forte para o root&lt;/li&gt;
+  &lt;li&gt;Nunca commite este arquivo com tokens reais&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;9-deploy-da-infraestrutura&quot;&gt;9. Deploy da Infraestrutura&lt;/h2&gt;
+
+&lt;p&gt;Agora vamos fazer o deploy da infraestrutura:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
+terraform plan
+terraform apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;✅ Resultado esperado:&lt;/p&gt;
+
+&lt;p&gt;O Terraform criará um droplet na DigitalOcean com nginx instalado e uma página HTML hello world.&lt;/p&gt;
+
+&lt;p&gt;Comandos úteis:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform init&lt;/code&gt; — Baixa providers e inicializa&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform plan&lt;/code&gt; — Mostra o que será criado&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform apply&lt;/code&gt; — Cria os recursos&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform show&lt;/code&gt; — Mostra estado atual&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform output&lt;/code&gt; — Mostra outputs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;10-testando-o-resultado&quot;&gt;10. Testando o Resultado&lt;/h2&gt;
+
+&lt;p&gt;Após o deploy, vamos testar se tudo funcionou:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ver os outputs:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform output
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Acessar o site:&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Use o IP mostrado no output &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;website_url&lt;/code&gt;&lt;br /&gt;
+Exemplo: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://157.245.123.456&lt;/code&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Conectar via SSH:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@IP_DO_DROPLET
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;✅ O que você deve ver:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Uma página HTML bonita com “Hello World”&lt;/li&gt;
+  &lt;li&gt;Nginx funcionando corretamente&lt;/li&gt;
+  &lt;li&gt;Acesso SSH funcionando com senha&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;11-limpeza-dos-recursos&quot;&gt;11. Limpeza dos Recursos&lt;/h2&gt;
+
+&lt;p&gt;Para evitar custos desnecessários, sempre destrua os recursos após os testes:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform destroy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;⚠️ Atenção:&lt;/p&gt;
+
+&lt;p&gt;Este comando irá deletar o droplet e todos os dados nele. Certifique-se de que não há dados importantes antes de executar.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-parabéns&quot;&gt;🎉 Parabéns!&lt;/h2&gt;
+
+&lt;p&gt;Você completou o workshop de Terraform e criou sua primeira infraestrutura na nuvem!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Próximos passos:&lt;/strong&gt; Explore mais recursos do Terraform, como módulos, workspaces e state remoto.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 23 Sep 2025 14:21:00 -0300</pubDate>
+        <link>http://0.0.0.0:4000/dev/terraform-hello-world/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/dev/terraform-hello-world/</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>Estrutura Básica Terraform</title>
         <description>&lt;h1 id=&quot;conceitos-essenciais-do-terraform&quot;&gt;Conceitos Essenciais do Terraform&lt;/h1&gt;
 
 &lt;p&gt;O Terraform é uma ferramenta de Infraestrutura como Código (IaC) desenvolvida pela HashiCorp, permitindo a definição, provisionamento e gerenciamento de infraestrutura de forma declarativa e automatizada.&lt;/p&gt;
